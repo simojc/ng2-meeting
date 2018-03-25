@@ -1,0 +1,26 @@
+
+<div [routerLink]="['/events', event.id]" class="well hoverwel thumbnail">
+  <h2> {{ event?.name | uppercase}} </h2>
+  <div> Date: {{ event?.date  | date:'shortDate'}} </div>
+  <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
+    Time: {{event.time}}
+    <span *ngSwitchCase="'8:00 am'"> (Commence tôt) </span>
+    <span *ngSwitchCase="'10:00 am'"> (Commence tard) </span>
+    <span *ngSwitchDefault> (Temps normal) </span>
+  </div>
+  <div> Price: {{ event?.price | currency:'USD'}}   <span>&nbsp; </span>  </div>
+  <div *ngIf="event?.location">
+    <!--  Affichage conditionnelle  -->
+    <span> Adresse: {{event.location.address}}  </span>
+
+    <span class="pad-left"> {{event.location.city}}, {{event.location.stateProvince}}, {{event.location.country}}</span>
+
+  </div>
+
+  <!--  Affichage conditionnelle    <div *ngIf="event?.onlineUrl">  -->
+  <div [hidden]="!event?.onlineUrl">
+    <!-- Change teh dom element property in certain conditions  -->
+    Online Url: {{ event.onlineUrl}}
+  </div>
+
+</div>

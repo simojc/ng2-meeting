@@ -1,11 +1,11 @@
-
+/**
 import { InjectionToken } from '@angular/core';
 
 import { OpaqueToken } from 'jQuery';
 
 export let JQ_TOKEN = new OpaqueToken('jQuery')
 
-/**
+
  * Creates a token that can be used in a DI Provider.
  *
  * Use an `InjectionToken` whenever the type you are injecting is not reified (does not have a

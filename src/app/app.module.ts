@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './nav/navbar.component';
+import { NavBarComponent  } from './nav/navbar.component';
 import { appRoutes } from './app.routes';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventsThumbnailComponent } from './events/events-thumbnail/events-thumbnail.component';
@@ -21,14 +21,19 @@ import { CreateSessionComponent } from './events/event-details/create-session/cr
 import { EventDetailsComponent } from './events/event-details/event-details/event-details.component';
 //import { UpvoteComponent } from './events/event-details/upvote/upvote.component';
 //import { SessionListComponent } from './events/event-details/session-list/session-list.component'
-import { EventService, EventListResolver, EventResolver, UpvoteComponent, SessionListComponent, VoterService, DurationPipe } from './events/index'
+import { 
+  EventService, 
+  EventListResolver, 
+  EventResolver, 
+  UpvoteComponent, 
+  SessionListComponent, 
+  VoterService,
+   DurationPipe ,
+   EventRouteActivator} from './events/index'
 
 import {
   ToastrService,
-  CollapsibleWellComponent,
-  JQ_TOKEN,
-  SimpleModalComponent,
-  ModalTriggerDirective
+  CollapsibleWellComponent
 } from './common/index'
 
 
@@ -36,17 +41,17 @@ import { Error404Component } from './errors/404.component'
 
 import { AuthService } from './user/auth.service'
 
-declare let jQuery: Object
+// declare let jQuery: Object
 
-// return the global instance of jquery
-export function jQueryFactory() {
-  return window['jQuery'];
-}
+// // return the global instance of jquery
+// export function jQueryFactory() {
+//   return window['jQuery'];
+// }
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    NavBarComponent,
     EventsListComponent,
     EventsThumbnailComponent,
     CreateEventComponent,
@@ -55,16 +60,20 @@ export function jQueryFactory() {
     EventDetailsComponent,
     UpvoteComponent,
     SessionListComponent,
-    VoterService,
-    DurationPipe
+    DurationPipe,
+    Error404Component,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+        FormsModule,
+        HttpModule,
+        ReactiveFormsModule,
+		RouterModule.forRoot(appRoutes)
   ],
   providers: [
     EventService,
-    { provide: JQ_TOKEN, useFactory: jQueryFactory },
+    //{ provide: JQ_TOKEN, useFactory: jQueryFactory },
     ToastrService,
     EventListResolver,
     AuthService,
@@ -73,7 +82,8 @@ export function jQueryFactory() {
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
-    }
+    },
+    EventRouteActivator
   ],
   bootstrap: [AppComponent]
 })

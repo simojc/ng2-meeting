@@ -5,8 +5,11 @@ import { IEvent } from '../shared/index'
 
 import { EventService } from '../shared/event.service'
 
-
 import { ActivatedRoute } from '@angular/router'
+
+import { ToastrService } from  '../../common/toastr.service'
+
+//import { ActivatedRoute } from '@angular/router'
 
 @Component({
 
@@ -22,19 +25,22 @@ import { ActivatedRoute } from '@angular/router'
 			</div>
 		 `
 })
-export class EventsListComponent implements OnInit {
-  events: IEvent[]
-  //eventService
-  constructor(private eventService: EventService, private route: ActivatedRoute) {
-    //this.eventService = eventService
-  }
-  ngOnInit() {
-    this.events = this.route.snapshot.data['events']
-  }
 
-  //handlethumbnailClick(eventName) {
-  //	//toastr.success(eventName)
-  //	this.toastr.success(eventName)
-  //	//'Vous avez cliqué sur: ' +
-  //}
+export class EventsListComponent implements OnInit {
+	events: IEvent[]
+	
+constructor(private eventService: EventService,  private route:ActivatedRoute, 
+	private toastr: ToastrService,)  {
 }
+
+ngOnInit() {
+		this.events = this.route.snapshot.data['events']
+}
+
+handlethumbnailClick(eventName) {
+  //toastr.success(eventName)
+  this.toastr.success(eventName)
+  //'Vous avez cliqué sur: ' +
+}
+}
+

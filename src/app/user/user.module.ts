@@ -11,21 +11,21 @@ import { ProfileComponent } from './profile.component'
 import { LoginComponent } from './login.component'
 
 @NgModule({
-  imports: [
-      CommonModule,
-      FormsModule,
-      ReactiveFormsModule,
-      RouterModule.forChild(userRoutes)
-  ],
-  declarations: [
-      ProfileComponent,
-      LoginComponent
-
-  ],
-  providers: [
-
-  ]
-})
-export class UserModule{
-
-}
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(userRoutes)
+    ],
+    declarations: [
+        ProfileComponent,
+        LoginComponent
+  
+    ],
+    providers: [
+  
+    ]
+  })
+  export class UserModule{
+  
+  }

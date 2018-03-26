@@ -12,18 +12,20 @@ import { IEvent } from '../shared/index'
 		.well div {color: #bbb;}		
 	`]
 })
+
 export class EventsThumbnailComponent {
 
-  @Input() event: IEvent
-
-  getStartTimeStyle(): any {
-    if (this.event && this.event.time === '8:00 am')
-      return { color: '#003300', 'font-weight': 'bold' }
-    return {}
-
-    // On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
-  }
+    @Input() event: IEvent
+	
+	getStartTimeStyle(): any {
+		if (this.event && this.event.time === '8:00 am')			
+			return {color: '#003300', 'font-weight': 'bold'}
+		return {}
+		
+		// On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
+	}
 
 }
+
 
 

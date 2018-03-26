@@ -14,38 +14,35 @@ import { IEvent, ISession } from '../../shared/index'
         a {cursor:pointer}
 	`]
 })
+
+
 export class EventDetailsComponent implements OnInit {
 
   event: IEvent
-  addMode: boolean
-  filterBy: string = 'all'
-  sortBy: string = 'votes'
+  addMode:boolean
+constructor(private eventService: EventService, private route:ActivatedRoute)  {
+  //this.eventService = eventService
+}
 
-  constructor(private eventService: EventService, private route: ActivatedRoute) {
-    //this.eventService = eventService
-  }
-
-  ngOnInit() {
-    this.route.data.forEach((data) => {
-      this.event = this.route.snapshot.data['event']
-      // this.event = event
-      this.addMode = false
-    })
+ngOnInit() {
+    console.log(this.route.snapshot.params['id'])
+    this.event = this.eventService.getEvent(+this.route.snapshot.params['id'])
+    console.log(this.route.snapshot.params['id'])
   }
 
   addSession() {
-    this.addMode = true
+      this.addMode = true
   }
 
   saveNewSession(session: ISession) {
-    const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id))
-    session.id = nextId
-    this.event.sessions.push(session)
-    this.eventService.saveEvent(this.event).subscribe()
-    this.addMode = false
+      const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id))
+      session.id = nextId
+      this.event.sessions.push(session)
+      this.eventService.updateEvent(this.event)
+      this.addMode = false
   }
 
   cancelAddSession() {
-    this.addMode = false
+      this.addMode = false
   }
 }

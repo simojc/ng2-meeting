@@ -19,12 +19,13 @@ import { Router } from '@angular/router'
         .error : ms-input-placeholder {color: #999;} 			
 	`]
 })
+
 export class ProfileComponent implements OnInit {
     profileForm: FormGroup
     private firstName: FormControl
     private lastName: FormControl
 
-    constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
+    constructor(private authService: AuthService, private  router: Router) {
 
     }
 
@@ -39,10 +40,8 @@ export class ProfileComponent implements OnInit {
 
     saveProfile(formValues) {
         if (this.profileForm.valid) { 
-            this.authService.updateCurrentUser(formValues.firstName,
-                formValues.lastName).subscribe(() => {
-                    this.toastr.success('Successful profile saved')
-                });                     
+            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
+            this.router.navigate(['events'])
         }
     }
 
@@ -56,11 +55,5 @@ export class ProfileComponent implements OnInit {
 
     cancel() {
         this.router.navigate(['events'])
-    }
-
-    logout() {
-        this.authService.logout().subscribe(() => {
-            this.router.navigate(['user/login'])
-        })
     }
 }

@@ -13,8 +13,6 @@ import { IEvent } from '../shared/index'
 	`]
 })
 
-
-
 export class EventsThumbnailComponent {
 
     @Input() event: IEvent

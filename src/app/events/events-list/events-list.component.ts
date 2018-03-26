@@ -27,14 +27,19 @@ import { ToastrService } from  '../../common/toastr.service'
 })
 
 export class EventsListComponent implements OnInit {
-	events: IEvent[]
+  events: IEvent[]
+
+  errorMsg: string;
+  errorFlag: boolean = false;
 	
 constructor(private eventService: EventService,  private route:ActivatedRoute, 
 	private toastr: ToastrService,)  {
 }
 
 ngOnInit() {
-		this.events = this.route.snapshot.data['events']
+  this.events = this.route.snapshot.data['events']
+
+  //this.fetchData()
 }
 
 handlethumbnailClick(eventName) {
@@ -42,5 +47,15 @@ handlethumbnailClick(eventName) {
   this.toastr.success(eventName)
   //'Vous avez cliqué sur: ' +
 }
+
+//fetchData() {
+//  this.eventService.getEvents()
+//    .subscribe(
+//    (data: IEvent[]) => { this.events = data; },
+//    (error) => { this.errorMsg = error; this.errorFlag = true }
+//    )
+//}
+
+
 }
 

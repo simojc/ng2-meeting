@@ -4,6 +4,8 @@ import './rxjs-extentions'
 
 import { HttpModule } from '@angular/http'
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -67,7 +69,8 @@ import { AuthService } from './user/auth.service'
   imports: [
     BrowserModule,
         FormsModule,
-        HttpModule,
+    HttpModule,
+    HttpClientModule,
         ReactiveFormsModule,
 		RouterModule.forRoot(appRoutes)
   ],
@@ -90,7 +93,7 @@ import { AuthService } from './user/auth.service'
 export class AppModule {
 }
 
-function checkDirtyState(component: CreateEventComponent) {
+export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
     return window.confirm('you have not saved this event, do you really want to cancel?')
   return true

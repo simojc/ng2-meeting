@@ -1,12 +1,15 @@
 {
   "ExpandedNodes": [
-    "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\common",
     "\\src\\app\\events",
-    "\\src\\app\\events\\shared"
+    "\\src\\app\\events\\create-event",
+    "\\src\\app\\events\\events-thumbnail",
+    "\\src\\app\\events\\shared",
+    "\\src\\app\\nav",
+    "\\src\\app\\user",
+    "\\src\\assets",
+    "\\src\\assets\\events"
   ],
-  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

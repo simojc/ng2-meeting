@@ -11,71 +11,71 @@ import { IUser } from './user.model'
 @Injectable()
 export class AuthService {
 
-    public currentUser: IUser
+  public currentUser: IUser
 
-    constructor(private http: Http) { }
-   
-    loginUser(userName: string, password: string) {
-        let headers = new Headers({ 'Content-Type': 'application/json' })
-        let options = new RequestOptions({ headers: headers })
+  constructor(private http: Http) { }
 
-        let loginInfo = { username: userName, password: password }
+  loginUser(userName: string, password: string) {
+    let headers = new Headers({ 'Content-Type': 'application/json' })
+    let options = new RequestOptions({ headers: headers })
 
-       // let url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`
+    let loginInfo = { username: userName, password: password }
 
-        return this.http.post('/api/login', JSON.stringify(loginInfo), options).do(resp => {
-            if (resp) {
-                this.currentUser = <IUser>resp.json().user
-            }
-        }).catch(error => {
-            return Observable.of(false)
-        })
-    }
+    // let url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`
 
-    isAuthenticated() {
-        return !!this.currentUser
-        ///  returne True si current User est rensigné (c-d-d si la propriété n'est pas vide)
-    }
+    return this.http.post('/api/login', JSON.stringify(loginInfo), options).do(resp => {
+      if (resp) {
+        this.currentUser = <IUser>resp.json().user
+      }
+    }).catch(error => {
+      return Observable.of(false)
+    })
+  }
 
-    checkAuthenticationStatus() {
-        return this.http.get('/api/currentIdentity').map((response: any) => {
-            if (response._body) {  /// ce if est juste pour vérifier si la réponse n'est pas vide. '_body' n'est pas une propriété de response, mais son type
-                return response.json()
-            } else {
-                return {}
-            }
-        }).do(currentUser => {
-            if (currentUser.userName) {
-                this.currentUser = currentUser
-            }
-        }).subscribe()
-    }
+  isAuthenticated() {
+    return !!this.currentUser
+    ///  returne True si current User est rensignÃ© (c-d-d si la propriÃ©tÃ© n'est pas vide)
+  }
+
+  checkAuthenticationStatus() {
+    return this.http.get('/api/currentIdentity').map((response: any) => {
+      if (response._body) {  /// ce if est juste pour vÃ©rifier si la rÃ©ponse n'est pas vide. '_body' n'est pas une propriÃ©tÃ© de response, mais son type
+        return response.json()
+      } else {
+        return {}
+      }
+    }).do(currentUser => {
+      if (currentUser.userName) {
+        this.currentUser = currentUser
+      }
+    }).subscribe()
+  }
 
 
-    updateCurrentUser(firstName: string, lastName: string) {
-        this.currentUser.firstName = firstName
-        this.currentUser.lastName = lastName
+  updateCurrentUser(firstName: string, lastName: string) {
+    this.currentUser.firstName = firstName
+    this.currentUser.lastName = lastName
 
-        let headers = new Headers({ 'Content-Type': 'application/json' })
-        let options = new RequestOptions({ headers: headers })
+    let headers = new Headers({ 'Content-Type': 'application/json' })
+    let options = new RequestOptions({ headers: headers })
 
-        let url = `/api/users/${this.currentUser.id}`
+    let url = `/api/users/${this.currentUser.id}`
 
-        return this.http.put(url, JSON.stringify(this.currentUser),options)
-     
-    }
+    return this.http.put(url, JSON.stringify(this.currentUser), options)
 
-    logout() {
+  }
 
-        this.currentUser = undefined
+  logout() {
 
-        let headers = new Headers({ 'Content-Type': 'application/json' })
-        let options = new RequestOptions({ headers: headers })
+    this.currentUser = undefined
 
-        let url = `/api/logout`
+    let headers = new Headers({ 'Content-Type': 'application/json' })
+    let options = new RequestOptions({ headers: headers })
 
-        return this.http.post(url, JSON.stringify({}), options)
-    }
+    let url = `/api/logout`
 
-  
+    return this.http.post(url, JSON.stringify({}), options)
+  }
+
+
 }

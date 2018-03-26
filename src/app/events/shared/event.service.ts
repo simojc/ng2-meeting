@@ -1,29 +1,27 @@
 
 import { Injectable, EventEmitter } from '@angular/core'
-import { Subject, Observable } from 'rxjs/Rx'
+import { Observable } from 'rxjs/Observable'
+import { Subject } from 'rxjs/Subject'
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 
 import { IEvent, ISession } from './event.model'
 
-// import { Injectable } from '@angular/core'
-// import { Subject, Observable } from 'rxjs/RX'
-
-// import { IEvent } from './event.model'
-
 @Injectable()
 export class EventService {
+
+  private endpointUrl = "/api/events";
 
     constructor(private http: Http) { }
 
     getEvents(): Observable<IEvent[]> {
-        return this.http.get("/api/events").map((response: Response) => {
+      return this.http.get(this.endpointUrl).map((response: Response) => {
             return <IEvent[]>response.json()
         }).catch(this.handleError)
 
     }
 
     getEvent(id: number): Observable<IEvent> {
-        return this.http.get("/api/events/" + id).map((response: Response) => {
+      return this.http.get(this.endpointUrl + id).map((response: Response) => {
             return <IEvent>response.json()
         }).catch(this.handleError)
     }

@@ -19,41 +19,48 @@ import { Router } from '@angular/router'
         .error : ms-input-placeholder {color: #999;} 			
 	`]
 })
-
 export class ProfileComponent implements OnInit {
-    profileForm: FormGroup
-    private firstName: FormControl
-    private lastName: FormControl
+  profileForm: FormGroup
+  private firstName: FormControl
+  private lastName: FormControl
 
-    constructor(private authService: AuthService, private  router: Router) {
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
 
+  }
+
+  ngOnInit() {
+    this.firstName = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
+    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required)
+    this.profileForm = new FormGroup({
+      firstName: this.firstName,
+      lastName: this.lastName
+    })
+  }
+
+  saveProfile(formValues) {
+    if (this.profileForm.valid) {
+      this.authService.updateCurrentUser(formValues.firstName,
+        formValues.lastName).subscribe(() => {
+          this.toastr.success('Successful profile saved')
+        });
     }
+  }
 
-    ngOnInit() {
-        this.firstName = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')] )
-        this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required)
-        this.profileForm = new FormGroup({
-            firstName: this.firstName,
-            lastName: this.lastName
-        })
-    }
+  validateFirstName() {
+    return this.firstName.valid || this.firstName.untouched
+  }
 
-    saveProfile(formValues) {
-        if (this.profileForm.valid) { 
-            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-            this.router.navigate(['events'])
-        }
-    }
+  validateLastName() {
+    return this.lastName.valid || this.lastName.untouched
+  }
 
-    validateFirstName() {
-        return this.firstName.valid || this.firstName.untouched                   
-    }
+  cancel() {
+    this.router.navigate(['events'])
+  }
 
-    validateLastName() {
-        return this.lastName.valid || this.lastName.untouched  
-    }
-
-    cancel() {
-        this.router.navigate(['events'])
-    }
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['user/login'])
+    })
+  }
 }

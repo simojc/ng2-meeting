@@ -18,21 +18,23 @@ import { EventService } from '../shared/index'
 `]
 })
 export class CreateEventComponent {
-isDirty:boolean = true
-constructor(private router: Router, private eventService: EventService)  {
+  isDirty: boolean = true
+  constructor(private router: Router, private eventService: EventService) {
 
-}
+  }
 
-saveEvent(formValues) {
-    this.eventService.saveEvent(formValues)
-    console.log(formValues)
-    this.isDirty = false
+  saveEvent(formValues) {
+    this.eventService.saveEvent(formValues).subscribe(event => {
+      console.log(formValues)
+      this.isDirty = false
+      this.router.navigate(['/events'])
+    })
+
+  }
+
+
+  cancel() {
     this.router.navigate(['/events'])
-}
 
-
-cancel() {
-  this.router.navigate(['/events'])
-
-}
+  }
 }

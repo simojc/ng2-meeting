@@ -10,9 +10,7 @@
   </div>
   <div> Price: {{ event?.price | currency:'USD'}}   <span>&nbsp; </span>  </div>
   <div *ngIf="event?.location">
-      <!--  Affichage conditionnelle  -->
       <span> Adresse: {{event.location.address}}  </span>
-
       <span class="pad-left"> {{event.location.city}}, {{event.location.stateProvince}}, {{event.location.country}}</span>
 
   </div>

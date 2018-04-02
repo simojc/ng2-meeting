@@ -1,16 +1,16 @@
 <h1>Connexion</h1>
 <hr>
 <div class="col-md-4">
-  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
+  <form #loginForm="ngForm" (ngSubmit)="login1(loginForm.value)" autocomplete="off">
     <div class="form-group">
-      <label for="userName">User Name:</label>
-      <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
-      <input (ngModel)="userName" name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..." />
+      <label for="email">Courriel:</label>
+      <em *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="email" name="email" required id="email" type="text" class="form-control" placeholder="Courriel..." />
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
       <em *ngIf="loginForm.controls.password?.invalid &&  (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
-      <input (ngModel)="password" name="password" required id="password" type="password" class="form-control" placeholder="Password..." />
+      <input (ngModel)="password" name="password" required id="password" type="password" class="form-control" placeholder="Mot de passe..." />
     </div>
     <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
       <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>

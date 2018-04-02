@@ -4,48 +4,37 @@ import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
 import { Http, Response, Headers, RequestOptions  } from '@angular/http'
 
-import { HttpClient } from '@angular/common/http'; 
-
 import { IEvent, ISession } from './event.model'
 
 @Injectable()
 export class EventService {
 
-  private endpointUrl = "/api/events"
+  //private endpointUrl = "http://localhost/~simojc/phpapi/public/api/events?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvfnNpbW9qYy9waHBhcGkvcHVibGljL2FwaS9sb2dpbiIsImlhdCI6MTUyMjM2NTk2NSwiZXhwIjoxNTIyMzY5NTY1LCJuYmYiOjE1MjIzNjU5NjUsImp0aSI6IlpKWURPRW85cmpWRzk1akkifQ.1aoIjQ0CICGn307tYc50iDVvEsn_vg1VZBH9yowMZ30"
 
-  private eventURL = "assets/events/events_data.json"
+  private endpointUrl ="http://localhost/~simojc/phpapi/public/api/events"
 
-  constructor(private http: Http, private http_c: HttpClient) { }
+  constructor(private http: Http) { }
 
-  // Lit à distance sur un serveur
-  getEvents1(): Observable<IEvent[]> {
-    return this.http.get(this.endpointUrl).map((response: Response) => {
-      return <IEvent[]>response.json()
-    }).catch(this.handleError)
-  }
+  getEvents(): Observable<IEvent[]> {
+    return this.http.get(this.endpointUrl)
+        .map((response: Response) => <IEvent[]>response.json())
+      //  .do(data => console.log('All: ' + JSON.stringify(data)))
+        .catch(this.handleError);
+}
 
-
-  // Lit dans un fichier JSON
-  getEvents2(): Observable<IEvent[]> {
-    return this.http_c.get(this.eventURL).map((response: Response) => <any>response.json())
-      .do(data => console.log(JSON.stringify(data))).catch(this.handleError);
-  }
-
-
-  // Lit dans l'objet défini ci-dessous
-  getEvents(): Subject<IEvent[]> {
-    let subject = new Subject<IEvent[]>()
-    setTimeout(() => { subject.next(EVENTS); subject.complete(); }
-      , 10)
-    return subject
-  }
-
-
+  // Lit les données dans l'objet défini ci-dessous
+  // getEvents(): Subject<IEvent[]> {
+  //   let subject = new Subject<IEvent[]>()
+  //   setTimeout(() => { subject.next(EVENTS); subject.complete(); }
+  //     , 10)
+  //   return subject
+  // }
 
   getEvent(id: number): Observable<IEvent> {
     return this.http.get(this.endpointUrl + id).map((response: Response) => {
       return <IEvent>response.json()
     }).catch(this.handleError)
+
   }
 
   saveEvent(event): Observable<IEvent> {
@@ -57,7 +46,6 @@ export class EventService {
         return response.json()
       }).catch(this.handleError)
   }
-
   searchSessions(searchTerm: string) {
     return this.http.get("/api/sessions/search?search=" + searchTerm).map((response: Response) => {
       return response.json()

@@ -18,7 +18,6 @@ import { Router } from '@angular/router'
 	`]
 })
 
-
 export class NavBarComponent {
   searchTerm: string = ""
   foundSessions: ISession[]

@@ -12,7 +12,8 @@ export class EventResolver implements Resolve<any>{
     }
 
     resolve(route: ActivatedRouteSnapshot) {
-        return this.eventService.getEvent(route.params['id'])
+        return this.eventService.getEvent(route.params['id']);
+        console.log(route.params['id'])
     }
 
 }

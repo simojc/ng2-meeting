@@ -22,20 +22,11 @@ export class EventService {
         .catch(this.handleError);
 }
 
-  // Lit les données dans l'objet défini ci-dessous
-  // getEvents(): Subject<IEvent[]> {
-  //   let subject = new Subject<IEvent[]>()
-  //   setTimeout(() => { subject.next(EVENTS); subject.complete(); }
-  //     , 10)
-  //   return subject
-  // }
-
   getEvent(id: number): Observable<IEvent> {
-    return this.http.get(this.endpointUrl + id).map((response: Response) => {
-      return <IEvent>response.json()
+    return this.http.get("http://localhost/~simojc/phpapi/public/api/events/" + id).map((response: Response) => {
+        return <IEvent>response.json()
     }).catch(this.handleError)
-
-  }
+}
 
   saveEvent(event): Observable<IEvent> {
     let headers = new Headers({ 'Content-Type': 'application/json' })

@@ -4,7 +4,7 @@ import './rxjs-extentions'
 
 import { HttpModule } from '@angular/http'
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
@@ -21,8 +21,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { LocationValidator } from './events/location-validator.directive';
 import { CreateSessionComponent } from './events/event-details/create-session/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details/event-details.component';
-//import { UpvoteComponent } from './events/event-details/upvote/upvote.component';
-//import { SessionListComponent } from './events/event-details/session-list/session-list.component'
+
 import { 
   EventService, 
   EventListResolver, 
@@ -31,7 +30,12 @@ import {
   SessionListComponent, 
   VoterService,
    DurationPipe ,
-   EventRouteActivator} from './events/index'
+   EventRouteActivator,
+   AlertService,
+   ErrorInterceptorProvider, TokenInterceptor,
+   AuthGuard,
+   AlertComponent
+  } from './events/index'
 
 import {
   ToastrService,
@@ -42,6 +46,7 @@ import {
 import { Error404Component } from './errors/404.component'
 
 import { AuthService } from './user/auth.service'
+import { UserService } from './user/user.service'
 
 // declare let jQuery: Object
 
@@ -64,7 +69,8 @@ import { AuthService } from './user/auth.service'
     SessionListComponent,
     DurationPipe,
     Error404Component,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -80,15 +86,25 @@ import { AuthService } from './user/auth.service'
     ToastrService,
     EventListResolver,
     AuthService,
+    UserService,
     EventResolver,
     VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     },
-    EventRouteActivator
+    EventRouteActivator,
+       {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+     },
+        ErrorInterceptorProvider,
+        AuthGuard,
+        AlertService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule {
 }

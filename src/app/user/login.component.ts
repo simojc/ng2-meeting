@@ -1,6 +1,7 @@
 
 import { Component, Input } from '@angular/core'
 import { AuthService } from './auth.service'
+import { AlertService } from '../_services/index';
 
 import { Router } from '@angular/router'
 
@@ -13,24 +14,38 @@ import { Router } from '@angular/router'
 })
 
 export class LoginComponent {
-    constructor(private authService: AuthService, private router: Router) {
+    
+    constructor(private authService: AuthService, private router: Router,
+        private alertService: AlertService) {
 
     }
 
-    login(formValues) {
-      console.log("Avant...:   "+this.authService.isAuthenticated())
-        this.authService.loginUser(formValues.email, formValues.password)
-      console.log("Après...:   " + this.authService.isAuthenticated())
-        this.router.navigate(['events'])
-    }
+    // login(formValues) {
+    //   console.log("Avant...:   "+this.authService.isAuthenticated())
+    //     this.authService.login_cli(formValues.email, formValues.password)
+    //   console.log("Après...:   " + this.authService.isAuthenticated())
+    //     this.router.navigate(['events'])
+    // }
 
-    login1(formValues) {
-        this.authService.loginUser1(formValues.email, formValues.password).then(
-          (res) => { console.log('success', res)
-          this.router.navigate(['events']) },
-          (err) => { console.log('error', err) }
-          )
-    }
+
+        login(formValues) {
+               // this.loading = true;
+                this.authService.loginUser(formValues.email, formValues.password)
+                    .then(
+                res => {
+                            //console.log("debut login component  ..... "+" this.returnUrl= "+this.returnUrl)
+                            
+                           this.router.navigate(['events'])
+                            this.alertService.success(' login successful', true);
+                            //this.loading = false;
+                           // console.log("Fin login component .....")
+                        },
+                        err => {
+                            this.alertService.error(err);
+                            //this.loading = false;
+                        });
+            }
+
 
     cancel() {
         this.router.navigate(['events'])

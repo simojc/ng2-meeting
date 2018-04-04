@@ -1,15 +1,15 @@
 {
   "ExpandedNodes": [
+    "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\events",
-    "\\src\\app\\events\\create-event",
-    "\\src\\app\\events\\events-thumbnail",
-    "\\src\\app\\events\\shared",
-    "\\src\\app\\nav",
-    "\\src\\app\\user",
-    "\\src\\assets",
-    "\\src\\assets\\events"
+    "\\src\\app\\assets",
+    "\\src\\app\\common",
+    "\\src\\app\\events\\event-details\\create-session",
+    "\\src\\app\\events\\event-details\\event-details",
+    "\\src\\app\\events\\event-details\\session-list",
+    "\\src\\app\\nav"
   ],
+  "SelectedNode": "\\src\\app\\nav\\navbar.component.html",
   "PreviewInSolutionExplorer": false
 }

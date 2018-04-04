@@ -18,19 +18,29 @@ import { IEvent, ISession } from '../../shared/index'
 export class EventDetailsComponent implements OnInit {
 
   event: IEvent
+  event1: IEvent
   addMode: boolean
   filterBy: string = 'all'
   sortBy: string = 'votes'
+  event_id: number
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {
-    //this.eventService = eventService
+    console.log("Dans EventDetailsComponent constructor --- params =   ");
+    this.route.params.subscribe(params => console.log( params.id));
   }
+
+
 
   ngOnInit() {
     this.route.data.forEach((data) => {
       this.event = this.route.snapshot.data['event']
       // this.event = event
       this.addMode = false
+
+      //this.route.params.subscribe(params => { this.event_id = params.id})
+      //this.event1 = this.eventService.getEvent(this.event_id)
+      //console.log("Dans EventDetailsComponent  ngOnInit --- this.event_id = " + this.event_id);
+      
     })
   }
 

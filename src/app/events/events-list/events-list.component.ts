@@ -7,7 +7,9 @@ import { EventService } from '../shared/event.service'
 
 import { ActivatedRoute } from '@angular/router'
 
-import { ToastrService } from  '../../common/toastr.service'
+import { ToastrService } from '../../common/toastr.service'
+
+import { IUser } from '../../user/user.model'
 
 //import { ActivatedRoute } from '@angular/router'
 
@@ -28,6 +30,7 @@ import { ToastrService } from  '../../common/toastr.service'
 
 export class EventsListComponent implements OnInit {
   events: IEvent[]
+  public currentUser: IUser
 
   errorMsg: string;
   errorFlag: boolean = false;
@@ -38,14 +41,12 @@ constructor(private eventService: EventService,  private route:ActivatedRoute,
 
 ngOnInit() {
   this.events = this.route.snapshot.data['events']
-
+  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   //this.fetchData()
 }
 
 handlethumbnailClick(eventName) {
-  //toastr.success(eventName)
   this.toastr.success(eventName)
-  //'Vous avez cliqué sur: ' +
 }
 
 //fetchData() {

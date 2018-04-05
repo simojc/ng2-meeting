@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  
-import { IUser } from '../user.model'
+import { IUser } from  '../../Models/index'
 import { UserService } from '../user.service';
 import { AlertService } from '../../_services/index';
  

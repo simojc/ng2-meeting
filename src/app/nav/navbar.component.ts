@@ -2,7 +2,7 @@
 import { Component } from '@angular/core'
 
 import { AuthService } from '../user/auth.service'
-import { ISession } from '../events/shared/event.model'
+import { ISession } from '../Models/index'
 import { EventService } from '../events/index'
 
 import { Router } from '@angular/router'

@@ -4,9 +4,8 @@ export * from './create-event/create-event.component'
 export * from './events-list-resolver.service'
 export * from './shared/index'
 export * from './event-details/index'
-//export * from './location-validator.directive'
 export * from './event-resolver.service'
 export * from '../_services/index';
-export *  from '../_directives/index';
+export * from '../_directives/index';
 export *  from '../_guards/index';
 export * from '../_helpers/index';

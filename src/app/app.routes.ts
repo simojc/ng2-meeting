@@ -1,28 +1,27 @@
-import { Routes }  from '@angular/router'
+import { Routes } from '@angular/router'
 
- import {
- 	EventsListComponent,
- 	EventDetailsComponent,
- 	CreateEventComponent,
-     EventListResolver,
-     CreateSessionComponent,
-	 EventResolver,
-	 EventRouteActivator
- } from './events/index'
+import {
+  EventsListComponent,
+  EventDetailsComponent,
+  CreateEventComponent,
+  EventListResolver,
+  CreateSessionComponent,
+  EventResolver,
+  EventRouteActivator
+} from './events/index'
 
- import { Error404Component } from  './errors/404.component'
+import { Error404Component } from './errors/404.component'
 
- import { AuthGuard } from './_guards/index';
+import { AuthGuard } from './_guards/index';
 
 export const appRoutes = [
-	{path: 'events/new', component: CreateEventComponent, canDeactivate  : ['canDeactivateCreateEvent']},
-	//{path: 'events', component: EventsListComponent, resolve:{events:EventListResolver}, canActivate: [AuthGuard]},
-	{path: 'events', component: EventsListComponent, resolve:{events:EventListResolver}},
-	{ path: 'events/:id', component: EventDetailsComponent, resolve: {event: EventResolver} },
-	//{ path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
-	{ path: 'events/session/new', component: CreateSessionComponent},
-  	{path: '404', component: Error404Component},
-	{ path: '', redirectTo: '/events', pathMatch: 'full' },
-    { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
-    { path: 'events_99/:id', component: EventDetailsComponent },
+  { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
+  //{path: 'events', component: EventsListComponent, resolve:{events:EventListResolver}, canActivate: [AuthGuard]},
+  { path: 'events', component: EventsListComponent, resolve: { events: EventListResolver } },
+  { path: 'events/:id', component: EventDetailsComponent, resolve: { event: EventResolver } },
+  //{ path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
+  { path: 'events/session/new', component: CreateSessionComponent },
+  { path: '404', component: Error404Component },
+  { path: '', redirectTo: '/events', pathMatch: 'full' },
+  { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
 ]

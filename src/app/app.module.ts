@@ -18,7 +18,7 @@ import { appRoutes } from './app.routes';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventsThumbnailComponent } from './events/events-thumbnail/events-thumbnail.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
-import { LocationValidator } from './events/location-validator.directive';
+// import { LocationValidator } from './events/location-validator.directive';
 import { CreateSessionComponent } from './events/event-details/create-session/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details/event-details.component';
 
@@ -34,7 +34,8 @@ import {
    AlertService,
    ErrorInterceptorProvider, TokenInterceptor,
    AuthGuard,
-   AlertComponent
+   AlertComponent,
+   LocationValidator
   } from './events/index'
 
 import {

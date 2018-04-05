@@ -3,9 +3,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
-import { ISession } from '../../../Models/index'
+import { ISession } from '../../shared/index'
 
 import { restrictedWords } from '../../../_directives/index';
+
 
 @Component({
   selector: 'create-session',

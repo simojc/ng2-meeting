@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core'
 
-import { IEvent, IUser } from '../../Models/index'
+import { IEvent } from '../shared/index'
 
 import { EventService } from '../shared/event.service'
 
@@ -9,9 +9,7 @@ import { ActivatedRoute } from '@angular/router'
 
 import { ToastrService } from '../../common/toastr.service'
 
-//import { IUser } from '../../user/user.model'
-
-//import { IEvent, ISession } from '../../Models/event.model'
+import { IUser } from '../../user/user.model'
 
 //import { ActivatedRoute } from '@angular/router'
 

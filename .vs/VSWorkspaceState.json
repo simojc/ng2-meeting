@@ -3,13 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\assets",
-    "\\src\\app\\common",
+    "\\src\\app\\events\\create-event",
     "\\src\\app\\events\\event-details\\create-session",
     "\\src\\app\\events\\event-details\\event-details",
     "\\src\\app\\events\\event-details\\session-list",
-    "\\src\\app\\nav"
+    "\\src\\app\\events\\events-list",
+    "\\src\\app\\events\\events-thumbnail",
+    "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\nav\\navbar.component.html",
+  "SelectedNode": "\\src\\app\\nav",
   "PreviewInSolutionExplorer": false
 }

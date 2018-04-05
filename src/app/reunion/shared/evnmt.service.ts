@@ -6,7 +6,6 @@ import { Http, Response, Headers, RequestOptions  } from '@angular/http'
 
 import { IEvent, ISession } from '../../Models/index'
 
-
 @Injectable()
 export class EventService {
 

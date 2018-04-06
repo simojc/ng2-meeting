@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser } from './user.model'
+import { IUser } from '../Models/index'
 import { AlertService } from '../_services/index';
 import { AuthService } from './auth.service'
-
-
 
 @Injectable()
 export class UserService {

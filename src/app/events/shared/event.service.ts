@@ -16,28 +16,40 @@ export class EventService {
 
   constructor(private http: Http) { }
 
-  getEvents1(): Observable<IEvent[]> {
+
+  getEvents(): Observable<IEvent[]> {
     return this.http.get(this.endpointUrl)
         .map((response: Response) => <IEvent[]>response.json())
-      //  .do(data => console.log('All: ' + JSON.stringify(data)))
+       // .do(data => console.log('All: ' + JSON.stringify(data)))
         .catch(this.handleError);
   }
 
+
+  getEvent(id: number): Observable<IEvent> {
+    return this.http.get(this.endpointUrl + "/" + id)
+    .map((response: Response) => <IEvent>response.json())
+    //.do(data => console.log('Event: ' + JSON.stringify(data)))
+    .catch(this.handleError)
+}
+
+// Lit dans l'objet défini ci-dessous
+  // getEvent(id: number): IEvent {
+  //   console.log("Dans  EventService  id =  " + id)
+  //   return EVENTS.find(event => event.id == id)
+  // }
+
+
   // Lit dans l'objet défini ci-dessous
-  getEvents(): Subject<IEvent[]> {
+  getEvents1(): Subject<IEvent[]> {
     let subject = new Subject<IEvent[]>()
     setTimeout(() => { subject.next(EVENTS); subject.complete(); }
       , 10)
     return subject
   }
 
-  getEvent1(id: number): Observable<IEvent> {
-    return this.http.get("http://localhost/~simojc/phpapi/public/api/events/" + id).map((response: Response) => {
-        return <IEvent>response.json()
-    }).catch(this.handleError)
-}
 
-  getEvent(id: number): IEvent {
+
+  getEvent1(id: number): IEvent {
     console.log("Dans  EventService  id =  " + id)
     return EVENTS.find(event => event.id == id)
   }

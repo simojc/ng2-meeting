@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
-import { ISession } from '../shared/index'
+import { ISession } from '../../Models/index'
+
 
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
 
-import { ISession } from '../../shared/index'
+import { ISession } from '../../../Models/index'
 
 @Component({
   selector: 'upvote',

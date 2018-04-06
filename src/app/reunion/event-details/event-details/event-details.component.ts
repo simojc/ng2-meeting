@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core'
-import { EventService } from '../../shared/event.service'
+import { EventService } from '../../shared/evnmt.service'
 import { ActivatedRoute, Params } from '@angular/router'
 
-import { IEvent, ISession } from '../../shared/index'
+import { IEvent, ISession } from '../../../Models/index'
 
 @Component({
   // Aucun sélecteur, car on va l'utiliser comme un enfant d'un aute component, donc pas besoin de sélecteur

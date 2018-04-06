@@ -1,15 +1,15 @@
 
 import { Component, OnInit } from '@angular/core'
 
-import { IEvent } from '../shared/index'
+//import { IEvent } from '../shared/index'
 
-import { EventService } from '../shared/event.service'
+import { EventService } from '../shared/evnmt.service'
 
 import { ActivatedRoute } from '@angular/router'
 
 import { ToastrService } from '../../common/toastr.service'
 
-import { IUser } from '../../user/user.model'
+import { IUser, IEvent } from '../../Models/index'
 
 //import { ActivatedRoute } from '@angular/router'
 

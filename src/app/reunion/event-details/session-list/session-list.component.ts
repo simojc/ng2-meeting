@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core'
 
-import { ISession } from '../../shared/index'
+import { ISession } from '../../../Models/index'
 import { restrictedWords } from '../../../_directives/index';
 
 import { AuthService } from '../../../user/auth.service'

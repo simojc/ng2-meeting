@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
-import { ISession } from '../../shared/index'
+import { ISession } from '../../../Models/index'
 
 import { restrictedWords } from '../../../_directives/index';
 

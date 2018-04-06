@@ -8,7 +8,7 @@
 
 	import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-	import { IUser } from './user.model'
+	import { IUser } from  '../Models/index'
 
 	@Injectable()
 	export class AuthService {

@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 
-import { IEvent } from '../shared/index'
+import { IEvent } from '../../Models/index'
 
 @Component({
   selector: 'events-thumbnail',

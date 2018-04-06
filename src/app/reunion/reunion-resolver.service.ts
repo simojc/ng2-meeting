@@ -2,12 +2,12 @@
 import { Injectable } from '@angular/core'
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router'
 
-import { EventService } from './shared/index'
+import { EvnmtService } from './shared/index'
 
 @Injectable()
 export class EventResolver implements Resolve<any>{
 
-      constructor(private eventService: EventService) {
+  constructor(private evnmtService: EvnmtService) {
       }
 
       resolve(route: ActivatedRouteSnapshot) {

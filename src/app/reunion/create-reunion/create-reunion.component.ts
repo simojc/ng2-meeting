@@ -3,11 +3,11 @@ import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 
 import { FormsModule }   from '@angular/forms';
-import { EventService } from '../shared/index'
+import { EvnmtService } from '../shared/index'
 
 @Component({
 
-  templateUrl: './create-event.component.html',
+  templateUrl: './create-reunion.component.html',
   styles: [`
   em {float:right; color: #E05C65; padding-left: 10px;}
       .error input {background-color: #E05C65;}

@@ -2,11 +2,11 @@
 import { Component, Input } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 
-import { IEvent } from '../../Models/index'
+import { IEvnmt } from '../../Models/index'
 
 @Component({
-  selector: 'events-thumbnail',
-  templateUrl: './events-thumbnail.component.html',
+  selector: 'reunions-thumbnail',
+  templateUrl: './reunions-thumbnail.component.html',
   styles: [`
 		.thumbnail {min-height: 201px;}
 		.pad-left {margin-left: 10px;}
@@ -16,14 +16,14 @@ import { IEvent } from '../../Models/index'
 
 export class EventsThumbnailComponent {
 
-  @Input() event: IEvent
+  @Input() evnmt: IEvnmt
 
   constructor(private router: Router, private route: ActivatedRoute) {
    // this.route.params.subscribe(params => console.log(params));
   }
 	
 	getStartTimeStyle(): any {
-		if (this.event && this.event.time === '8:00 am')			
+      if (this.evnmt && this.evnmt.time === '8:00 am')			
 			return {color: '#003300', 'font-weight': 'bold'}
 		return {}
 		

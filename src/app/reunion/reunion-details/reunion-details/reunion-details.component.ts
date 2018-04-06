@@ -1,13 +1,13 @@
 
 import { Component, OnInit } from '@angular/core'
-import { EventService } from '../../shared/evnmt.service'
+import { EvnmtService } from '../../shared/evnmt.service'
 import { ActivatedRoute, Params } from '@angular/router'
 
-import { IEvent, ISession } from '../../../Models/index'
+import { IEvnmt, IEvnmtdtl } from '../../../Models/index'
 
 @Component({
   // Aucun sélecteur, car on va l'utiliser comme un enfant d'un aute component, donc pas besoin de sélecteur
-  templateUrl: './event-details.component.html',
+  templateUrl: './evnmt-details.component.html',
   styles: [`
 		.container {padding-left:20px; padding-right:20px;}
 		.event-image {height: 100px;}
@@ -17,14 +17,14 @@ import { IEvent, ISession } from '../../../Models/index'
 
 export class EventDetailsComponent implements OnInit {
 
-  event: IEvent
-  event1: IEvent
+  event: IEvnmt
+  event1: IEvnmt
   addMode: boolean
   filterBy: string = 'all'
   sortBy: string = 'votes'
   event_id: number
 
-  constructor(private eventService: EventService, private route: ActivatedRoute) {
+  constructor(private eventService: EvnmtService, private route: ActivatedRoute) {
     console.log("Dans EventDetailsComponent constructor --- params =   ");
     this.route.params.subscribe(params => console.log( params.id));
   }
@@ -50,10 +50,10 @@ export class EventDetailsComponent implements OnInit {
     this.addMode = true
   }
 
-  saveNewSession(session: ISession) {
-    const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id))
-    session.id = nextId
-    this.event.sessions.push(session)
+  saveNewSession(evnmtdtl: IEvnmtdtl) {
+    const nextId = Math.max.apply(null, this.event.evnmtdtls.map(s => s.id))
+    evnmtdtl.id = nextId
+    this.event.evnmtdtls.push(evnmtdtl)
     this.eventService.saveEvent(this.event).subscribe()
     this.addMode = false
   }

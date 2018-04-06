@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core'
 
-import { ISession } from '../../../Models/index'
+import { IEvnmtdtl } from '../../../Models/index'
 import { restrictedWords } from '../../../_directives/index';
 
 import { AuthService } from '../../../user/auth.service'
@@ -14,11 +14,11 @@ import { VoterService } from '../voter.service'
 })
 
 export class SessionListComponent implements OnChanges {
-  @Input() sessions: ISession[]
+  @Input() evnmtdtls: IEvnmtdtl[]
   @Input() filterBy: string
   @Input() sortBy: string
   @Input() eventId: number
-  visibleSessions: ISession[] = []
+  visibleEvnmtdtls : IEvnmtdtl[] = []
 
 
   constructor(private auth: AuthService, private voterService: VoterService) {
@@ -26,26 +26,26 @@ export class SessionListComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if (this.sessions) {
+    if (this.evnmtdtls) {
       this.filterSessions(this.filterBy)
-      this.sortBy === 'name' ? this.visibleSessions.sort(sortByNamesAsc) : this.visibleSessions.sort(sortByVotesDesc)
+      this.sortBy === 'name' ? this.visibleEvnmtdtls.sort(sortByNamesAsc) : this.visibleEvnmtdtls.sort(sortByVotesDesc)
     }
   }
 
-  toggleVote(session: ISession) {
+  toggleVote(session: IEvnmtdtl) {
     if (this.userHasVoted(session)) {
       this.voterService.deleteVoter(this.eventId, session, this.auth.currentUser.name)
     } else {
       this.voterService.addVoter(this.eventId, session, this.auth.currentUser.name)
     }
     if (this.sortBy === 'votes') {
-      this.visibleSessions.sort(sortByVotesDesc)
+      this.visibleEvnmtdtls.sort(sortByVotesDesc)
     }
 
   }
 
 
-  userHasVoted(session: ISession) {
+  userHasVoted(session: IEvnmtdtl) {
     return this.voterService.userHasVoted(session, this.auth.currentUser.name)
   }
 
@@ -56,9 +56,9 @@ export class SessionListComponent implements OnChanges {
   // Cette façon de faire est beaucoup plus performant.
   filterSessions(filter) {
     if (filter === 'all') {
-      this.visibleSessions = this.sessions.slice(0)
+      this.visibleEvnmtdtls = this.sessions.slice(0)
     } else {
-      this.visibleSessions = this.sessions.filter(session => {
+      this.visibleEvnmtdtls = this.sessions.filter(session => {
         return session.level.toLocaleLowerCase() === filter
       }
       )
@@ -66,13 +66,13 @@ export class SessionListComponent implements OnChanges {
   }
 }
 
-function sortByNamesAsc(s1: ISession, s2: ISession) {
+function sortByNamesAsc(s1: IEvnmtdtl, s2: IEvnmtdtl) {
   if (s1.name > s2.name) return 1
   else if (s1.name === s2.name) return 0
   else return -1
 }
 
-function sortByVotesDesc(s1: ISession, s2: ISession) {
+function sortByVotesDesc(s1: IEvnmtdtl, s2: IEvnmtdtl) {
   return s2.voters.length - s1.voters.length
 }
 

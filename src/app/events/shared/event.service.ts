@@ -30,14 +30,13 @@ export class EventService {
     .map((response: Response) => <IEvent>response.json())
     //.do(data => console.log('Event: ' + JSON.stringify(data)))
     .catch(this.handleError)
-}
+  }
 
 // Lit dans l'objet défini ci-dessous
   // getEvent(id: number): IEvent {
   //   console.log("Dans  EventService  id =  " + id)
   //   return EVENTS.find(event => event.id == id)
   // }
-
 
   // Lit dans l'objet défini ci-dessous
   getEvents1(): Subject<IEvent[]> {
@@ -47,19 +46,16 @@ export class EventService {
     return subject
   }
 
-
-
   getEvent1(id: number): IEvent {
     console.log("Dans  EventService  id =  " + id)
     return EVENTS.find(event => event.id == id)
   }
 
-
   saveEvent(event): Observable<IEvent> {
     let headers = new Headers({ 'Content-Type': 'application/json' })
     let options = new RequestOptions({ headers: headers })
 
-    return this.http.post('/api/events', JSON.stringify(event),
+    return this.http.post(this.endpointUrl, JSON.stringify(event),
       options).map((response: Response) => {
         return response.json()
       }).catch(this.handleError)

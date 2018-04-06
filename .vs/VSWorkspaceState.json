@@ -1,16 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
     "\\src\\app",
-    "\\src\\app\\events\\create-event",
-    "\\src\\app\\events\\event-details\\create-session",
-    "\\src\\app\\events\\event-details\\event-details",
-    "\\src\\app\\events\\event-details\\session-list",
-    "\\src\\app\\events\\events-list",
-    "\\src\\app\\events\\events-thumbnail",
-    "\\src\\assets"
+    "\\src\\app\\Models",
+    "\\src\\app\\reunion",
+    "\\src\\app\\reunion\\reunion-details",
+    "\\src\\app\\reunion\\reunion-details\\create-evnmtdtl",
+    "\\src\\app\\reunion\\reunion-details\\evnmtdtl-list",
+    "\\src\\app\\reunion\\reunion-details\\reunion-details",
+    "\\src\\app\\reunion\\reunion-thumbnail",
+    "\\src\\app\\reunion\\reunions-list",
+    "\\src\\app\\reunion\\shared"
   ],
-  "SelectedNode": "\\src\\app\\nav",
+  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }

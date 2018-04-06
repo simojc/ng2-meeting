@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { EventsListResolverService } from './events-list-resolver.service';
+import { EventsListResolverService } from './reunions-list-resolver.service';
 
 describe('EventsListResolverService', () => {
   beforeEach(() => {

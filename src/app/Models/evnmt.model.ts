@@ -22,6 +22,7 @@ export interface IEvnmt {
   date: Date
   hrdeb: Date
   hrfin: Date
+  titre: string
   statut: string
   descr: string
   contenu: string
@@ -30,7 +31,17 @@ export interface IEvnmt {
   resp2: string
   affich: boolean
   groupe: IGroupe
-  location : ILocation
+  location: ILocation
+  evnmtdtls: IEvnmtdtl[]
+}
+export interface IEvnmtdtl {
+  id: number
+  evnmt_id: number
+  titre: string
+  resp: string
+  resume: string
+  contenu: string
+  duree: number
 }
 
 export interface IGroupe {
@@ -53,3 +64,5 @@ export interface ILocation {
   city: string  
   country: string      
 }
+
+

@@ -9,8 +9,8 @@ import { restrictedWords } from '../../../_directives/index';
 
 
 @Component({
-  selector: 'create-session',
-  templateUrl: './create-session.component.html',
+  selector: 'create-evnmtdtl',
+  templateUrl: './create-evnmtdtl.component.html',
   styles: [`
   em {float:right; color: #E05C65; padding-left: 10px;}
       .error input, .error select, .error textarea {background-color: #E05C65;}

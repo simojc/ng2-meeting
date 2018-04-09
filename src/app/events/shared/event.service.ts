@@ -54,7 +54,7 @@ export class EventService {
   saveEvent(event): Observable<IEvent> {
     let headers = new Headers({ 'Content-Type': 'application/json' })
     let options = new RequestOptions({ headers: headers })
-
+    //console.log("Dans EventService  event="+JSON.stringify(event))
     return this.http.post(this.endpointUrl, JSON.stringify(event),
       options).map((response: Response) => {
         return response.json()

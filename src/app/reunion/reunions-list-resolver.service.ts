@@ -5,13 +5,13 @@ import { Resolve } from '@angular/router'
 import { EvnmtService } from './shared/index'
 
 @Injectable()
-export class EventListResolver implements Resolve<any>{
+export class EvnmtListResolver implements Resolve<any>{
 
   constructor(private evnmtService: EvnmtService)  {
 	}
 
   resolve(){
-    return this.evnmtService.getEvents() 
+    return this.evnmtService.getEvnmts() 
   }
 
 }

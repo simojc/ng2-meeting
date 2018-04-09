@@ -1,15 +1,14 @@
 
 import { Component, OnInit } from '@angular/core'
 
-//import { IEvent } from '../shared/index'
-
-import { EventService } from '../shared/evnmt.service'
+import { EvnmtService } from '../shared/evnmt.service'
 
 import { ActivatedRoute } from '@angular/router'
+import { AlertService } from '../../_services/index';
 
-import { ToastrService } from '../../common/toastr.service'
+//import { ToastrService } from '../../common/toastr.service'
 
-import { IUser, IEvent } from '../../Models/index'
+import { IEvnmtdtl, IEvnmt, IUser, ILocation } from '../../Models/index'
 
 //import { ActivatedRoute } from '@angular/router'
 
@@ -17,46 +16,44 @@ import { IUser, IEvent } from '../../Models/index'
 
   template: `
 			<div>
-				<h1> Upcomming Angular 2 Events </h1>
+				<h1> Les rencontres mensuelles </h1>
+				<a [routerLink]="['/reunions/new']" >  Enregistrer une rencontre </a>
 				<hr>
 					<div class="row">
-						<div  *ngFor="let evt of events"  class="col-md-10">
-							<events-thumbnail  [event]="evt"> </events-thumbnail>
+						<div  *ngFor="let evt of evnmts"  class="col-md-10">
+							<reunions-thumbnail  [evnmt]="evt"> </reunions-thumbnail>
 						</div>
 					</div>
 			</div>
 		 `
 })
 
-export class EventsListComponent implements OnInit {
-  events: IEvent[]
+export class ReunionsListComponent implements OnInit {
+  evnmts: IEvnmt[]
   public currentUser: IUser
 
   errorMsg: string;
   errorFlag: boolean = false;
 	
-constructor(private eventService: EventService,  private route:ActivatedRoute, 
-	private toastr: ToastrService,)  {
+
+constructor(private evnmtService: EvnmtService,  
+	private route:ActivatedRoute, private alertService: AlertService)  {
 }
 
 ngOnInit() {
-  this.events = this.route.snapshot.data['events']
+  this.evnmts = this.route.snapshot.data['evnmts']
   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  //this.fetchData()
 }
 
-handlethumbnailClick(eventName) {
-  this.toastr.success(eventName)
-}
 
-//fetchData() {
-//  this.eventService.getEvents()
-//    .subscribe(
-//    (data: IEvent[]) => { this.events = data; },
-//    (error) => { this.errorMsg = error; this.errorFlag = true }
-//    )
-//}
 
+
+// ngOnInit() {
+// 	this.evnmtService.getEvnmts().subscribe(
+// 		  evnmts => { this.evnmts = evnmts;  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));},
+// 			 error => { this.alertService.error(error);}
+// 	);
+// }
 
 }
 

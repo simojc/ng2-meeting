@@ -17,14 +17,14 @@ import { EvnmtService } from '../shared/index'
       .error : ms-input-placeholder {color: #999;} 			
 `]
 })
-export class CreateEventComponent {
+export class CreateReunionComponent {
   isDirty: boolean = true
-  constructor(private router: Router, private eventService: EventService) {
+  constructor(private router: Router, private evnmtService: EvnmtService) {
 
   }
 
   saveEvent(formValues) {
-    this.eventService.saveEvent(formValues).subscribe(event => {
+    this.evnmtService.saveEvnmt(formValues).subscribe(event => {
       console.log(formValues)
       this.isDirty = false
       this.router.navigate(['/events'])

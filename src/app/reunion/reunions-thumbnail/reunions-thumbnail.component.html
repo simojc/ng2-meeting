@@ -1,0 +1,45 @@
+<div [routerLink]="['/reunions', evnmt.id]" class="well hoverwel thumbnail">
+  <!--     <a [routerLink]="['artist', track.artistId]"
+     <a routerLink="events/2" > Voir Detail </a> -->
+  <!--<div class="well hoverwel thumbnail">-->
+  <!--<button type="button" class="btn btn-primary" (click)="goDetail(event.id)">   <h5> Voir Detail </h5> </button>-->
+            
+    <div  class="d-inline" > 
+       <h2 > {{ evnmt?.nom }} <a routerLink="/reunions/{{evnmt.id}}" style="float:right;">  Voir Detail    </a>    </h2>   
+    </div>
+      
+      <!-- <div  class="d-inline" >            
+            <a routerLink="/reunions/{{evnmt.id}}" style="float:right;">  
+                   <h3> Voir Detail  </h3>  
+           </a>
+      </div> -->
+ 
+      <div>
+          <div> Date: {{ evnmt?.date | date:'fullDate'}} </div>
+      
+          <div> Heure début: {{evnmt.hrdeb }} </div>
+        
+          <div>  statut: {{evnmt.statut}}  </div>
+        
+          <!-- <div>  Description: {{evnmt.descr}}  </div> -->
+        
+          <div>  Famille d'accueil: {{evnmt.famaccueil}}  </div>
+        
+          <!-- <div> Price: {{ event?.price | currency:'USD':"symbol"}}   <span>&nbsp; </span>  </div> -->
+        
+          <div *ngIf="evnmt.location">
+              <span> Adresse: {{evnmt.location.address}}  </span>
+              <span class="pad-left"> {{evnmt.location.city}}, , {{evnmt.location.country}}</span>
+          </div>
+
+      </div>
+
+
+  <!--
+      <div [hidden]="!event?.onlineUrl">
+            Online Url: {{ event.onlineUrl}}
+       </div> 
+  -->
+ 
+</div>
+

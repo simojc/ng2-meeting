@@ -1,7 +1,6 @@
-export * from './event-details/event-details.component'
-export * from './create-session/create-session.component'
-export * from './session-list/session-list.component'
-export * from './upvote/upvote.component'
-export * from './voter.service'
+export * from './reunion-details/reunion-details.component'
+export * from './create-evnmtdtl/create-evnmtdtl.component'
+export * from './evnmtdtl-list/evnmtdtl-list.component'
+
 
 //export * from './event-route-activator.service'

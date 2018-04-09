@@ -9,11 +9,6 @@ import { ActivatedRoute } from '@angular/router'
 
 import { ToastrService } from '../../common/toastr.service'
 
-//import { IUser } from '../../user/user.model'
-
-//import { IEvent, ISession } from '../../Models/event.model'
-
-//import { ActivatedRoute } from '@angular/router'
 
 @Component({
 

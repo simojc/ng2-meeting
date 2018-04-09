@@ -31,12 +31,24 @@ import {
   VoterService,
    DurationPipe ,
    EventRouteActivator,
-   AlertService,
+   AlertService,AutresService,
    ErrorInterceptorProvider, TokenInterceptor,
    AuthGuard,
    AlertComponent,
    LocationValidator
   } from './events/index'
+
+  import { 
+        CreateReunionComponent,
+        ReunionsListComponent,
+        ReunionsThumbnailComponent,
+        EvnmtListResolver,
+        EvnmtResolver,
+        EvnmtService,
+        EvnmtDetailsComponent
+    } from './reunion/index'
+
+  
 
 import {
   ToastrService,
@@ -71,7 +83,11 @@ import { UserService } from './user/user.service'
     DurationPipe,
     Error404Component,
     CollapsibleWellComponent,
-    AlertComponent
+    AlertComponent,
+    CreateReunionComponent,
+    ReunionsListComponent,
+    ReunionsThumbnailComponent,
+    EvnmtDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +118,12 @@ import { UserService } from './user/user.service'
      },
         ErrorInterceptorProvider,
         AuthGuard,
-        AlertService
+        AlertService,
+        AutresService,
+        EvnmtResolver,
+        EvnmtListResolver,
+        EvnmtService
+        
   ],
   bootstrap: [AppComponent],
   

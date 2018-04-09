@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\src",
     "\\src\\app",
+    "\\src\\app\\engmt",
+    "\\src\\app\\events\\create-event",
+    "\\src\\app\\events\\shared",
     "\\src\\app\\Models",
-    "\\src\\app\\reunion",
-    "\\src\\app\\reunion\\reunion-details",
-    "\\src\\app\\reunion\\reunion-details\\create-evnmtdtl",
-    "\\src\\app\\reunion\\reunion-details\\evnmtdtl-list",
-    "\\src\\app\\reunion\\reunion-details\\reunion-details",
-    "\\src\\app\\reunion\\reunion-thumbnail",
-    "\\src\\app\\reunion\\reunions-list",
-    "\\src\\app\\reunion\\shared"
+    "\\src\\app\\reunion\\reunions-thumbnail",
+    "\\src\\app\\reunion\\shared",
+    "\\src\\app\\user"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\app\\engmt\\index.ts",
   "PreviewInSolutionExplorer": false
 }

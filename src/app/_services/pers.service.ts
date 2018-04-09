@@ -8,7 +8,7 @@ import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
 
 @Injectable()
-export class UserService {
+export class PersService {
     currentUser: IUser;
     constructor(private http: HttpClient, private http2:Http, private auth: AuthService) { 
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

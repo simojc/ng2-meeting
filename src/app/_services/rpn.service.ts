@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser } from '../Models/index'
+import { IUser, IRpnpers } from '../Models/index'
 import { AlertService } from '../_services/index';
-import { AuthService } from './auth.service'
+//import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
     currentUser: IUser;
-    constructor(private http: HttpClient, private http2:Http, private auth: AuthService) { 
+    constructor(private http: HttpClient, private http2:Http) { 
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
@@ -21,15 +21,15 @@ export class UserService {
         return this.http.get<IUser[]>(this.endpointUrl + 'users');
     }
 
-    getUsers(): Observable<IUser[]> {
-        let headers = new Headers();
-        headers.append('x-access-token', this.auth.getToken());
-       // console.log("this.auth.getToken() = "+this.auth.getToken())
-        return this.http2.get(this.endpointUrl + 'users', {headers: headers})
-            .map((response: Response) => <IUser[]>response.json())
-           // .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
+    //getUsers(): Observable<IUser[]> {
+    //    let headers = new Headers();
+    //    headers.append('x-access-token', this.auth.getToken());
+    //   // console.log("this.auth.getToken() = "+this.auth.getToken())
+    //    return this.http2.get(this.endpointUrl + 'users', {headers: headers})
+    //        .map((response: Response) => <IUser[]>response.json())
+    //       // .do(data => console.log('All: ' + JSON.stringify(data)))
+    //        .catch(this.handleError);
+    //}
 
     private handleError(error: Response) {
         return Observable.throw(error)

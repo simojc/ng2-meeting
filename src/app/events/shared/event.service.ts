@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject'
 import { Http, Response, Headers, RequestOptions  } from '@angular/http'
 
 import { IEvent, ISession } from '../../Models/index'
+import { environment } from '../../../environments/environment';
 
 
 @Injectable()
@@ -12,7 +13,9 @@ export class EventService {
 
   //private endpointUrl = "http://localhost/~simojc/phpapi/public/api/events?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvfnNpbW9qYy9waHBhcGkvcHVibGljL2FwaS9sb2dpbiIsImlhdCI6MTUyMjM2NTk2NSwiZXhwIjoxNTIyMzY5NTY1LCJuYmYiOjE1MjIzNjU5NjUsImp0aSI6IlpKWURPRW85cmpWRzk1akkifQ.1aoIjQ0CICGn307tYc50iDVvEsn_vg1VZBH9yowMZ30"
 
-  private endpointUrl ="http://localhost/~simojc/phpapi/public/api/events"
+  //private endpointUrl = "http://localhost/~simojc/phpapi/public/api/events"
+
+  private endpointUrl = environment.API_URL;
 
   constructor(private http: Http) { }
 

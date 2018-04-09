@@ -6,7 +6,8 @@
 	//import { tokenNotExpired } from 'angular2-jwt';
 	import { Http, Response, Headers, RequestOptions } from '@angular/http'
 
-	import { HttpClient, HttpHeaders } from '@angular/common/http';
+    import { HttpClient, HttpHeaders } from '@angular/common/http';
+    import { environment } from '../../environments/environment';
 
 	import { IUser } from  '../Models/index'
 
@@ -15,7 +16,8 @@
 
 		public currentUser: IUser
 
-		private endpointUrl ="http://localhost/~simojc/phpapi/public/api/"
+        //private endpointUrl = "http://localhost/~simojc/phpapi/public/api/"
+        private endpointUrl = environment.API_URL;
 
 		constructor(private http: Http, private http_cli: HttpClient) { }
 		

@@ -31,28 +31,21 @@ export class EventsListComponent implements OnInit {
 
   errorMsg: string;
   errorFlag: boolean = false;
-	
-constructor(private eventService: EventService,  private route:ActivatedRoute, 
-	private toastr: ToastrService,)  {
-}
 
-ngOnInit() {
-  this.events = this.route.snapshot.data['events']
-  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  //this.fetchData()
-}
+  constructor(private eventService: EventService, private route: ActivatedRoute,
+    private toastr: ToastrService, ) {
+  }
 
-handlethumbnailClick(eventName) {
-  this.toastr.success(eventName)
-}
+  ngOnInit() {
+    this.events = this.route.snapshot.data['events']
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-//fetchData() {
-//  this.eventService.getEvents()
-//    .subscribe(
-//    (data: IEvent[]) => { this.events = data; },
-//    (error) => { this.errorMsg = error; this.errorFlag = true }
-//    )
-//}
+  }
+
+  handlethumbnailClick(eventName) {
+    this.toastr.success(eventName)
+  }
+
 
 
 }

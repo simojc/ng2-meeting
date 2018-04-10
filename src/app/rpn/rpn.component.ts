@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
  
-import { IUser, IRpnpers } from  '../Models/index'
+import { IUser, IRpnpers, IPers } from  '../Models/index'
 //import { UserService } from '../user.service';
-import { AlertService , RpnpersService} from '../_services/index';
+import { AlertService, RpnpersService, AutresService} from '../_services/index';
 
 
 @Component({
@@ -12,10 +12,14 @@ import { AlertService , RpnpersService} from '../_services/index';
  
 export class HomeComponent implements OnInit {
     currentUser: IUser;
+    
+    currentPers: IPers;
     rpnperss: IRpnpers[] = [];
  
-    constructor(private alertService: AlertService, private rpnpersService: RpnpersService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    constructor(private alertService: AlertService, private rpnpersService: RpnpersService,
+      private autresService: AutresService) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
        // console.log(this.currentUser)
     }
  

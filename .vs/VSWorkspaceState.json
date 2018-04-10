@@ -1,16 +1,9 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src",
     "\\src\\app",
     "\\src\\app\\engmt",
-    "\\src\\app\\events\\create-event",
-    "\\src\\app\\events\\shared",
     "\\src\\app\\Models",
-    "\\src\\app\\reunion\\reunions-thumbnail",
-    "\\src\\app\\reunion\\shared",
     "\\src\\app\\user"
   ],
-  "SelectedNode": "\\src\\app\\engmt\\index.ts",
   "PreviewInSolutionExplorer": false
 }

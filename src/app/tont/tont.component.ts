@@ -1,39 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from  '../Models/index'
-import { AlertService } from '../_services/index';
+import { IUser, IPers, ITont } from '../Models/index'
+import { AlertService, AutresService, TontService } from '../_services/index';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'home.component.html'
+  moduleId: module.id,
+  templateUrl: 'home.component.html'
 })
- 
+
 export class HomeComponent implements OnInit {
-    currentUser: IUser;
-    users: IUser[] = [];
- 
-    constructor(private alertService: AlertService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-       // console.log(this.currentUser)
-    }
- 
-    ngOnInit() {
-        this.loadAllUsers();
-    }
- 
-    deleteUser(_id: string) {
-       // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-    }
-    
-    private loadAllUsers() {
-        //console.log("this.currentUser.email =   "+this.currentUser.email)
-    //     this.userService.getAll().subscribe(
-    //     users => { this.users = users; },
-    //      error => { this.alertService.error(error);}
-    // );
+  currentUser: IUser;
+  currentPers: IPers;
+  users: IUser[] = [];
+  tonts: ITont[] = [];
 
-    }
+  constructor(private alertService: AlertService, private autresService: AutresService,
+    private tontService: TontService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
+    // console.log(this.currentUser)
+  }
+
+  ngOnInit() {
+    this.loadAllTontsPers();
+  }
+
+  deleteUser(_id: string) {
+    // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
+  }
+
+  private loadAllTontsPers() {
+    //console.log("this.currentUser.email =   "+this.currentUser.email)
+    this.tontService.getAllTontPers(this.currentPers.id).subscribe(
+      tonts => { this.tonts = tonts; },
+          error => { this.alertService.error(error);}
+     );
+
+  }
+
+  
 
 
 
-    
+
 }

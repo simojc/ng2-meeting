@@ -1,42 +1,45 @@
 import { Component, OnInit } from '@angular/core';
- 
-import { IEngmt, IUser } from  '../Models/index'
+
+import { IEngmt, IUser, IPers } from '../Models/index'
 //import { UserService } from '../user.service';
-import { AlertService } from '../_services/index';
- 
+import { AlertService, AutresService, EngmtService } from '../_services/index';
+
 @Component({
-    moduleId: module.id,
-    templateUrl: 'home.component.html'
+  moduleId: module.id,
+  templateUrl: 'engmt.component.html'
 })
- 
-export class HomeComponent implements OnInit {
-    currentUser: IUser;
-    engmts: IEngmt[] = [];
- 
-    constructor( private alertService: AlertService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-       // console.log(this.currentUser)
-    }
- 
-    ngOnInit() {
-        this.loadAllUsers();
-    }
- 
-    deleteUser(_id: string) {
-       // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-    }
-    
-    private loadAllUsers() {
-        //console.log("this.currentUser.email =   "+this.currentUser.email)
-       // this.userService.getAll().subscribe(
-       // users => { this.users = users; },
-       //  error => { this.alertService.error(error);}
-   // );
+
+export class EngmtComponent implements OnInit {
+  currentUser: IUser;
+  currentPers: IPers;
+  engmts: IEngmt[] = [];
+
+  constructor(private alertService: AlertService, private autresService: AutresService,
+    private engmtService: EngmtService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
+    // console.log(this.currentUser)
+  }
+
+  ngOnInit() {
+    this.loadAllEngmtsPers();
+  }
+
+  deleteUser(_id: string) {
+    // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
+  }
+
+  private loadAllEngmtsPers() {
+    //console.log("this.currentUser.email =   "+this.currentUser.email)
+    this.engmtService.getAllEngmtPers(this.currentPers.id).subscribe(
+      engmts => { this.engmts = engmts; },
+      error => { this.alertService.error(error); }
+    );
 
 
-    }
+  }
 
 
 
-    
+
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser, IRpnpers } from '../Models/index'
+import { IUser, ITont } from '../Models/index'
 import { AlertService } from '../_services/index';
 //import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
@@ -18,7 +18,7 @@ export class TontService {
     private endpointUrl = environment.API_URL;
     
     getAll() {
-        return this.http.get<IUser[]>(this.endpointUrl + 'users');
+      return this.http.get<ITont[]>(this.endpointUrl + 'tonts');
     }
 
     //getUsers(): Observable<IUser[]> {
@@ -35,8 +35,12 @@ export class TontService {
         return Observable.throw(error)
       }
 
-    getById(_id: string) {
-        return this.http.get(this.endpointUrl + 'users/' + _id);
+    getById(_id: number) {
+      return this.http.get<ITont>(this.endpointUrl + 'tonts/' + _id);
+    }
+
+    getAllTontPers(pers_id: number) {
+      return this.http.get<ITont[]>(this.endpointUrl + 'tonts/' + pers_id);
     }
  
     create(user: IUser) {

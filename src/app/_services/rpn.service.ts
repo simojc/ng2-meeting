@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser, IRpnpers } from '../Models/index'
-import { AlertService } from '../_services/index';
+import { IUser, IRpnpers, IPers } from '../Models/index'
+import { AlertService, AutresService } from '../_services/index';
 //import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RpnpersService {
-    currentUser: IUser;
-    constructor(private http: HttpClient, private http2:Http) { 
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  currentUser: IUser;
+  currentPers: IPers;
+    constructor(private http: HttpClient, private http2: Http, private autresService: AutresService) { 
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
     }
 
    //private endpointUrl = "http://localhost/~simojc/phpapi/public/api/"
@@ -35,17 +37,17 @@ export class RpnpersService {
         return Observable.throw(error)
       }
 
-    getById(_id: string) {
-        return this.http.get(this.endpointUrl + 'rpnpers/' + _id);
+    getById(_id: number) {
+      return this.http.get<IRpnpers>(this.endpointUrl + 'rpnpers/' + _id);
+    }
+
+    getAllRpnpersPers(pers_id: string) {
+      return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers/' + pers_id);
     }
  
     delete(_id: string) {
         return this.http.delete(this.endpointUrl + 'rpnpers/' + _id);
     }
 
-
-    getPersByMail(_mail: string) {
-        return this.http.get(this.endpointUrl + 'getPersByMail/' + _mail);
-    }
 
 }

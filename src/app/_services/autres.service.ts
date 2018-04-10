@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser , IGroupe, ILocation} from '../Models/index';
+import { IUser, IGroupe, ILocation, IPers} from '../Models/index';
 //import { AlertService } from '../_services/index';
 //import { AuthService } from '/../auth.service'
 
@@ -28,12 +28,16 @@ export class AutresService {
         return Observable.throw(error)
       }
 
-    getLocationById(_id: string) {
+    getLocationById(_id: number) {
         return this.http.get(this.endpointUrl + 'locations/' + _id);
     }
 
-    getGroupeById(_id: string) {
+    getGroupeById(_id: number) {
         return this.http.get(this.endpointUrl + 'groupes/' + _id);
+    }
+
+    getPersCurrentPers() {
+      return this.http.get<IPers>(this.endpointUrl + 'getPersByMail/' + this.currentUser.email);
     }
  
 }

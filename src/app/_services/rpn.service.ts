@@ -8,7 +8,7 @@ import { AlertService } from '../_services/index';
 import { environment } from '../../environments/environment';
 
 @Injectable()
-export class UserService {
+export class RpnpersService {
     currentUser: IUser;
     constructor(private http: HttpClient, private http2:Http) { 
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -18,7 +18,7 @@ export class UserService {
     private endpointUrl = environment.API_URL;
     
     getAll() {
-        return this.http.get<IUser[]>(this.endpointUrl + 'users');
+        return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers');
     }
 
     //getUsers(): Observable<IUser[]> {
@@ -36,18 +36,16 @@ export class UserService {
       }
 
     getById(_id: string) {
-        return this.http.get(this.endpointUrl + 'users/' + _id);
-    }
- 
-    create(user: IUser) {
-        return this.http.post(this.endpointUrl + 'signup', user);
-    }
- 
-    update(user: IUser) {
-        return this.http.put(this.endpointUrl + '/users/' + user.id, user);
+        return this.http.get(this.endpointUrl + 'rpnpers/' + _id);
     }
  
     delete(_id: string) {
-        return this.http.delete(this.endpointUrl + '/users/' + _id);
+        return this.http.delete(this.endpointUrl + 'rpnpers/' + _id);
     }
+
+
+    getPersByMail(_mail: string) {
+        return this.http.get(this.endpointUrl + 'getPersByMail/' + _mail);
+    }
+
 }

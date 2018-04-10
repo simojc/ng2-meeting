@@ -8,7 +8,7 @@ import { AlertService } from '../_services/index';
 import { environment } from '../../environments/environment';
 
 @Injectable()
-export class UserService {
+export class TontService {
     currentUser: IUser;
     constructor(private http: HttpClient, private http2:Http) { 
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

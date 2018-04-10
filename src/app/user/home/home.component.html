@@ -10,3 +10,26 @@
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
 </div>
+
+
+<div> 
+        <h3 class="panel-title"> Les utilisateurs</h3>
+
+</div>
+<table class="table table-hover table-bordered table-striped">    
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Groupe</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users" >
+            <td>{{user.name}}</td>
+            <td>({{user.email}} </td>
+            <td>{{user.groupe_id}}</td>                   
+        </tr>
+    </tbody>
+</table> 

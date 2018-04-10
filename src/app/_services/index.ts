@@ -1,3 +1,5 @@
 export * from './alert.service'
 export * from './autres.service'
-
+export * from './pers.service'
+export * from './rpn.service'
+export * from './tont.service'

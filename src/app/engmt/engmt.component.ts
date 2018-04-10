@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
  
-import { IUser } from  '../../Models/index'
-import { UserService } from '../user.service';
-import { AlertService } from '../../_services/index';
+import { IEngmt, IUser } from  '../Models/index'
+//import { UserService } from '../user.service';
+import { AlertService } from '../_services/index';
  
 @Component({
     moduleId: module.id,
@@ -11,9 +11,9 @@ import { AlertService } from '../../_services/index';
  
 export class HomeComponent implements OnInit {
     currentUser: IUser;
-    users: IUser[] = [];
+    engmts: IEngmt[] = [];
  
-    constructor(private userService: UserService, private alertService: AlertService) {
+    constructor( private alertService: AlertService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
        // console.log(this.currentUser)
     }
@@ -23,15 +23,15 @@ export class HomeComponent implements OnInit {
     }
  
     deleteUser(_id: string) {
-        this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
+       // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
     }
     
     private loadAllUsers() {
         //console.log("this.currentUser.email =   "+this.currentUser.email)
-        this.userService.getAll().subscribe(
-        users => { this.users = users; },
-         error => { this.alertService.error(error);}
-    );
+       // this.userService.getAll().subscribe(
+       // users => { this.users = users; },
+       //  error => { this.alertService.error(error);}
+   // );
 
 
     }

@@ -38,7 +38,7 @@ export class EventsListComponent implements OnInit {
 
   ngOnInit() {
     this.events = this.route.snapshot.data['events']
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   }
 

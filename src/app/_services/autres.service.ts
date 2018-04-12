@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Rx';
 import { IUser, IGroupe, ILocation, IPers} from '../Models/index';
 //import { AlertService } from '../_services/index';
 //import { AuthService } from '/../auth.service'
+//import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AutresService {
@@ -15,6 +16,7 @@ export class AutresService {
     }
     private endpointUrl ="http://localhost/~simojc/phpapi/public/api/"
     //private endpointUrl = api/locations;
+    //private endpointUrl = environment.API_URL;
     
     getLocations() {
         return this.http.get<ILocation[]>(this.endpointUrl + 'locations');
@@ -37,7 +39,7 @@ export class AutresService {
     }
 
     getPersCurrentPers() {
-      return this.http.get<IPers>(this.endpointUrl + 'getPersByMail/' + this.currentUser.email);
+      return this.http.get<IPers>(this.endpointUrl + 'pers' + this.currentUser.email);
     }
  
 }

@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
 import { IUser, IRpnpers, IPers } from '../Models/index'
-import { AlertService, AutresService } from '../_services/index';
+import { AlertService } from './alert.service'
+import {  AutresService } from './autres.service'
 //import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
 

@@ -6,12 +6,12 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <a [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Évènements</a>
+          <a [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Events</a>
         </li>
-        <li><a [routerLink]="['/events/new']" routerLinkActive="active">Créer evmnt </a></li>
+        <li><a [routerLink]="['/events/new']" routerLinkActive="active">Créer event </a></li>
         <li><a [routerLink]="['/events/new']" routerLinkActive="active">Ma situation </a></li>
         <li><a [routerLink]="['/events/new']" routerLinkActive="active">Mon RPN </a></li>
-        <li><a [routerLink]="['/reunions']" routerLinkActive="active">Réunions mensuelles </a></li>
+        <li><a [routerLink]="['/reunions']" routerLinkActive="active">Réunions mens. </a></li>
         <li><a [routerLink]="['/reunions/new']" routerLinkActive="active">Créer réunion </a></li>
         <li><a [routerLink]="['/reunions/new']" routerLinkActive="active">Ghomhala' </a></li>
         <!--<li class="dropdown">
@@ -31,13 +31,13 @@
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
-          <li *ngIf="!auth.isAuthenticated()">
+          <li *ngIf="!this.currentUser">
             <a [routerLink]="['user/login']">Connexion</a>
           </li>
 
-          <li class="dropdown" *ngIf="auth.isAuthenticated()">
+          <li class="dropdown" *ngIf="!!this.currentUser ">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Bienvenue {{auth.currentUser.name}}
+              Bienvenue {{this.currentUser.name}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">

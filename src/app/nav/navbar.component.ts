@@ -1,11 +1,13 @@
 
-import { Component } from '@angular/core'
+import { Component,OnInit } from '@angular/core'
 
 import { AuthService } from '../user/auth.service'
 import { ISession } from '../Models/index'
 import { EventService } from '../events/index'
 
 import { Router } from '@angular/router'
+
+import {  IUser } from '../Models/index'
 
 @Component({
 	selector: 'nav-bar',
@@ -18,14 +20,18 @@ import { Router } from '@angular/router'
 	`]
 })
 
-export class NavBarComponent {
+export class NavBarComponent implements OnInit{
   searchTerm: string = ""
   foundSessions: ISession[]
+  public currentUser: IUser
 
-  constructor(private auth: AuthService, private eventService: EventService, private router: Router) {
-
+  constructor(private auth: AuthService, private eventService: EventService, private router: Router)  {
   }
 
+  ngOnInit() {    
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+  
   searchSessions(searchTerm) {
     this.eventService.searchSessions(searchTerm).subscribe(sessions => {
       this.foundSessions = sessions

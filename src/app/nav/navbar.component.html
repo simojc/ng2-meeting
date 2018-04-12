@@ -8,13 +8,44 @@
         <li>
           <a [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Events</a>
         </li>
-        <li><a [routerLink]="['/events/new']" routerLinkActive="active">Créer event </a></li>
-        <li><a [routerLink]="['/events/new']" routerLinkActive="active">Ma situation </a></li>
-        <li><a [routerLink]="['/events/new']" routerLinkActive="active">Mon RPN </a></li>
-        <li><a [routerLink]="['/reunions']" routerLinkActive="active">Réunions mens. </a></li>
-        <li><a [routerLink]="['/reunions/new']" routerLinkActive="active">Créer réunion </a></li>
-        <li><a [routerLink]="['/reunions/new']" routerLinkActive="active">Ghomhala' </a></li>
-        <!--<li class="dropdown">
+
+        <li><a [routerLink]="['/reunions']" routerLinkActive="active">Réunions mens. </a> </li>
+
+        <li><a [routerLink]="['/reunions/new']" routerLinkActive="active">Ghomhala' </a> </li>
+
+        <li class="dropdown" *ngIf="(!!this.currentUser || auth.isAuthenticated()) && (this.currentUser.admin)">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Administration
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/reunions/new']" routerLinkActive="active"> Créer réunion </a></li>
+            <li><a [routerLink]="['/events/new']" routerLinkActive="active"> Créer event </a></li>
+            <li> <a [routerLink]="['user/home']"> Admin Users</a> </li>
+          </ul>
+        </li>
+
+        <li class="dropdown" *ngIf="!!this.currentUser || auth.isAuthenticated()">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Mon dossier
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/events/new']" routerLinkActive="active"> Ma situation </a></li>
+            <li><a [routerLink]="['/events/new']" routerLinkActive="active"> Mon RPN </a></li>
+            <li>
+              <a [routerLink]="['user/profile']"> Mon profile </a>
+            </li>
+            <li>
+              <!--<a href="#" (click)="logout()"> Déconnexion </a>-->
+              <a  (click)="logout1()"> Déconnexion </a>
+
+            </li>
+          </ul>
+        </li>
+
+        <!--
+           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             évènements
             <span class="caret"></span>
@@ -31,28 +62,13 @@
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
-          <li *ngIf="!this.currentUser">
+          <li *ngIf="!this.currentUser && !auth.isAuthenticated() ">
             <a [routerLink]="['user/login']">Connexion</a>
           </li>
 
-          <li class="dropdown" *ngIf="!!this.currentUser ">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Bienvenue {{this.currentUser.name}}
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a [routerLink]="['user/home']"> Admin Users</a>
-              </li>
-              <li>
-                <a [routerLink]="['user/profile']">Profile</a>
-              </li>
-              <li>
-                <a href="#" (click)="logout()"> Déconnexion</a>
-              </li>
-            </ul>
+          <li *ngIf="!!this.currentUser || auth.isAuthenticated() ">
+            Bienvenue {{this.currentUser.name}}
           </li>
-
         </ul>
       </div>
       <!--<form id="searchForm" (ngSubmit)="searchSessions(searchTerm)" class="navbar-form navbar-right">

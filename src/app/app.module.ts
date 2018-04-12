@@ -12,6 +12,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'
 
+import { AgGridModule } from 'ag-grid-angular/main';
+
 import { AppComponent } from './app.component';
 import { NavBarComponent  } from './nav/navbar.component';
 import { appRoutes } from './app.routes';
@@ -52,9 +54,13 @@ import {
 
 import {
   ToastrService,
-  CollapsibleWellComponent
+  CollapsibleWellComponent,
+  RedComponentComponent,
+  GroupeComponent
 } from './common/index'
 
+
+import { MyGridApplicationComponent } from './my-grid/my-grid.component'
 
 import { Error404Component } from './errors/404.component'
 
@@ -87,10 +93,15 @@ import { UserService } from './user/user.service'
     CreateReunionComponent,
     ReunionsListComponent,
     ReunionsThumbnailComponent,
-    EvnmtDetailsComponent
+    EvnmtDetailsComponent,
+    MyGridApplicationComponent,
+    RedComponentComponent,
+    GroupeComponent
   ],
   imports: [
     BrowserModule,
+    //AgGridModule.withComponents([...Liste des component qui seront utilisé dans le grid....]),
+    AgGridModule.withComponents([]),
         FormsModule,
     HttpModule,
     HttpClientModule,

@@ -17,7 +17,6 @@ export class RpnpersService {
       this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
     }
 
-   //private endpointUrl = "http://localhost/~simojc/phpapi/public/api/"
     private endpointUrl = environment.API_URL;
     
     getAll() {

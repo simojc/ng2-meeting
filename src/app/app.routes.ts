@@ -23,6 +23,8 @@ import { Error404Component } from './errors/404.component'
 
 import { AuthGuard } from './_guards/index';
 
+import { MyGridApplicationComponent } from './my-grid/my-grid.component'
+
 export const appRoutes = [
   { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
   //{path: 'events', component: EventsListComponent, resolve:{events:EventListResolver}, canActivate: [AuthGuard]},
@@ -41,5 +43,7 @@ export const appRoutes = [
   { path: 'reunions/:id', component: EvnmtDetailsComponent, resolve: { evnmt: EvnmtResolver } },
   //{ path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
   { path: 'reunions/detail/new', component: CreateSessionComponent },
+
+  { path: 'grid', component: MyGridApplicationComponent },
 
 ]

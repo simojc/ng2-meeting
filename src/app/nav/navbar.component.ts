@@ -29,7 +29,22 @@ export class NavBarComponent implements OnInit{
   }
 
   ngOnInit() {    
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    //this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    this.currentUser = {
+      "id": 4,
+      "firstName": "Mapaq",
+      "groupe_id": 1,
+      "lastName": "Mapaq",
+      "name": "Mapaq",
+      "email": "Mapaq",
+      "password": "Mapaq",
+      "admin": true
+    };
+
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+
   }
   
   searchSessions(searchTerm) {
@@ -44,6 +59,15 @@ export class NavBarComponent implements OnInit{
     this.auth.logout().subscribe(() => {
       this.router.navigate(['user/login'])
     })
+  }
+
+  logout1() {
+    this.currentUser = undefined
+
+    localStorage.removeItem('currentUser');
+    console.log(" Dans logout1() JSON.stringify(this.currentUser) = "+JSON.stringify(this.currentUser))
+    this.router.navigate(['user/login']);
+    
   }
 
 }

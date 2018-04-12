@@ -29,7 +29,8 @@
         <tr *ngFor="let user of users" >
             <td>{{user.name}}</td>
             <td>({{user.email}} </td>
-            <td>{{user.groupe_id}}</td>                   
+            <td>{{user.groupe_id}}</td>
+            <td> 	<groupe [leGroupe]="user.groupe"> </groupe> </td>
         </tr>
     </tbody> 
 </table> 

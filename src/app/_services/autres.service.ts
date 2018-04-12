@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Rx';
 import { IUser, IGroupe, ILocation, IPers} from '../Models/index';
 //import { AlertService } from '../_services/index';
 //import { AuthService } from '/../auth.service'
-//import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AutresService {
@@ -14,9 +14,9 @@ export class AutresService {
     constructor(private http: HttpClient) { 
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    private endpointUrl ="http://localhost/~simojc/phpapi/public/api/"
+    
     //private endpointUrl = api/locations;
-    //private endpointUrl = environment.API_URL;
+    private endpointUrl = environment.API_URL;
     
     getLocations() {
         return this.http.get<ILocation[]>(this.endpointUrl + 'locations');

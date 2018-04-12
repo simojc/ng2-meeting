@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core'
 import { EventService } from '../../shared/event.service'
 import { ActivatedRoute, Params } from '@angular/router'
 
-import { IEvent, ISession } from '../../../Models/index'
+import { AuthService } from '../../../user/auth.service'
+
+import { IEvent, ISession, IUser } from '../../../Models/index'
 
 @Component({
   // Aucun sélecteur, car on va l'utiliser comme un enfant d'un aute component, donc pas besoin de sélecteur
@@ -23,13 +25,11 @@ export class EventDetailsComponent implements OnInit {
   filterBy: string = 'all'
   sortBy: string = 'votes'
   event_id: number
+  public currentUser: IUser
 
-  constructor(private eventService: EventService, private route: ActivatedRoute) {
-    console.log("Dans EventDetailsComponent constructor --- params =   ");
-    this.route.params.subscribe(params => console.log( params.id));
+  constructor(private eventService: EventService, private route: ActivatedRoute, private auth: AuthService,) {
+
   }
-
-
 
   ngOnInit() {
     this.route.data.forEach((data) => {
@@ -37,10 +37,7 @@ export class EventDetailsComponent implements OnInit {
       // this.event = event
       this.addMode = false
 
-      //this.route.params.subscribe(params => { this.event_id = params.id})
-      //this.event1 = this.eventService.getEvent(this.event_id)
-      //console.log("Dans EventDetailsComponent  ngOnInit --- this.event_id = " + this.event_id);
-      
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     })
   }
 

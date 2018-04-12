@@ -36,7 +36,7 @@
         <button class="btn btn-default" [class.active]="filterBy==='advanced'" (click)="filterBy='advanced'"> Advanced </button>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2" *ngIf="(!!this.currentUser || auth.isAuthenticated()) && (this.currentUser.admin)">
       <a (click)="addSession()"> Ajouter une Session </a>
     </div>
   </div>

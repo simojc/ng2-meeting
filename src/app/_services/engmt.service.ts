@@ -14,7 +14,6 @@ export class EngmtService  {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-   //private endpointUrl = "http://localhost/~simojc/phpapi/public/api/"
     private endpointUrl = environment.API_URL;
     
     getAll() {

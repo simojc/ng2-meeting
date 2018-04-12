@@ -19,11 +19,12 @@ import { AuthService } from '../user/auth.service'
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable()
  export class TokenInterceptor implements HttpInterceptor {
   
-//   private endpointUrl ="http://localhost/~simojc/phpapi/public/api/"
+//   private endpointUrl = environment.API_URL;
 //   isRefreshingToken: boolean = false;
 //   tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 

@@ -1,9 +1,13 @@
 {
   "ExpandedNodes": [
+    "",
+    "\\src",
     "\\src\\app",
-    "\\src\\app\\engmt",
-    "\\src\\app\\Models",
-    "\\src\\app\\user"
+    "\\src\\app\\events",
+    "\\src\\app\\events\\events-list",
+    "\\src\\app\\nav",
+    "\\src\\app\\user",
+    "\\src\\app\\_guards"
   ],
   "PreviewInSolutionExplorer": false
 }

@@ -1,5 +1,4 @@
 
-
 import './rxjs-extentions'
 
 import { HttpModule } from '@angular/http'
@@ -11,8 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'
+//import { CommonModule } from '@angular/common';
 
 import { AgGridModule } from 'ag-grid-angular/main';
+
+import { DataTableModule } from './data-table';
+
+//import { DataTableModule } from 'angular-5-data-table';
+
+//import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent  } from './nav/navbar.component';
@@ -59,8 +65,11 @@ import {
   GroupeComponent
 } from './common/index'
 
+import { GhomalaComponent } from './ghomala/index';
 
 import { MyGridApplicationComponent } from './my-grid/my-grid.component'
+
+import { DataTableDemo1, DataTableDemo2, DataTableDemo3, DatatableDemoComponent } from './data-table-demo/index';
 
 import { Error404Component } from './errors/404.component'
 
@@ -96,13 +105,19 @@ import { UserService } from './user/user.service'
     EvnmtDetailsComponent,
     MyGridApplicationComponent,
     RedComponentComponent,
-    GroupeComponent
+    GroupeComponent,
+    DataTableDemo1,
+    DataTableDemo2,
+    DataTableDemo3,
+    DatatableDemoComponent,
+    GhomalaComponent
   ],
   imports: [
     BrowserModule,
     //AgGridModule.withComponents([...Liste des component qui seront utilisé dans le grid....]),
     AgGridModule.withComponents([]),
-        FormsModule,
+    FormsModule,
+    DataTableModule,
     HttpModule,
     HttpClientModule,
         ReactiveFormsModule,

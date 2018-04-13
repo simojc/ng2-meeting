@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\events",
-    "\\src\\app\\events\\events-list",
+    "\\src\\app\\data-table-demo\\demo1",
+    "\\src\\app\\data-table-demo\\demo2",
+    "\\src\\app\\data-table-demo\\demo3",
+    "\\src\\app\\data-table\\components",
+    "\\src\\app\\ghomala",
     "\\src\\app\\nav",
-    "\\src\\app\\user",
-    "\\src\\app\\_guards"
+    "\\src\\app\\user\\home"
   ],
+  "SelectedNode": "\\src\\app\\ghomala\\ghomala2.component.html",
   "PreviewInSolutionExplorer": false
 }

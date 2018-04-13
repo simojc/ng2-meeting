@@ -30,20 +30,20 @@ export class NavBarComponent implements OnInit{
 
   ngOnInit() {    
 
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+   // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    // this.currentUser = {
-    //   "id": 4,
-    //   "firstName": "Mapaq",
-    //   "groupe_id": 1,
-    //   "lastName": "Mapaq",
-    //   "name": "Mapaq",
-    //   "email": "Mapaq",
-    //   "password": "Mapaq",
-    //   "admin": true
-    // };
+     this.currentUser = {
+       "id": 4,
+       "firstName": "Mapaq",
+       "groupe_id": 1,
+       "lastName": "Mapaq",
+       "name": "Mapaq",
+       "email": "Mapaq",
+       "password": "Mapaq",
+       "admin": true
+     };
 
-    // localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
 
   }
   

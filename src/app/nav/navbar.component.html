@@ -11,7 +11,7 @@
 
         <li><a [routerLink]="['/reunions']" routerLinkActive="active">Réunions mens. </a> </li>
 
-        <li><a [routerLink]="['/reunions/new']" routerLinkActive="active">Ghomhala' </a> </li>
+        <li><a [routerLink]="['/ghomala']" routerLinkActive="active">Ghomhala' </a> </li>
 
         <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -22,7 +22,8 @@
             <li><a [routerLink]="['/reunions/new']" routerLinkActive="active"> Créer réunion </a></li>
             <li><a [routerLink]="['/events/new']" routerLinkActive="active"> Créer event </a></li>
             <li> <a [routerLink]="['user/home']"> Admin Users</a> </li>
-            <li> <a [routerLink]="['grid']"> Test Grid</a> </li>
+            <li> <a [routerLink]="['grid']"> Demo Grid</a> </li>
+            <li> <a [routerLink]="['datatable']"> Demo DataTable</a> </li>
           </ul>
         </li>
 

@@ -25,6 +25,12 @@ import { AuthGuard } from './_guards/index';
 
 import { MyGridApplicationComponent } from './my-grid/my-grid.component'
 
+import { DatatableDemoComponent } from './data-table-demo/index';
+
+import { GhomalaComponent } from './ghomala/index';
+
+
+
 export const appRoutes = [
   { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
   //{path: 'events', component: EventsListComponent, resolve:{events:EventListResolver}, canActivate: [AuthGuard]},
@@ -45,5 +51,9 @@ export const appRoutes = [
   { path: 'reunions/detail/new', component: CreateSessionComponent },
 
   { path: 'grid', component: MyGridApplicationComponent },
+
+  { path: 'datatable', component: DatatableDemoComponent },
+
+  { path: 'ghomala', component: GhomalaComponent },
 
 ]

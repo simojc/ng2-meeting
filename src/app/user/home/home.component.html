@@ -21,6 +21,7 @@
         <tr>
             <th>Nom</th>
             <th>Email</th>
+            <th>Admin</th>
             <th>Groupe</th>
            
         </tr>
@@ -28,9 +29,12 @@
     <tbody>
         <tr *ngFor="let user of users" >
             <td>{{user.name}}</td>
-            <td>({{user.email}} </td>
-            <td>{{user.groupe_id}}</td>
-            <td> 	<groupe [leGroupe]="user.groupe"> </groupe> </td>
+            <td>{{user.email}} </td>
+            <td>{{user.admin}} </td>
+            <!-- <td>{{user.groupe_id}}</td> -->
+            <td>{{user.nom}}</td>
+            <td>{{user.descr}}</td>
+            <!-- <td> 	<groupe [leGroupe]="user.groupe"> </groupe> </td> -->
         </tr>
     </tbody> 
 </table> 

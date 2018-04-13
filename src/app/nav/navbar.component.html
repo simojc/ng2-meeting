@@ -13,7 +13,7 @@
 
         <li><a [routerLink]="['/reunions/new']" routerLinkActive="active">Ghomhala' </a> </li>
 
-        <li class="dropdown" *ngIf="(!!this.currentUser || auth.isAuthenticated()) && (this.currentUser.admin)">
+        <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Administration
             <span class="caret"></span>
@@ -22,6 +22,7 @@
             <li><a [routerLink]="['/reunions/new']" routerLinkActive="active"> Créer réunion </a></li>
             <li><a [routerLink]="['/events/new']" routerLinkActive="active"> Créer event </a></li>
             <li> <a [routerLink]="['user/home']"> Admin Users</a> </li>
+            <li> <a [routerLink]="['grid']"> Test Grid</a> </li>
           </ul>
         </li>
 
@@ -67,7 +68,7 @@
           </li>
 
           <li *ngIf="!!this.currentUser || auth.isAuthenticated() ">
-            Bienvenue {{this.currentUser.name}}
+            Bienvenue {{this.currentUser?.name}}
           </li>
         </ul>
       </div>

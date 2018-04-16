@@ -30,6 +30,8 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { CreateSessionComponent } from './events/event-details/create-session/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details/event-details.component';
 
+import { RpnpersService } from './_services/index';
+
 import { 
   EventService, 
   EventListResolver, 
@@ -66,6 +68,7 @@ import {
 } from './common/index'
 
 import { GhomalaComponent } from './ghomala/index';
+import { RpnpersComponent } from './rpn/index';
 
 import { MyGridApplicationComponent } from './my-grid/my-grid.component'
 
@@ -110,7 +113,8 @@ import { UserService } from './user/user.service'
     DataTableDemo2,
     DataTableDemo3,
     DatatableDemoComponent,
-    GhomalaComponent
+    GhomalaComponent,
+    RpnpersComponent
   ],
   imports: [
     BrowserModule,
@@ -148,7 +152,8 @@ import { UserService } from './user/user.service'
         AutresService,
         EvnmtResolver,
         EvnmtListResolver,
-        EvnmtService
+        EvnmtService,
+        RpnpersService
         
   ],
   bootstrap: [AppComponent],

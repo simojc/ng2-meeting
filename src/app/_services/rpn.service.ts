@@ -10,17 +10,26 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RpnpersService {
-  currentUser: IUser;
-  currentPers: IPers;
+  // currentUser: IUser;
+  // currentPers: IPers;
     constructor(private http: HttpClient, private http2: Http, private autresService: AutresService) { 
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
+      // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      // this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
     }
 
     private endpointUrl = environment.API_URL;
     
-    getAll() {
-        return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers');
+    getAll(resp_id: number) {
+     // console.log(this.endpointUrl + 'rpnpers/resp_id');
+        return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers/' + resp_id);
+    }
+
+    query(resp_id: number) {
+      return this.http.get(this.endpointUrl + 'rpnpers/' + resp_id).toPromise()
+          .then((resp: Response) => ({
+              items: resp.json(),
+              count: Number(resp.headers.get('X-Total-Count'))
+          }));
     }
 
     //getUsers(): Observable<IUser[]> {
@@ -48,6 +57,5 @@ export class RpnpersService {
     delete(_id: string) {
         return this.http.delete(this.endpointUrl + 'rpnpers/' + _id);
     }
-
 
 }

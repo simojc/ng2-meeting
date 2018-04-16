@@ -1,44 +1,53 @@
+<body> 
+<div style="padding: 25px">
+<div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
+        <data-table id = "rpnpers-grid"
+                    headerTitle="Adhésion RPN"
+                    [items]="items"
+                    [itemCount]="itemCount"
+                    (reload)="loadRpnPers()"
+                    (rowClick)="rowClick($event)"
+                    (rowDoubleClick)="rowDoubleClick($event)"
+                    [rowTooltip]="rowTooltip">
+          <data-table-column [property]="'id'"
+                             [header]="'id'"
+                             [sortable]="true"
+                             [resizable]="true">
+          </data-table-column>
+          <data-table-column [property]="'nom_pers'"
+                                [header]="'nom_pers'"
+                                [sortable]="true"
+                                [resizable]="true">
+        </data-table-column>
+        <data-table-column [property]="'mtrle'"
+                            [header]="'mtrle'"
+                            [sortable]="true"
+                            [resizable]="true">
+        </data-table-column>
+          <data-table-column [property]="'dtadh'"
+                             [header]="'dtadh'"> 
+            <ng-template #dataTableCell let-item="item">
+              <span>{{item.dtadh | date:'yyyy-MM-dd'}}</span>
+            </ng-template>
+          </data-table-column>
+          <data-table-column [property]="'depot'"
+                                [header]="'Dépot ($)'"
+                             width="150px">
+          </data-table-column>
 
-<div> 
-        <h3 class="panel-title"> Situation RPN</h3>
+          <!-- <data-table-column property="depot"
+                         header="Dépot ($)">
+                </data-table-column> -->
 
-</div>
-<table class="table table-hover">    
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Groupe</td>
-            <th>Personne</th>
-            <th>Répondant</th>
-            <th>Date Adh.</th>
-            <th>Matrle</th>
-            <th>Dépôt</th>
-            <th>Dern. dépot</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let rpnp of rpnperss" [routerLink]="['/transfer']" [queryParams]="{ id: transfer.id }">
-            <td>{{rpnp.id}}</td>
-            <td>{{rpnp.groupe_id}}</td>
-            <td>{{rpnp.pers_id}}</td>
-            <td>{{rpnp.repdt_id}}</td>
-            <td>{{rpnp.dtadh}}</td>
-            <td>{{rpnp.mtrle}}</td>
-            <td>{{rpnp.depot}}</td>
-            <td>{{rpnp.dtmajdpt}}</td>                    
-        </tr>
-    </tbody>
-</table> 
+          <data-table-column [property]="'dtmajdpt'"
+                            [header]="'dtmajdpt'"> 
+            <ng-template #dataTableCell let-item="item">
+            <span>{{item.dtmajdpt | date:'yyyy-MM-dd'}}</span>
+            </ng-template>
+        </data-table-column>
+        
+        </data-table>
+      </div>
 
-<!-- <div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.name}}!</h1>
-    <p>You're logged in with the MEAN Stack & Angular 2!!</p>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.name}} ({{user.email}} {{user.groupe_id}})
-            - <a (click)="deleteUser(user._id)">Delete</a>
-        </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
-</div> -->
+    </div>
+</body>

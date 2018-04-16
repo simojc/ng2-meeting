@@ -11,7 +11,7 @@
 
         <li><a [routerLink]="['/reunions']" routerLinkActive="active">Réunions mens. </a> </li>
 
-        <li><a [routerLink]="['/ghomala']" routerLinkActive="active">Ghomhala' </a> </li>
+        <li><a [routerLink]="['/ghomala']" routerLinkActive="active"> Ghᴐmala' </a> </li>
 
         <li class="dropdown" *ngIf="this.currentUser?.admin || auth.isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -34,7 +34,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a [routerLink]="['/events/new']" routerLinkActive="active"> Ma situation </a></li>
-            <li><a [routerLink]="['/events/new']" routerLinkActive="active"> Mon RPN </a></li>
+            <li><a [routerLink]="['rpn']" routerLinkActive="active"> Mon RPN </a></li>
             <li>
               <a [routerLink]="['user/profile']"> Mon profile </a>
             </li>

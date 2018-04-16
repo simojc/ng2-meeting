@@ -1,19 +1,36 @@
 
-  <div class="flex-container">
+
+
+<body> 
     <header>
-      <h1>Le Ghomala</h1>
-    </header>
+        <h1>
+          Ghᴐmala
+        </h1>
+      </header>
+
+  <div class="container">
 
     <nav class="nav">
       <ul>
-        <li><a href="#">London</a></li>
-        <li><a href="#">Paris</a></li>
-        <li><a href="#">Tokyo</a></li>
-        <li><a href="#">Montréal</a></li>
-        <li><a href="#">Québec</a></li>
-        <li><a href="#">Douala</a></li>
+        <li> 
+        <a id= "1" (click)="onMenuClic(1)"> Aphabet & phonetique  </a>
+        </li>
+        <li> --------------------</li>
+        <li>
+            <a id= "2"  (click)="onMenuClic(2)"> Tons des mots  </a>
+        </li>
+        <li> --------------------</li>
+        <li> <a id= "3" (click)="onMenuClic(3)">  Conjugaison</a></li>
+        <li> --------------------</li>
+        <li>  <a id= "4" (click)="onMenuClic(4)">  Apprendre à compter</a></li>
+        <li> --------------------</li>
+        <li>  <a id= "5" (click)="onMenuClic(5)">  Prier </a></li>
+        <li> --------------------</li>
+        <li> <a id= "6" (click)="onMenuClic(6)">  Chanter</a></li>
+
       </ul>
     </nav>
+
 
     <!--<article class="article">
       <h1>London</h1>
@@ -28,7 +45,7 @@
       <p><strong>Resize this page to see what happens!</strong></p>
     </article>-->
 
-    <article>
+    <article *ngIf="menu=='1'" >
       <div>
         <h1>
           <B>
@@ -40,7 +57,7 @@
 
       </div>
 
-      <h3>
+      <h4>
         <p>
           a, á, b, c, d, e, Ə, Ɛ, f, g, gh, h, i, j, k, l, m, n, Ƞ, o, ᴐ, p, S, sh, t, u, ʉ, v, w, wi, y, z, zh, ',
         </p>
@@ -112,9 +129,12 @@
           </li>
         </ul>
 
-      </h3>
+      </h4>
       <hr />
 
+    </article>
+
+      <article *ngIf="menu=='2'" >
       <div>
         <h1>
           <B>
@@ -125,7 +145,7 @@
         </h1>
       </div>
 
-      <h3>
+      <h4>
         <ul>
           <li>
             <p>
@@ -153,38 +173,115 @@
             </p>
           </li>
         </ul>
-      </h3>
+      </h4>
       <hr />
 
     </article>
 
 
-    <footer>Copyright &copy; W3Schools.com</footer>
+
+    <article *ngIf="menu=='5'" id="prier" name="prier"  (click)="onMenuClic(5)" class="article"> 
+       <div class="a">  
+          <h1>  NOTRE PÈRE    </h1> 
+          </div>
+        <table> 
+
+          <tr> 
+            <td width=45% >
+                <h2 > Version 1</h2>  
+        <h4> 
+          
+          <p> 
+            Tâ yɔ̄k yə̀ ǒ kɛ̄bə̀ŋ, 
+          </p>
+          <p> 
+            Á tsô tsǔ pə̄ dɔ̂lɔ̌ 
+          </p>
+          <p> 
+            Á nə̀fò tsǔ sɔ́’ɔ̄, 
+          </p>
+          <p> 
+            Á nə́kùŋ ō pə̄ də̀m cā’ā də̀ŋdə̀ŋ pá’ kɛ̄bə̀ŋ á ā 
+          </p>
+          <p> 
+            Hā bí pyə̀ tyə́’ ɔ̄, 
+          </p>
+          <p> 
+            Ywə́tsʉ̂ yɔ̄k nə́ yə̀ŋ tyɛ̄’ɛ̄, 
+          </p>
+          <p> 
+            Wā’ mhɔ̀ mɔ̄k pá’ pyə̄ gə̀ yɔ̄k nə̂ mfə̂ pɔ̄k áā
+          </p>
+          <p>  
+              Kə̂ pīŋ pyə̀ kō nə̂ mlə̀ŋtə̀, 
+            </p>
+            <p> 
+              Tē wɔ̄k nə̂ jyə̀ cwə̀pùŋ 
+            </p>
+            <p> 
+              Nə́kə́lə̄, nə̀fò, tʉ̄ɔ̀, bá ghāmtə̄ bə̄ bû 
+            </p>
+            <p> 
+              Nə́ gùŋ mcwə̀ àwɛ̄ 
+            </p>
+            <p> 
+              Āmɛ̀n 
+            </p>
+   
+
+        </h4>
+      </td>
+<td  width=5%></td>
+      <td  width=50%>
+
+           <h2 > Version 1</h2>
+        <h4> 
+            <p> 
+            Tâ yɔ̄k yə̀ ǒ kɛ̄bə̀ŋ á ā, 
+          </p>
+          <p> 
+(Á) Tsô tsǔ pə̄ dɔ̂lɔ̌ 
+</p>
+<p> 
+(Á) Nə̀fò tsǔ sɔ́’ɔ̄, də̀ŋdə̀ŋ sīcā’ā pá’ kɛ̄bə̀ŋ á ā 
+</p>
+<p> 
+Hā bí pyə̀ tyə́’ ɔ̄, 
+</p>
+<p> 
+Wútsʉ̂ (ywə́tsʉ̂) yɔ̄k nə́ yə̀ŋ tyɛ̄’ɛ̄, 
+</p>
+<p> 
+Tyɔ̀nyə̀ mnwə̀ cwə̀pùŋ mɔ̄k 
+</p>
+<p> 
+Pá’ pyə́ dyɔ̀nyə̀ mnwə̀ cwə̀pùŋ pyə̀shwə́ pò á ā 
+</p>
+<p> 
+Kə̂ tāk wɔ̄k cʉ̂m mlə̀ŋtə̀, 
+</p>
+<p> 
+Pà’ wɔ̄k nə̂ jyə̀ cwə̀pùŋ 
+</p>
+<p> 
+Ā pó’ō
+</p> 
+          </h4>
+      </td>
+      </tr>
+
+      </table>
+
+      </article>
+
+       <article *ngIf="menu=='6'" id="Chanter" name="Chanter"  (click)="onMenuClic(6)" >
+              <h1> Je chante en ghomala</h1>
+              <h2> Je chante en ghomala</h2>
+              <h3> Je chante en ghomala</h3>
+              <h4> Je chante en ghomala</h4>
+       </article>
+
   </div>
 
+</body>
 
-
-
-<!--<header>
-  <h1>Zozor</h1>
-  <h2>Carnets de voyage</h2>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="#">Accueil</a></li>
-    <li><a href="#">Blog</a></li>
-    <li><a href="#">CV</a></li>
-  </ul>
-</nav>
-
-<section>
-  <aside>
-    <h1>À propos de l'auteur</h1>
-    <p>C'est moi, Zozor ! Je suis né un 23 novembre 2005.</p>
-  </aside>
-  <article>
-    <h1>Je suis un grand voyageur</h1>
-    <p>Bla bla bla bla (texte de l'article)</p>
-  </article>
-</section>-->

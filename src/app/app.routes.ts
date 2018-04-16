@@ -7,7 +7,7 @@ import {
   EventListResolver,
   CreateSessionComponent,
   EventResolver,
-  EventRouteActivator
+  EventRouteActivator,
 } from './events/index'
 
 import {
@@ -28,6 +28,8 @@ import { MyGridApplicationComponent } from './my-grid/my-grid.component'
 import { DatatableDemoComponent } from './data-table-demo/index';
 
 import { GhomalaComponent } from './ghomala/index';
+
+import { RpnpersComponent } from './rpn/index';
 
 
 
@@ -55,5 +57,7 @@ export const appRoutes = [
   { path: 'datatable', component: DatatableDemoComponent },
 
   { path: 'ghomala', component: GhomalaComponent },
+
+  { path: 'rpn', component: RpnpersComponent },
 
 ]

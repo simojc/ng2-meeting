@@ -38,8 +38,27 @@ export class AutresService {
         return this.http.get(this.endpointUrl + 'groupes/' + _id);
     }
 
-    getPersCurrentPers() {
-      return this.http.get<IPers>(this.endpointUrl + 'pers' + this.currentUser.email);
+    // getPersCurrentPers() {
+    //    // console.log("  this.endpointUrl + 'pers?email = ' + this.currentUser.email  = "+this.endpointUrl + 'pers?email=' + this.currentUser.email)
+    //   return this.http.get<IPers>(this.endpointUrl + 'pers?email=' + this.currentUser.email)
+    //   .map((response: Response) => <IPers>response.json())
+    //   //.do(data => console.log('Event: ' + JSON.stringify(data)))
+    //   .catch(this.handleError)
+    // }
+
+    getPersCurrentPers(): Observable<IPers> {
+        return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email)
+        .map((response: Response) =>  {
+          //  console.log('Pers: ' + JSON.stringify(response));
+           return response
+        })  
+      //  .do(data => console.log('Pers: ' + JSON.stringify(data)))
+        .catch(this.handleError)
+      }
+
+
+      getPersCurrentPers2() {
+        return this.http.get<IPers>(this.endpointUrl + 'pers?email=' + this.currentUser.email);
     }
  
 }

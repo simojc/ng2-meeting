@@ -8,7 +8,24 @@ import { Component, OnInit } from '@angular/core';
   moduleId: module.id,
   templateUrl: 'ghomala.component.html',
   styles: [`
-                       div.container {
+ 
+            body{
+                color:#000000;
+                margin-left:0;
+                margin-right:0;
+                margin-top:0;
+                margin-bottom:0;
+                margin-width:0;
+                margin-height:0;
+                background-color:#A3A6BA; 
+            }
+            .text {
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            font-size:10px;
+            color:541460;
+            padding:5px;
+            }
+                div.container {
                   width: 100%;
                   border: 1px solid gray;
               }
@@ -43,35 +60,30 @@ import { Component, OnInit } from '@angular/core';
                   padding: 1em;
                   overflow: hidden;
               }
+
+              a:hover {
+                cursor:pointer;
+               }
+
+               div.a {
+                text-align: center;
+            }
 	`]
 })
 
 export class GhomalaComponent implements OnInit {
   //currentUser: IUser;
   //users: IUser[] = [];
-
-  //constructor(private userService: UserService, private alertService: AlertService) {
-  //    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  //   // console.log(this.currentUser)
-  //}
+menu: number;
 
   ngOnInit() {
     // this.loadAllUsers();
+    this.menu = 1;
   }
 
-  //deleteUser(_id: string) {
-  //    this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-  //}
-
-  //private loadAllUsers() {
-  //    //console.log("this.currentUser.email =   "+this.currentUser.email)
-  //    this.userService.getAll().subscribe(
-  //    users => { this.users = users; },
-  //     error => { this.alertService.error(error);}
-  //);
-
-
-  //}
+onMenuClic(i){
+    this.menu = i;
+}
 
 
 

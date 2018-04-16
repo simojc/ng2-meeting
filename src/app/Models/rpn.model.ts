@@ -9,8 +9,12 @@ export interface IRpnpers {
     email: string			// new
     depot: number
     dtmajdpt: Date
-}
 
+     nom_pers:string
+     prenom_pers:string
+     nom_repdt: string
+     prenom_repdt : string
+}
 //$table ->increments('id');
 //$table ->integer('groupe_id');
 //$table ->integer('pers_id');		  //(fk vers table personne, la personne inscrite)

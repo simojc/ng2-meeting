@@ -6,6 +6,7 @@
 
 .container {
   padding-top: 10px;
+  
 }
 
 .pointable {
@@ -31,4 +32,8 @@ button {
 }
 .toast-warning {
   background-color: #f89406;
+}
+
+.body {
+  background-color: #ffffff;
 }

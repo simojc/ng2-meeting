@@ -1,45 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser, IPers, ITont } from '../Models/index'
+import { IUser, IPers, ITont, ITontpers } from '../Models/index'
 import { AlertService, AutresService, TontService } from '../_services/index';
 
 @Component({
-  moduleId: module.id,
-  templateUrl: 'home.component.html'
+
+  template: `
+			<div>
+				<h1> Les engagements </h1>
+				<hr>
+					<div class="row">
+						<div  *ngFor="let tn of tontpers"  class="col-md-10">
+							<tont-thumbnail  [tontpers]="tn"> </tont-thumbnail>
+						</div>
+					</div>
+			</div>
+		 `
 })
-
-export class HomeComponent implements OnInit {
-  currentUser: IUser;
+export class TontComponent implements OnInit {
+  tontpers: ITontpers[]
+  public currentUser: IUser
   currentPers: IPers;
-  users: IUser[] = [];
-  tonts: ITont[] = [];
 
-  constructor(private alertService: AlertService, private autresService: AutresService,
-    private tontService: TontService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
-    // console.log(this.currentUser)
+  items = [];
+  itemCount = 0;
+
+  errorMsg: string;
+  errorFlag: boolean = false;
+
+  constructor(private alertService: AlertService, private tontService: TontService,
+    private autresService: AutresService) {
   }
 
   ngOnInit() {
-    this.loadAllTontsPers();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.autresService.getPersCurrentPers().subscribe(pers => {
+      this.currentPers = pers;
+      // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
+      this.loadEngmt();
+    })
   }
 
-  deleteUser(_id: string) {
-    // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-  }
-
-  private loadAllTontsPers() {
-    //console.log("this.currentUser.email =   "+this.currentUser.email)
+  private loadEngmt() {
     this.tontService.getAllTontPers(this.currentPers.id).subscribe(
-      tonts => { this.tonts = tonts; },
-          error => { this.alertService.error(error);}
-     );
+      engmtpers => {
+        this.items = engmtpers;
+        this.itemCount = engmtpers.length
+      },
+      error => { this.alertService.error(error); }
+    );
 
   }
-
-  
-
-
-
 
 }
+
+

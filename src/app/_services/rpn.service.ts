@@ -10,11 +10,8 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RpnpersService {
-  // currentUser: IUser;
-  // currentPers: IPers;
+
     constructor(private http: HttpClient, private http2: Http, private autresService: AutresService) { 
-      // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      // this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
     }
 
     private endpointUrl = environment.API_URL;

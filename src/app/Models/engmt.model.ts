@@ -4,11 +4,12 @@ export interface IEngmt {
   groupe_id: number
   nom: string
   descr: string
-  periodicite: string			// new
-  periode: string			// new
-  statut: string			// new
-  mont_unit: number			// new
-  totalper: number			// new
+  periodicite: string			
+  periode: string			
+  statut: string			
+  mont_unit: number			
+  totalper: number
+  dt_ech: Date	
 }
 
 
@@ -17,9 +18,18 @@ export interface IEngmtpers {
   engmt_id: number
   pers_id: number
   exercice: number
-  statut: string			// new
-  dtchgst: Date			// new
-  message: string			// new
-  dt_ech: Date			// new
+  statut: string			
+  dtchgst: Date			
+  message: string			
+  dt_ech: Date			
+  groupe_id: number
+  nom_engmt: string
+  descr: string
+  periodicite: string
+  periode: string
+  stat_engmt: string
+  mont_unit: number
+  nom_prenom: string
 }
+
 

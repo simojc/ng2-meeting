@@ -1,0 +1,37 @@
+<div class="well hoverwel thumbnail">
+
+  <h2> {{ tontpers?.nom | uppercase}}: {{ tontpers?.descr }}</h2>
+  <div> Début: {{ tontpers.dtdeb }} </div>
+  <div> Fin: {{ tontpers.dtfin }} </div>
+  <div> Montant: {{ tontpers.mtpart  }} </div>
+  <div> Alias: {{ tontpers.alias  }} </div>
+  <div> Bouffe en position: {{ tontpers.position  }} au mois: {{ tontpers.moisgain  }}   </div>
+  <div> Mois en cours: {{ engmt.cot_dern }} </div>
+  <div> Mois en cours: {{ engmt.cot_dern }} </div>
+  <div> statut: {{ tontpers.statut }} </div>
+  <div> Date changement: {{ tontpers?.dt_statut  | date:'shortDate'}} </div>
+
+</div>
+
+    <!--
+       <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
+        Time: {{event.time}}
+        <span *ngSwitchCase="'8:00 am'"> (Commence tôt) </span>
+        <span *ngSwitchCase="'10:00 am'"> (Commence tard) </span>
+        <span *ngSwitchDefault> (Temps normal) </span>
+      </div>
+      <div> Price: {{ event?.price | currency:'USD':"symbol"}}   <span>&nbsp; </span>  </div>
+      <div *ngIf="event?.location">
+        <span> Adresse: {{event.location.address}}  </span>
+        <span class="pad-left"> {{event.location.city}}, {{event.location.stateProvince}}, {{event.location.country}}</span>
+      </div>
+
+      <div [hidden]="!event?.onlineUrl">
+        Online Url: {{ event.onlineUrl}}
+      </div>
+
+      <div style="display: inline-block; text-align: right; width: 100%">
+        <a routerLink="/events/{{event.id}}">  <h4> Voir Detail </h4> </a>
+      </div>
+
+-->

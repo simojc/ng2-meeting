@@ -41,7 +41,7 @@ export class RpnpersComponent implements OnInit {
  
     ngOnInit() {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.autresService.getPersCurrentPers2().subscribe(pers => {          
+        this.autresService.getPersCurrentPers().subscribe(pers => {          
             this.currentPers = pers;
           // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
            this.loadRpnPers();

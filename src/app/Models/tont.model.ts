@@ -12,8 +12,7 @@ export interface ITont {
 }
 
 
-
-export interface ITont {
+export interface ITontpers {
   id: number
   tont_id: number
   pers_id: number
@@ -21,6 +20,16 @@ export interface ITont {
   alias: string
   comment: string
   dt_statut: Date
+
+  nom: string
+  descr: string
+  mtpart: number
+  groupe_id: number
+  dtdeb: Date
+  dtfin: Date
+  cot_dern: string
+  nom_prenom: string
+
 }
 
 

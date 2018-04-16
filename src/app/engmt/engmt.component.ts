@@ -1,41 +1,59 @@
-import { Component, OnInit } from '@angular/core';
 
-import { IEngmt, IUser, IPers } from '../Models/index'
-//import { UserService } from '../user.service';
-import { AlertService, AutresService, EngmtService } from '../_services/index';
+import { Component, OnInit } from '@angular/core'
+
+import { IEngmtpers, IUser, IPers } from '../Models/index'
+
+import { ActivatedRoute } from '@angular/router'
+
+import { AlertService, EngmtService, AutresService } from '../_services/index';
 
 @Component({
-  moduleId: module.id,
-  templateUrl: 'engmt.component.html'
+
+  template: `
+			<div>
+				<h1> Les engagements </h1>
+				<hr>
+					<div class="row">
+						<div  *ngFor="let eg of engmtpers"  class="col-md-10">
+							<engmt-thumbnail  [engmt]="eg"> </engmt-thumbnail>
+						</div>
+					</div>
+			</div>
+		 `
 })
 
-export class EngmtComponent implements OnInit {
-  currentUser: IUser;
+export class EventsListComponent implements OnInit {
+  engmtpers: IEngmtpers[]
+  public currentUser: IUser
   currentPers: IPers;
-  engmts: IEngmt[] = [];
 
-  constructor(private alertService: AlertService, private autresService: AutresService,
-    private engmtService: EngmtService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
-    // console.log(this.currentUser)
+  items = [];
+  itemCount = 0;
+
+  errorMsg: string;
+  errorFlag: boolean = false;
+
+  constructor(private alertService: AlertService, private engmtService: EngmtService,
+    private autresService: AutresService) {
   }
 
   ngOnInit() {
-    this.loadAllEngmtsPers();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.autresService.getPersCurrentPers().subscribe(pers => {
+      this.currentPers = pers;
+      // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
+      this.loadEngmt();
+    })
   }
 
-  deleteUser(_id: string) {
-    // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-  }
-
-  private loadAllEngmtsPers() {
-    //console.log("this.currentUser.email =   "+this.currentUser.email)
+  private loadEngmt() { 
     this.engmtService.getAllEngmtPers(this.currentPers.id).subscribe(
-      engmts => { this.engmts = engmts; },
+     engmtpers => {
+       this.items = engmtpers;
+       this.itemCount = engmtpers.length
+      },
       error => { this.alertService.error(error); }
     );
-
 
   }
 
@@ -43,3 +61,4 @@ export class EngmtComponent implements OnInit {
 
 
 }
+

@@ -20,16 +20,6 @@ export class TontService {
       return this.http.get<ITont[]>(this.endpointUrl + 'tonts');
     }
 
-    //getUsers(): Observable<IUser[]> {
-    //    let headers = new Headers();
-    //    headers.append('x-access-token', this.auth.getToken());
-    //   // console.log("this.auth.getToken() = "+this.auth.getToken())
-    //    return this.http2.get(this.endpointUrl + 'users', {headers: headers})
-    //        .map((response: Response) => <IUser[]>response.json())
-    //       // .do(data => console.log('All: ' + JSON.stringify(data)))
-    //        .catch(this.handleError);
-    //}
-
     private handleError(error: Response) {
         return Observable.throw(error)
       }

@@ -57,8 +57,8 @@ export class AutresService {
       }
 
 
-      getPersCurrentPers2() {
-        return this.http.get<IPers>(this.endpointUrl + 'pers?email=' + this.currentUser.email);
-    }
+    //  getPersCurrentPers2() {
+    //    return this.http.get<IPers>(this.endpointUrl + 'pers?email=' + this.currentUser.email);
+    //}
  
 }

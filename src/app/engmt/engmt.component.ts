@@ -22,7 +22,7 @@ import { AlertService, EngmtService, AutresService } from '../_services/index';
 		 `
 })
 
-export class EventsListComponent implements OnInit {
+export class EngmtComponent implements OnInit {
   engmtpers: IEngmtpers[]
   public currentUser: IUser
   currentPers: IPers;

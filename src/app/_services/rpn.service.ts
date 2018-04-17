@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class RpnpersService {
 
-    constructor(private http: HttpClient, private http2: Http, private autresService: AutresService) { 
+    constructor(private http: HttpClient, private autresService: AutresService) { 
     }
 
     private endpointUrl = environment.API_URL;

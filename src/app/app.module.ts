@@ -16,9 +16,7 @@ import { AgGridModule } from 'ag-grid-angular/main';
 
 import { DataTableModule } from './data-table';
 
-//import { DataTableModule } from 'angular-5-data-table';
 
-//import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent  } from './nav/navbar.component';
@@ -30,7 +28,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { CreateSessionComponent } from './events/event-details/create-session/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details/event-details.component';
 
-import { RpnpersService } from './_services/index';
+import { RpnpersService, PersService, TontService, EngmtService } from './_services/index';
 
 import { 
   EventService, 
@@ -69,6 +67,9 @@ import {
 
 import { GhomalaComponent } from './ghomala/index';
 import { RpnpersComponent } from './rpn/index';
+import { TontComponent, TontThumbnailComponent } from './tont/index';
+import { PersComponent } from './pers/index';
+import { EngmtComponent, EngmtThumbnailComponent } from './engmt/index';
 
 import { MyGridApplicationComponent } from './my-grid/my-grid.component'
 
@@ -114,7 +115,12 @@ import { UserService } from './user/user.service'
     DataTableDemo3,
     DatatableDemoComponent,
     GhomalaComponent,
-    RpnpersComponent
+    RpnpersComponent,
+    EngmtComponent,
+    TontComponent,
+    PersComponent,
+    TontThumbnailComponent,
+    EngmtThumbnailComponent
   ],
   imports: [
     BrowserModule,
@@ -153,7 +159,8 @@ import { UserService } from './user/user.service'
         EvnmtResolver,
         EvnmtListResolver,
         EvnmtService,
-        RpnpersService
+    RpnpersService,
+    PersService, TontService, EngmtService
         
   ],
   bootstrap: [AppComponent],

@@ -1,43 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-
-import { IPers, IUser } from '../Models/index'
-import { AlertService, PersService, AutresService } from '../_services/index';
+import { IUser } from '../Models/index'
+import { AlertService, PersService } from '../_services/index';
 
 @Component({
   moduleId: module.id,
-  templateUrl: 'home.component.html'
+  templateUrl: 'pers.component.html',
+  styles: [`
+    body{
+     color:#000000;
+     margin-left:0;
+     margin-right:0;
+     margin-top:0;
+     margin-bottom:0;
+     margin-width:0;
+     margin-height:0;
+     background-color:#A3A6BA; 
+ }
+ .text {
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:10px;
+ color:541460;
+ padding:5px;
+ }
+
+   `]
 })
 
-export class HomeComponent implements OnInit {
+export class PersComponent implements OnInit {
   currentUser: IUser;
-  currentPers: IPers;
-  users: IUser[] = [];
 
-  constructor(private alertService: AlertService, private autresService: AutresService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.autresService.getPersCurrentPers().subscribe(pers => (this.currentPers = pers))
-    // console.log(this.currentUser)
-  }
+  items = [];
+  itemCount = 0;
+
+  constructor(private alertService: AlertService, private persService: PersService) { }
 
   ngOnInit() {
-    this.loadAllUsers();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loadMembers();
   }
 
-  deleteUser(_id: string) {
-    //this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-  }
-
-  private loadAllUsers() {
-    //console.log("this.currentUser.email =   "+this.currentUser.email)
-    //     this.userService.getAll().subscribe(
-    //     users => { this.users = users; },
-    //      error => { this.alertService.error(error);}
-    // );
-
+  private loadMembers() {
+    this.persService.getPersByType().subscribe(
+      pers => {
+        this.items = pers;
+        this.itemCount = pers.length
+      },
+      error => { this.alertService.error(error); }
+    );
 
   }
-
-
 
 
 }

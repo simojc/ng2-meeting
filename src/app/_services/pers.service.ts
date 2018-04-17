@@ -20,6 +20,27 @@ export class PersService {
       return this.http.get<IPers[]>(this.endpointUrl + 'pers');
     }
 
+  	getPersByMail(): Observable<IPers> {
+        return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email)
+        .map((response: Response) =>  {         
+           return response
+        })  
+        .catch(this.handleError)
+      }
+	  
+	  getPersByType(): Observable<IPers[]> {
+        return this.http.get(this.endpointUrl + "pers?type='M'" )
+        .map((response: Response) =>  {         
+           return response
+        })  
+        .catch(this.handleError)
+      }
+
+    //getAll(resp_id: number) {
+    //  // console.log(this.endpointUrl + 'rpnpers/resp_id');
+    //  return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers/' + resp_id);
+    //}
+
     getPersByRepdt(repdt_id: number) {
       return this.http.get<IPers>(this.endpointUrl + 'pers/' + repdt_id);
     }

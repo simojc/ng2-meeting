@@ -4,13 +4,14 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\data-table-demo\\demo1",
-    "\\src\\app\\data-table-demo\\demo2",
-    "\\src\\app\\data-table-demo\\demo3",
-    "\\src\\app\\data-table\\components",
-    "\\src\\app\\ghomala",
+    "\\src\\app\\engmt\\engmt-thumbnail",
+    "\\src\\app\\events",
+    "\\src\\app\\events\\shared",
     "\\src\\app\\nav",
-    "\\src\\app\\user\\home"
+    "\\src\\app\\pers",
+    "\\src\\app\\user",
+    "\\src\\app\\_services"
   ],
-  "SelectedNode": "\\src\\app\\ghomala\\ghomala2.component.html",
+  "SelectedNode": "\\src\\app\\rpn\\rpn.component.html",
   "PreviewInSolutionExplorer": false
 }

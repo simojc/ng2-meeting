@@ -30,6 +30,9 @@ import { DatatableDemoComponent } from './data-table-demo/index';
 import { GhomalaComponent } from './ghomala/index';
 
 import { RpnpersComponent } from './rpn/index';
+import { TontComponent } from './tont/index';
+import { PersComponent } from './pers/index';
+import { EngmtComponent } from './engmt/index';
 
 
 
@@ -59,5 +62,8 @@ export const appRoutes = [
   { path: 'ghomala', component: GhomalaComponent },
 
   { path: 'rpn', component: RpnpersComponent },
+  { path: 'membres', component: PersComponent },
+  { path: 'tontpers', component: TontComponent },
+  { path: 'engmtpers', component: EngmtComponent },
 
 ]

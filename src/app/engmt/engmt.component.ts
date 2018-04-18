@@ -43,13 +43,14 @@ export class EngmtComponent implements OnInit {
       this.currentPers = pers;
       // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
       this.loadEngmt();
+      console.log(" JSON.stringify(engmtpers) =   "+ JSON.stringify(this.engmtpers))
     })
   }
 
   private loadEngmt() { 
     this.engmtService.getAllEngmtPers(this.currentPers.id).subscribe(
      engmtpers => {
-       this.items = engmtpers;
+       this.engmtpers = engmtpers;
        this.itemCount = engmtpers.length
       },
       error => { this.alertService.error(error); }

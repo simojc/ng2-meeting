@@ -29,7 +29,8 @@ export class PersService {
       }
 	  
 	  getPersByType(): Observable<IPers[]> {
-        return this.http.get(this.endpointUrl + "pers?type='M'" )
+      console.log(this.endpointUrl + "pers?type='M' ")
+        return this.http.get(this.endpointUrl + "pers?type='M' " )
         .map((response: Response) =>  {         
            return response
         })  

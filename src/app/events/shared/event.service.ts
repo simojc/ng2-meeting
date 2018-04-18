@@ -14,7 +14,7 @@ export class EventService {
 
   constructor(private http: Http) { }
 
-  getEvents_Maison(): Observable<IEvent[]> {
+  getEvents(): Observable<IEvent[]> {
 
     //console.log("this.endpointUrl  =" + this.endpointUrl)
 
@@ -24,7 +24,7 @@ export class EventService {
         .catch(this.handleError);
   }
 
-  getEvent_Maison(id: number): Observable<IEvent> {
+  getEvent(id: number): Observable<IEvent> {
     return this.http.get(this.endpointUrl + "events/" + id)
     .map((response: Response) => <IEvent>response.json())
     //.do(data => console.log('Event: ' + JSON.stringify(data)))
@@ -38,14 +38,14 @@ export class EventService {
   // }
 
   // Lit dans l'objet défini ci-dessous
-  getEvents(): Subject<IEvent[]> {
+  getEvents_bur(): Subject<IEvent[]> {
     let subject = new Subject<IEvent[]>()
     setTimeout(() => { subject.next(EVENTS); subject.complete(); }
       , 10)
     return subject
   }
 
-  getEvent(id: number): IEvent {
+  getEvent_bur(id: number): IEvent {
     console.log("Dans  EventService  id =  " + id)
     return EVENTS.find(event => event.id == id)
   }

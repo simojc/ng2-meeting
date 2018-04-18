@@ -6,22 +6,22 @@ import { AlertService, PersService } from '../_services/index';
   moduleId: module.id,
   templateUrl: 'pers.component.html',
   styles: [`
-    body{
-     color:#000000;
-     margin-left:0;
-     margin-right:0;
-     margin-top:0;
-     margin-bottom:0;
-     margin-width:0;
-     margin-height:0;
-     background-color:#A3A6BA; 
- }
- .text {
- font-family:Verdana, Arial, Helvetica, sans-serif;
- font-size:10px;
- color:541460;
- padding:5px;
- }
+          body{
+          color:#000000;
+          margin-left:0;
+          margin-right:0;
+          margin-top:0;
+          margin-bottom:0;
+          margin-width:0;
+          margin-height:0;
+          background-color:#A3A6BA; 
+      }
+      .text {
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            font-size:10px;
+            color:541460;
+            padding:5px;
+      }
 
    `]
 })

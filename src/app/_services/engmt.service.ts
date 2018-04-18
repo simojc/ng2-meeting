@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser, IEngmt } from '../Models/index'
+import { IUser, IEngmt , IEngmtpers} from '../Models/index'
 import { AlertService } from '../_services/index';
 //import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
@@ -29,7 +29,7 @@ export class EngmtService  {
     }
 
     getAllEngmtPers(pers_id: number) {
-      return this.http.get<IEngmt[]>(this.endpointUrl + 'engmts/' + pers_id);
+      return this.http.get<IEngmtpers[]>(this.endpointUrl + 'engmtpers/' + pers_id);
     }
  
     create(user: IUser) {

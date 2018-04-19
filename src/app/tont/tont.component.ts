@@ -6,7 +6,7 @@ import { AlertService, AutresService, TontService } from '../_services/index';
 
   template: `
 			<div>
-				<h1> Les engagements </h1>
+				<h1> Les tontines </h1>
 				<hr>
 					<div class="row">
 						<div  *ngFor="let tn of tontpers"  class="col-md-10">
@@ -42,9 +42,10 @@ export class TontComponent implements OnInit {
 
   private loadEngmt() {
     this.tontService.getAllTontPers(this.currentPers.id).subscribe(
-      engmtpers => {
-        this.items = engmtpers;
-        this.itemCount = engmtpers.length
+      tontpers => {
+        console.log(" tontpers =   "+ JSON.stringify(tontpers))
+        this.items = tontpers;
+        this.itemCount = tontpers.length
       },
       error => { this.alertService.error(error); }
     );

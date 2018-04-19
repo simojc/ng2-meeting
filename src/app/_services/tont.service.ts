@@ -17,7 +17,7 @@ export class TontService {
     private endpointUrl = environment.API_URL;
     
     getAll() {
-      return this.http.get<ITont[]>(this.endpointUrl + 'tonts');
+      return this.http.get<ITont[]>(this.endpointUrl + 'tontpers');
     }
 
     private handleError(error: Response) {
@@ -25,11 +25,11 @@ export class TontService {
       }
 
     getById(_id: number) {
-      return this.http.get<ITont>(this.endpointUrl + 'tonts/' + _id);
+      return this.http.get<ITont>(this.endpointUrl + 'tontpers/' + _id);
     }
 
     getAllTontPers(pers_id: number) {
-      return this.http.get<ITont[]>(this.endpointUrl + 'tonts/' + pers_id);
+      return this.http.get<ITont[]>(this.endpointUrl + 'tontpers/' + pers_id);
     }
  
     create(user: IUser) {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser, ITont } from '../Models/index'
+import { IUser, ITont, ITontpers } from '../Models/index'
 import { AlertService } from '../_services/index';
 //import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
@@ -29,7 +29,7 @@ export class TontService {
     }
 
     getAllTontPers(pers_id: number) {
-      return this.http.get<ITont[]>(this.endpointUrl + 'tontpers/' + pers_id);
+      return this.http.get<ITontpers[]>(this.endpointUrl + 'tontpers/' + pers_id);
     }
  
     create(user: IUser) {

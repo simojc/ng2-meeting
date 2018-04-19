@@ -44,7 +44,7 @@ export class TontComponent implements OnInit {
     this.tontService.getAllTontPers(this.currentPers.id).subscribe(
       tontpers => {
         console.log(" tontpers =   "+ JSON.stringify(tontpers))
-        this.items = tontpers;
+        this.tontpers = tontpers;
         this.itemCount = tontpers.length
       },
       error => { this.alertService.error(error); }

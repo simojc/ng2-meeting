@@ -28,7 +28,13 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { CreateSessionComponent } from './events/event-details/create-session/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details/event-details.component';
 
-import { RpnpersService, PersService, TontService, EngmtService } from './_services/index';
+import {
+  RpnpersService,
+  PersService,
+  TontService,
+  EngmtService,
+  EvnmtdtlService
+} from './_services/index';
 
 import { 
   EventService, 
@@ -160,8 +166,10 @@ import { UserService } from './user/user.service'
         EvnmtListResolver,
         EvnmtService,
     RpnpersService,
-    PersService, TontService, EngmtService
-        
+    PersService,
+    TontService,
+    EngmtService,
+    EvnmtdtlService        
   ],
   bootstrap: [AppComponent],
   

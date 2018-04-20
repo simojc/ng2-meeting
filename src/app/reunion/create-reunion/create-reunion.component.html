@@ -4,7 +4,7 @@
 <div class="col-md-6">
   <form #newEvnmtForm="ngForm" (ngSubmit)="saveEvnmt(newEvnmtForm.value)" autocomplete="off" novalidate>
     <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.nom?.invalid && newEvnmtForm.controls.nom?.touched}">
-      <label for="evnmtName">Titre:</label>
+      <label for="nom">Titre:</label>
       <em *ngIf="newEvnmtForm.controls.nom?.invalid && (newEvnmtForm.controls.nom?.touched)">Required</em>
       <input (ngModel)="nom" name="nom" required id="nom" type="text" class="form-control" placeholder="Titre de la réunion..." />
     </div>

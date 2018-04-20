@@ -38,7 +38,6 @@ export class CreateReunionComponent {
 
   }
 
-
   private loadLocations() {
     this.autresService.getLocations().subscribe(
       locations => { this.locations = locations; },

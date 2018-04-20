@@ -4,6 +4,7 @@ import { IEvnmtdtl } from '../../../Models/index'
 import { restrictedWords } from '../../../_directives/index';
 
 import { AuthService } from '../../../user/auth.service'
+import { AlertService, AutresService, EvnmtdtlService } from '../../../_services/index';
 
 import { VoterService } from '../voter.service'
 
@@ -15,15 +16,28 @@ import { VoterService } from '../voter.service'
 
 export class ReuniondtllListComponent implements OnChanges {
   @Input() evnmtdtls: IEvnmtdtl[]
-  @Input() filterBy: string
+  //@Input() filterBy: string
   @Input() sortBy: string
-  @Input() eventId: number
+  @Input() evnmtId: number
   visibleEvnmtdtls : IEvnmtdtl[] = []
 
+  constructor(private auth: AuthService, private voterService: VoterService,
+    private evnmtdtlService: EvnmtdtlService) {  }
 
-  constructor(private auth: AuthService, private voterService: VoterService) {
-
-  }
+  // Cett efonction fait une copie du tableau des sessions dans le tableau visibleSessions
+  // Le filtre ne s'applique pas sur 'session' qui reste inchangé tout le long.
+  // C'est la nouvelle façon de filtre dans Angular 2 (contrairement à Angular 1 qui filtre avec les pipe)
+  // Cette façon de faire est beaucoup plus performant.
+  //filterSessions(filter) {
+  //  if (filter === 'all') {
+  //    this.visibleEvnmtdtls = this.evnmtdtls.slice(0)
+  //  } else {
+  //    this.visibleEvnmtdtls = this.evnmtdtls.filter(session => {
+  //      return session.level.toLocaleLowerCase() === filter
+  //    }
+  //    )
+  //  }
+  //}
 
   ngOnChanges() {
     if (this.evnmtdtls) {
@@ -49,21 +63,6 @@ export class ReuniondtllListComponent implements OnChanges {
   //   return this.voterService.userHasVoted(session, this.auth.currentUser.name)
   // }
 
-
-  // Cett efonction fait une copie du tableau des sessions dans le tableau visibleSessions
-  // Le filtre ne s'applique pas sur 'session' qui reste inchangé tout le long.
-  // C'est la nouvelle façon de filtre dans Angular 2 (contrairement à Angular 1 qui filtre avec les pipe)
-  // Cette façon de faire est beaucoup plus performant.
-  // filterSessions(filter) {
-  //   if (filter === 'all') {
-  //     this.visibleEvnmtdtls = this.evnmtdtls.slice(0)
-  //   } else {
-  //     this.visibleEvnmtdtls = this.evnmtdtls.filter(session => {
-  //       return session.level.toLocaleLowerCase() === filter
-  //     }
-  //     )
-  //   }
-  // }
 }
 
 function sortByTitleAsc(s1: IEvnmtdtl, s2: IEvnmtdtl) {

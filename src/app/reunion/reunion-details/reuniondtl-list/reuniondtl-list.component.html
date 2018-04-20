@@ -1,11 +1,11 @@
 
-<div class="row" *ngFor="let session of sessions">
+<div class="row" *ngFor="let evnmtdtl of evnmtdtls">
   <div class="col-md-10">
-      <collapsible-well [title]="session.name">
-          <h6>{{evnmtdtls.presenter}}</h6>
-          <span>Duration: {{evnmtdtls.duration}}</span><br />
-          <span>Level: {{evnmtdtls.level}}</span>
-          <p>{{evnmtdtls.abstract}}</p>
-      </collapsible-well>
+    <collapsible-well [title]="evnmtdtl.title">
+      <h6>{{evnmtdtl.resp}}</h6>
+      <span>Durée: {{evnmtdtl.duree}}</span><br />
+      <p>{{evnmtdtl.resume}}</p>
+      <p>{{evnmtdtl.contenu}}</p>
+    </collapsible-well>
   </div>
 </div>

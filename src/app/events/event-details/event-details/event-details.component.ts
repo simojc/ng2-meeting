@@ -20,7 +20,6 @@ import { IEvent, ISession, IUser } from '../../../Models/index'
 export class EventDetailsComponent implements OnInit {
 
   event: IEvent
-  event1: IEvent
   addMode: boolean
   filterBy: string = 'all'
   sortBy: string = 'votes'

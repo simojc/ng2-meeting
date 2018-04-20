@@ -1,16 +1,18 @@
 
-import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import { Component, Input } from '@angular/core'
+import { Router } from '@angular/router'
 
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
-import { ISession } from '../../../Models/index'
+import { IEvnmtdtl} from '../../../Models/index'
 
 import { restrictedWords } from '../../../_directives/index';
+import { AutresService, AlertService, EvnmtdtlService } from '../../../_services/index';
 
 
 @Component({
-  selector: 'create-evnmtdtl',
-  templateUrl: './create-evnmtdtl.component.html',
+  selector: 'create-reuniondtl',
+  templateUrl: './create-reuniondtl.component.html',
   styles: [`
   em {float:right; color: #E05C65; padding-left: 10px;}
       .error input, .error select, .error textarea {background-color: #E05C65;}
@@ -20,51 +22,36 @@ import { restrictedWords } from '../../../_directives/index';
       .error : ms-input-placeholder {color: #999;} 			
 `]
 })
-export class CreateSessionComponent implements OnInit {
-  @Output() saveNewSession = new EventEmitter()
-  @Output() cancelAddSession = new EventEmitter()
+export class CreateSessionComponent  {
+  isDirty: boolean = true
 
+  @Input() eventdtlId: number
 
-  newSessionForm: FormGroup
-  name: FormControl
-  presenter: FormControl
-  duration: FormControl
-  level: FormControl
-  abstract: FormControl
+  //locations: ILocation[];
+  constructor(private router: Router, private evnmtdtlService: EvnmtdtlService,
+    private autresService: AutresService,
+    private alertService: AlertService) {
+  //  this.loadLocations();
+  }
 
-  ngOnInit() {
-    this.name = new FormControl('', Validators.required)
-    this.presenter = new FormControl('', Validators.required)
-    this.duration = new FormControl('', Validators.required)
-    this.level = new FormControl('', Validators.required)
-    this.abstract = new FormControl('', [Validators.required,
-    Validators.maxLength(4000), restrictedWords(['foo', 'bar'])])
-
-    this.newSessionForm = new FormGroup({
-      name: this.name,
-      presenter: this.presenter,
-      duration: this.duration,
-      level: this.level,
-      abstract: this.abstract
+  saveEvnmtdtl(formValues) {
+    this.evnmtdtlService.saveEvnmtdtl(formValues).subscribe(evnmt => {
+      console.log(formValues)
+      this.isDirty = false
+      this.router.navigate(['/evnmtdtls'])
     })
-  }
-
-  saveSession(formValues) {
-    let session: ISession = {
-      id: undefined,
-      name: formValues.name,
-      presenter: formValues.presenter,
-      duration: +formValues.duration,
-      level: formValues.level,
-      abstract: formValues.abstract,
-      voters: []
-    }
-
-    this.saveNewSession.emit(session)
 
   }
+
+  //private loadLocations() {
+  //  this.autresService.getLocations().subscribe(
+  //    locations => { this.locations = locations; },
+  //    error => { this.alertService.error(error); }
+  //  );
+  //}
 
   cancel() {
-    this.cancelAddSession.emit()
+    this.router.navigate(['/evnmtdtls'])
+
   }
 }

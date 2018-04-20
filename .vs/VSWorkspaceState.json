@@ -3,15 +3,16 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\data-table-demo\\demo1",
-    "\\src\\app\\engmt\\engmt-thumbnail",
     "\\src\\app\\events",
-    "\\src\\app\\events\\shared",
-    "\\src\\app\\nav",
-    "\\src\\app\\pers",
+    "\\src\\app\\reunion",
+    "\\src\\app\\reunion\\create-reunion",
+    "\\src\\app\\reunion\\reunion-details",
+    "\\src\\app\\reunion\\reunion-details\\create-reuniondtl",
+    "\\src\\app\\reunion\\reunion-details\\reunion-details",
+    "\\src\\app\\rpn",
     "\\src\\app\\user",
-    "\\src\\app\\_services"
+    "\\src\\app\\user\\home"
   ],
-  "SelectedNode": "\\src\\app\\rpn\\rpn.component.html",
+  "SelectedNode": "\\src\\app\\reunion\\reunion-details\\reunion-details\\reunion-details.component.html",
   "PreviewInSolutionExplorer": false
 }

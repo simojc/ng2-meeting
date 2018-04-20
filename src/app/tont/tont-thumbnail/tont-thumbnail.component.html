@@ -1,37 +1,48 @@
-<div class="well hoverwel thumbnail">
+ <div class="well hoverwel thumbnail">
 
-  <h2> {{ tontpers?.nom | uppercase}}: {{ tontpers?.descr }}</h2>
-  <div> Début: {{ tontpers.dtdeb }} </div>
-  <div> Fin: {{ tontpers.dtfin }} </div>
-  <div> Montant: {{ tontpers.mtpart  }} </div>
-  <div> Alias: {{ tontpers.alias  }} </div>
-  <div> Bouffe en position: {{ tontpers.position  }} au mois: {{ tontpers.moisgain  }}   </div>
-  <div> Mois en cours: {{ engmt.cot_dern }} </div>
-  <div> Mois en cours: {{ engmt.cot_dern }} </div>
-  <div> statut: {{ tontpers.statut }} </div>
-  <div> Date changement: {{ tontpers?.dt_statut  | date:'shortDate'}} </div>
+    <h2>  {{ tontpers?.descr }}</h2>
+   
+              <div> Début: {{ tontpers.dtdeb | date:'shortDate' }}  &nbsp; &nbsp; &nbsp; &nbsp;
+                  &nbsp; Fin: {{ tontpers.dtfin  | date:'shortDate'}}   </div>
+              
+                  <div> Nom: {{ tontpers.alias  }}  </div>
+                          
+                  <div> Ma position de gain: {{ tontpers.position  }}   
+                    </div>
+                  <div>
+                      Mon mois de gain: {{ tontpers.moisgain  }} 
+                  </div>
+                      <div> Dernière cotisation: {{ tontpers.cot_dern }} </div>
+                      <div> Mon statut: {{ tontpers.statut }} </div>     
+                     <div> Date statut: {{ tontpers?.dt_statut  | date:'shortDate'}} </div>
+             
+  </div> 
 
+
+
+<!-- <div class="well hoverwel thumbnail">
+  <h2>  {{ tontpers?.descr }}</h2>
+  <table>    
+    <tr> 
+    <td>    
+        <h4> 
+            <div> Début: {{ tontpers.dtdeb | date:'shortDate' }}  </div>
+                <div> Alias: {{ tontpers.alias  }} </div>
+                <div> Ma position de gain: {{ tontpers.position  }} </div>                
+          <div> statut: {{ tontpers.statut }} </div>
+        </h4>
+  </td>
+  <td>
+      <h4> 
+        <div> Fin: {{ tontpers.dtfin  | date:'shortDate'}} </div>
+  
+        <div> Dernière cotisation: {{ tontpers.cot_dern }} </div>
+        <div>    Mon mois de gain: {{ tontpers.moisgain  }}   </div>
+         <div> Date changement: {{ tontpers?.dt_statut  | date:'shortDate'}} </div>
+        </h4>
+  </td>
+    </tr> 
+</table>
 </div>
-
-    <!--
-       <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
-        Time: {{event.time}}
-        <span *ngSwitchCase="'8:00 am'"> (Commence tôt) </span>
-        <span *ngSwitchCase="'10:00 am'"> (Commence tard) </span>
-        <span *ngSwitchDefault> (Temps normal) </span>
-      </div>
-      <div> Price: {{ event?.price | currency:'USD':"symbol"}}   <span>&nbsp; </span>  </div>
-      <div *ngIf="event?.location">
-        <span> Adresse: {{event.location.address}}  </span>
-        <span class="pad-left"> {{event.location.city}}, {{event.location.stateProvince}}, {{event.location.country}}</span>
-      </div>
-
-      <div [hidden]="!event?.onlineUrl">
-        Online Url: {{ event.onlineUrl}}
-      </div>
-
-      <div style="display: inline-block; text-align: right; width: 100%">
-        <a routerLink="/events/{{event.id}}">  <h4> Voir Detail </h4> </a>
-      </div>
 
 -->

@@ -57,6 +57,6 @@
       <a (click)="addSession()"> Ajouter une Session </a>
     </div>
   </div>
-  <session-list [eventId]="event?.id" [sortBy]="sortBy" [filterBy]="filterBy" *ngIf="!addMode" [sessions]="event?.sessions"> </session-list>
-  <create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()"></create-session>
+  <reuniondtl-list [eventId]="event?.id" [sortBy]="sortBy" [filterBy]="filterBy" *ngIf="!addMode" [sessions]="event?.sessions"> </reuniondtl-list>
+  <create-reuniondtl *ngIf="addMode" (saveNewSession)="saveNewSession($event)" (cancelAddSession)="cancelAddSession()"></create-reuniondtl>
 </div>

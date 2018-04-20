@@ -14,7 +14,7 @@ import { AlertService, EngmtService, AutresService } from '../_services/index';
 				<h1> Les engagements </h1>
 				<hr>
 					<div class="row">
-						<div  *ngFor="let eg of engmtpers"  class="col-md-10">
+						<div  *ngFor="let eg of engmtpers"  class="col-md-6">
 							<engmt-thumbnail  [engmt]="eg"> </engmt-thumbnail>
 						</div>
 					</div>

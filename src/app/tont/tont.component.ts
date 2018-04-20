@@ -9,7 +9,7 @@ import { AlertService, AutresService, TontService } from '../_services/index';
 				<h1> Les tontines </h1>
 				<hr>
 					<div class="row">
-						<div  *ngFor="let tn of tontpers"  class="col-md-10">
+						<div  *ngFor="let tn of tontpers"  class="col-md-6">
 							<tont-thumbnail  [tontpers]="tn"> </tont-thumbnail>
 						</div>
 					</div>
@@ -36,14 +36,14 @@ export class TontComponent implements OnInit {
     this.autresService.getPersCurrentPers().subscribe(pers => {
       this.currentPers = pers;
       // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
-      this.loadEngmt();
+      this.loadTontpers();
     })
   }
 
-  private loadEngmt() {
+  private loadTontpers() {
     this.tontService.getAllTontPers(this.currentPers.id).subscribe(
       tontpers => {
-        console.log(" tontpers =   "+ JSON.stringify(tontpers))
+        //console.log(" tontpers =   "+ JSON.stringify(tontpers))
         this.tontpers = tontpers;
         this.itemCount = tontpers.length
       },

@@ -1,6 +1,7 @@
 
 <body>
   <div style="padding: 25px">
+    <a routerLink="membres/new">  <h4> Créer </h4> </a>
     <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
       <data-table id="pers-grid"
                   headerTitle="Les membres"
@@ -17,7 +18,7 @@
         </data-table-column>
         <data-table-column [property]="'sexe'"
                            [header]="'Mme / M.'"
-                           [sortable]="true"  
+                           [sortable]="true"
                            width="100px">
 
         </data-table-column>
@@ -39,16 +40,17 @@
         </data-table-column>
 
 
-        <!--<data-table-column [property]="'mesage'"
-                           [header]="'mesage'"                       
+        <data-table-column header="Actions">
+          <ng-template #dataTableHeader let-item="item">
+            <i>Actions</i>
+          </ng-template>
+          <ng-template #dataTableCell let-item="item">
+            <button (click)="EditPers(item.id)" class="btn btn-sm btn-default">Modif btn</button>
+            <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a>
+          </ng-template>
         </data-table-column>
 
-        <data-table-column [property]="'dtmajdpt'"
-                           [header]="'dtmajdpt'">
-          <ng-template #dataTableCell let-item="item">
-            <span>{{item.dtmajdpt | date:'yyyy-MM-dd'}}</span>
-          </ng-template>
-        </data-table-column>-->
+        <!--[routerLink]="['/events', id]" >-->
 
       </data-table>
     </div>

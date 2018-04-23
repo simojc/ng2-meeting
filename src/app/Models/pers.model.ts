@@ -13,3 +13,11 @@ export interface IPers {
   dom_activ: string			
   titre_adh: string
 }
+
+export const TypePers = [
+  { "code": 'M', "libelle": 'Membre' },
+  { "code": 'E', "libelle": 'Enfant du membre' },
+  { "code": 'P', "libelle": 'Parent du membre' },
+  { "code": 'A', "libelle": 'Ammi du membre' },
+  { "code": 'C', "libelle": 'Connaissance du membre' },
+];

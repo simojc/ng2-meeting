@@ -16,8 +16,6 @@ import { AgGridModule } from 'ag-grid-angular/main';
 
 import { DataTableModule } from './data-table';
 
-
-
 import { AppComponent } from './app.component';
 import { NavBarComponent  } from './nav/navbar.component';
 import { appRoutes } from './app.routes';
@@ -76,7 +74,7 @@ import {
 import { GhomalaComponent } from './ghomala/index';
 import { RpnpersComponent } from './rpn/index';
 import { TontComponent, TontThumbnailComponent } from './tont/index';
-import { PersComponent } from './pers/index';
+import { PersComponent, CreatePersComponent, EditPersComponent } from './pers/index';
 import { EngmtComponent, EngmtThumbnailComponent } from './engmt/index';
 
 import { MyGridApplicationComponent } from './my-grid/my-grid.component'
@@ -126,7 +124,7 @@ import { UserService } from './user/user.service'
     RpnpersComponent,
     EngmtComponent,
     TontComponent,
-    PersComponent,
+    PersComponent, CreatePersComponent, EditPersComponent,
     TontThumbnailComponent,
     EngmtThumbnailComponent
   ],

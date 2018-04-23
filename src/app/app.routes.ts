@@ -31,7 +31,11 @@ import { GhomalaComponent } from './ghomala/index';
 
 import { RpnpersComponent } from './rpn/index';
 import { TontComponent } from './tont/index';
-import { PersComponent } from './pers/index';
+import {
+  PersComponent,
+  CreatePersComponent,
+  EditPersComponent
+} from './pers/index';
 import { EngmtComponent } from './engmt/index';
 
 
@@ -63,6 +67,8 @@ export const appRoutes = [
 
   { path: 'rpn', component: RpnpersComponent },
   { path: 'membres', component: PersComponent },
+  { path: 'membres/new', component: CreatePersComponent },
+  { path: 'membres/edit/:id', component: EditPersComponent },
   { path: 'tontpers', component: TontComponent },
   { path: 'engmtpers', component: EngmtComponent },
 

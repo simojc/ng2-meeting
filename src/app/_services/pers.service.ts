@@ -53,16 +53,48 @@ export class PersService {
     getById(_id: number) {
       return this.http.get<IPers>(this.endpointUrl + 'pers/' + _id);
     }
- 
-    create(user: IUser) {
-        return this.http.post(this.endpointUrl + 'signup', user);
+
+    addPersonne(personne: IPers) {
+      const uri = this.endpointUrl + 'pers/add';
+      this.http.post(uri, personne).subscribe(
+        res => console.log('Creation reussi'));
     }
- 
-    update(user: IUser) {
-        return this.http.put(this.endpointUrl + '/users/' + user.id, user);
+
+    addPersonne2(personne): Observable<IPers> {
+      let headers = new Headers({ 'Content-Type': 'application/json' })
+      let options = new RequestOptions({ headers: headers })
+      return this.http2.post(this.endpointUrl + "pers", JSON.stringify(personne),
+        options).map((response: Response) => {
+          console.log(" Creation reussi  ")
+          return response.json()
+        }).catch(this.handleError)
     }
- 
-    delete(_id: string) {
-        return this.http.delete(this.endpointUrl + '/users/' + _id);
+
+    editPersonne(id) {
+      const uri = 'this.endpointUrl + "pers/"' + id;
+      return this
+        .http
+        .get(uri)
+        .map(res => {
+          return res;
+        });
+    }
+
+    updatePersonne(personne: IPers, id: number) {
+      const uri = 'this.endpointUrl + "pers/"' + id;
+      this
+        .http
+        .post(uri, personne)
+        .subscribe(res => console.log('Done'));
+    }
+
+    deletePersonne(id) {
+      const uri = 'this.endpointUrl + "pers/delete/"' + id;
+      return this
+        .http
+        .get(uri)
+        .map(res => {
+          return res;
+        });
     }
 }

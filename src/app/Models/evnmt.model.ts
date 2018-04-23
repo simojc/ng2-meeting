@@ -20,13 +20,14 @@ export interface IEvnmt {
   evnmtdtls: IEvnmtdtl[]
 }
 export interface IEvnmtdtl {
-  id: number
-  evnmt_id: number
-  title: string
-  resp: string
-  resume: string
-  contenu: string
-  duree: number
+        id: number
+        evnmt_id: number
+        ordre: number
+        title: string
+        resp: string
+        resume: string
+        contenu: string
+        duree: number
 }
 
 export interface IGroupe {

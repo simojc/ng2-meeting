@@ -15,16 +15,18 @@ import { IEvnmtdtl, IEvnmt, IUser, ILocation } from '../../Models/index'
 @Component({
 
   template: `
-			<div>
-				<h1> Les rencontres mensuelles </h1>
-				<a [routerLink]="['/reunions/new']" >  Enregistrer une rencontre </a>
-				<hr>
-					<div class="row">
-						<div  *ngFor="let evt of evnmts"  class="col-md-10">
-							<reunions-thumbnail  [evnmt]="evt"> </reunions-thumbnail>
-						</div>
+		<div>						
+			<h1> Les rencontres mensuelles </h1>				
+			<div align="center" >
+				<a [routerLink]="['/reunions/new']" >  Enregistrer une réunion </a>
+			</div>			
+			<hr>
+				<div class="row">
+					<div  *ngFor="let evt of evnmts"  class="col-md-10">
+						<reunions-thumbnail  [evnmt]="evt"> </reunions-thumbnail>
 					</div>
-			</div>
+				</div>
+		</div>
 		 `
 })
 

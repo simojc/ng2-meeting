@@ -26,21 +26,16 @@ export class EventDetailsComponent implements OnInit {
   event_id: number
   public currentUser: IUser
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private auth: AuthService,) {
-
-  }
+  constructor(private eventService: EventService, private route: ActivatedRoute, 
+    private auth: AuthService,) { }
 
   ngOnInit() {
     this.route.data.forEach((data) => {
       this.event = this.route.snapshot.data['event']
-      // this.event = event
       this.addMode = false
-
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     })
   }
-
-  
 
   addSession() {
     this.addMode = true

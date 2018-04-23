@@ -11,37 +11,49 @@
                   [rowTooltip]="rowTooltip">
 
         <data-table-column [property]="'nom_pers'"
-                           [header]="'nom_pers'"
+                           [header]="'Nom et prénom'"
                            [sortable]="true"
                            [resizable]="true">
         </data-table-column>
-        <data-table-column [property]="'id'"
+        <!-- <data-table-column [property]="'id'"
                            [header]="'id'"
                            [sortable]="true"
                            [resizable]="true">
-        </data-table-column>
+        </data-table-column> -->
 
         <data-table-column [property]="'mtrle'"
-                           [header]="'mtrle'"
+                           [header]="'Matricule RPN'"
                            [sortable]="true"
                            [resizable]="true">
         </data-table-column>
         <data-table-column [property]="'dtadh'"
-                           [header]="'dtadh'">
+                           [header]="'Date adhésion'">
           <ng-template #dataTableCell let-item="item">
             <span>{{item.dtadh | date:'yyyy-MM-dd'}}</span>
           </ng-template>
         </data-table-column>
         <data-table-column [property]="'depot'"
                            [header]="'Dépot ($)'"
-                           width="150px">
+                           width="100px">
         </data-table-column>
 
         <data-table-column [property]="'dtmajdpt'"
-                           [header]="'dtmajdpt'">
+                           [header]="'Mise à jour'">
           <ng-template #dataTableCell let-item="item">
             <span>{{item.dtmajdpt | date:'yyyy-MM-dd'}}</span>
           </ng-template>
+        </data-table-column>
+
+        <data-table-column [property]="'message'"
+                           [header]="'Message'"  
+                           width="220px"
+                           color= "#ff0000">  
+          <ng-template #dataTableCell let-item="item">
+            <span style="color: rgb(232, 0, 0)"> {{item.message}}</span>
+        </ng-template>
+        <ng-template #dataTableHeader let-item="item">
+                            <span style="color: rgb(232, 0, 0)">Message</span>
+        </ng-template>
         </data-table-column>
 
       </data-table>

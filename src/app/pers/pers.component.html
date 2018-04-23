@@ -11,7 +11,7 @@
                   (rowDoubleClick)="rowDoubleClick($event)"
                   [rowTooltip]="rowTooltip">
         <data-table-column [property]="'nom_pers'"
-                           [header]="'nom_pers'"
+                           [header]="'Nom et prénom'"
                            [sortable]="true"
                            [resizable]="true">
         </data-table-column>
@@ -22,26 +22,25 @@
 
         </data-table-column>
         <data-table-column [property]="'email'"
-                           [header]="'email'">
+                           [header]="'Courriel'">
         </data-table-column>
 
         <data-table-column [property]="'telcel'"
-                           [header]="'telcel'">
+                           [header]="'Tél. cellulaire'">
         </data-table-column>
 
         <data-table-column [property]="'telres'"
-                           [header]="'telres'">
+                           [header]="'Tél. résidentiel'">
         </data-table-column>
 
         <data-table-column [property]="'location'"
-                           [header]="'location'"
+                           [header]="'Adresse'"
                            width="250px">
         </data-table-column>
 
 
-        <!--<data-table-column [property]="'depot'"
-                           [header]="'Dépot ($)'"
-                           width="150px">
+        <!--<data-table-column [property]="'mesage'"
+                           [header]="'mesage'"                       
         </data-table-column>
 
         <data-table-column [property]="'dtmajdpt'"

@@ -33,7 +33,7 @@ export class CreateReunionComponent {
     this.evnmtService.saveEvnmt(formValues).subscribe(evnmt => {
       console.log(formValues)
       this.isDirty = false
-      this.router.navigate(['/evnmts'])
+      this.router.navigate(['/reunions'])
     })
 
   }
@@ -46,7 +46,7 @@ export class CreateReunionComponent {
   }
 
   cancel() {
-    this.router.navigate(['/evnmts'])
+    this.router.navigate(['/reunions'])
 
   }
 }

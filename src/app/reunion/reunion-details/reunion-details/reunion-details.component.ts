@@ -7,7 +7,6 @@ import { IEvnmt, IEvnmtdtl } from '../../../Models/index'
 import { AlertService, EvnmtdtlService } from '../../../_services/index';
 
 @Component({
-  // Aucun sélecteur, car on va l'utiliser comme un enfant d'un aute component, donc pas besoin de sélecteur
   templateUrl: './reunion-details.component.html',
   styles: [`
 		.container {padding-left:20px; padding-right:20px;}
@@ -21,7 +20,7 @@ export class EvnmtDetailsComponent implements OnInit {
   evnmt: IEvnmt
   addMode: boolean
  // filterBy: string = 'all'
-  sortBy: string = 'title'
+  sortBy: string = 'ordre'
   event_id: number
   itemCount: number
 
@@ -36,12 +35,30 @@ export class EvnmtDetailsComponent implements OnInit {
     this.route.data.forEach((data) => {
       this.evnmt = this.route.snapshot.data['evnmt'];
       this.addMode = false;
+       this.getLocation();
       this.loadEvnmtdtls();
     })
   }
 
+  private getLocation() {
+    if (this.evnmt.location_id) {
+      this.evnmtService.getLocation(this.evnmt.location_id).subscribe(
+          loc => { this.evnmt.location  = loc;  },
+          error => { this.alertService.error(error);}
+      );
+    }
+  }
+
   addEvnmtdtl() {
     this.addMode = true
+  }
+
+  saveNewReunionItem() {
+    this.addMode = false
+   }
+
+   cancelAddReunionItem() {
+    this.addMode = false
   }
 
   private loadEvnmtdtls() {
@@ -56,15 +73,4 @@ export class EvnmtDetailsComponent implements OnInit {
     );
   }
 
-   //saveNewSession(evnmtdtl: IEvnmtdtl) {
-   //  const nextId = Math.max.apply(null, this.event.evnmtdtls.map(s => s.id))
-   //  evnmtdtl.id = nextId
-   //  this.event.evnmtdtls.push(evnmtdtl)
-   //  this.evnmtService.saveEvnmt(this.event).subscribe()
-   //  this.addMode = false
-   //}
-
-  canceladdEvnmtdtl() {
-    this.addMode = false
-  }
 }

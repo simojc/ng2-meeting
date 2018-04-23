@@ -1,11 +1,40 @@
 
 <div class="row" *ngFor="let evnmtdtl of evnmtdtls">
   <div class="col-md-10">
-    <collapsible-well [title]="evnmtdtl.title">
-      <h6>{{evnmtdtl.resp}}</h6>
-      <span>Durée: {{evnmtdtl.duree}}</span><br />
-      <p>{{evnmtdtl.resume}}</p>
-      <p>{{evnmtdtl.contenu}}</p>
+    <collapsible-well [title]= "evnmtdtl.entete">  
+      <!-- <p>  -->
+          <div class="row">
+              <div class="col-md-4">
+                  <span>  Responsable: {{evnmtdtl.resp}} </span> &nbsp; &nbsp; &nbsp; &nbsp;
+                   <span>  Durée: {{evnmtdtl.duree}} </span> 
+              </div>
+            </div>
+          <!-- </p> -->
+            <span> <u> Resumé: </u> </span>
+              <p> {{evnmtdtl.resume}}</p>
+              <span> <u> Détail: </u> </span> 
+            <p> {{evnmtdtl.contenu}}</p>
     </collapsible-well>
   </div>
 </div>
+
+<!--
+<div class="row" *ngFor="let evnmtdtl of evnmtdtls">
+    <div class="col-md-10">
+      <collapsible-well [title]= "evnmtdtl.entete">  
+        <div class="row">
+        <div class="col-md-3">
+             <h6> <u> Responsable: </u> {{evnmtdtl.resp}}</h6>
+        </div>
+        <div class="col-md-3">
+            <span> <u> Durée: </u> {{evnmtdtl.duree}}</span><br />
+        </div>
+      </div>
+        <h5> <u> Resumé: </u> </h5>
+        <p> {{evnmtdtl.resume}}</p>
+        <h5> <u> Détail: </u></h5>
+        <p> {{evnmtdtl.contenu}}</p>
+      </collapsible-well>
+    </div>
+  </div>
+-->

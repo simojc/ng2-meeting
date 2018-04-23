@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output , EventEmitter} from '@angular/core'
 import { Router } from '@angular/router'
 
 import { FormControl, FormGroup, Validators } from '@angular/forms'
@@ -22,8 +22,10 @@ import { AutresService, AlertService, EvnmtdtlService } from '../../../_services
       .error : ms-input-placeholder {color: #999;} 			
 `]
 })
-export class CreateSessionComponent  {
+export class CreateReuniondtlComponent  {
   isDirty: boolean = true
+  @Output() saveNewReunionItem = new EventEmitter()
+  @Output() cancelAddReunionItem = new EventEmitter()
 
   @Input() eventdtlId: number
 
@@ -35,23 +37,16 @@ export class CreateSessionComponent  {
   }
 
   saveEvnmtdtl(formValues) {
+    //console.log("formValues1 = "+  JSON.stringify(formValues)) ;
     this.evnmtdtlService.saveEvnmtdtl(formValues).subscribe(evnmt => {
       console.log(formValues)
       this.isDirty = false
-      this.router.navigate(['/evnmtdtls'])
+      //this.router.navigate(['/evnmtdtls'])
     })
-
+    this.saveNewReunionItem.emit()
   }
 
-  //private loadLocations() {
-  //  this.autresService.getLocations().subscribe(
-  //    locations => { this.locations = locations; },
-  //    error => { this.alertService.error(error); }
-  //  );
-  //}
-
   cancel() {
-    this.router.navigate(['/evnmtdtls'])
-
+    this.cancelAddReunionItem.emit()
   }
 }

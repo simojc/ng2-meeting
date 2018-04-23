@@ -47,9 +47,16 @@ export class RpnpersComponent implements OnInit {
            this.loadRpnPers();
           })
     }
-       
+    
+    getMessageStyle(): any {			
+			return {color: '#ff0000', 'font-weight': 'bold'}	
+		// On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
+	}
+
     private loadRpnPers() {
         // console.log("rpn.componet this.currentPers = " + this.currentPers.prenom)  
+        if (!!this.currentPers) {
+
             this.rpnpersService.getAll(this.currentPers.id).subscribe(
                 rpnpers => { 
                 // console.log(" JSON.stringify(rpnpers) =   "+ JSON.stringify(rpnpers))
@@ -58,7 +65,7 @@ export class RpnpersComponent implements OnInit {
                 },
              error => { this.alertService.error(error);}
         );
-
+    }
         }
  
     deleteUser(_id: string) {

@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AlertService, PersService } from '../../_services/index';
+import { AlertService, PersService, AutresService } from '../../_services/index';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IPers, TypePers } from '../../Models/index';
+import { IPers, TypePers, ILocation, IUser} from '../../Models/index';
 
 @Component({
   selector: 'pers-create',
@@ -14,21 +14,26 @@ export class CreatePersComponent implements OnInit {
   title = 'Ajouter personne';
   @Output() saveNewPersonne = new EventEmitter()
   @Output() cancelAddPersonne = new EventEmitter()
-
+  locations: ILocation[];
   typePers = TypePers
+  currentUser: IUser;
 
   angForm: FormGroup;
-  constructor(private persService: PersService, private fb: FormBuilder, private router: Router) {
+  constructor(private persService: PersService, private fb: FormBuilder, private router: Router, private autresService: AutresService,
+    private alertService: AlertService) {
     this.createForm();
   }
 
   ngOnInit() {
+    this.loadLocations();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   createForm() {
     this.angForm = this.fb.group({
       id: '',
-      user_id: ['', Validators.required],
+     // user_id: ['', Validators.required], Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
+      location_id: ['', Validators.required],
       type: ['', Validators.required],
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -45,7 +50,8 @@ export class CreatePersComponent implements OnInit {
   addPersonne(formValues) {
     let personne: IPers = {
       id: undefined,
-      user_id: formValues.user_id,
+      //user_id: formValues.user_id,  Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
+      location_id: formValues.location_id,
       type: formValues.type,
       nom: formValues.nom,
       prenom: formValues.prenom,
@@ -55,7 +61,8 @@ export class CreatePersComponent implements OnInit {
       telres: formValues.telres,
       emploi: formValues.emploi,
       dom_activ: formValues.dom_activ,
-      titre_adh: formValues.titre_adh
+      titre_adh: formValues.titre_adh,
+      groupe_id: this.currentUser.groupe_id,
     }
     this.persService.addPersonne(personne);
     this.saveNewPersonne.emit();
@@ -63,6 +70,13 @@ export class CreatePersComponent implements OnInit {
     this.router.navigate(['membres']);
   }
 
+
+  private loadLocations() {
+    this.autresService.getLocations().subscribe(
+      locations => { this.locations = locations; },
+      error => { this.alertService.error(error); }
+    );
+  }
 
   cancel() {
     this.cancelAddPersonne.emit()

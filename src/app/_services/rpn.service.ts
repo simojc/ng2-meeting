@@ -21,36 +21,37 @@ export class RpnpersService {
         return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers/' + resp_id);
     }
 
-    query(resp_id: number) {
-      return this.http.get(this.endpointUrl + 'rpnpers/' + resp_id).toPromise()
-          .then((resp: Response) => ({
-              items: resp.json(),
-              count: Number(resp.headers.get('X-Total-Count'))
-          }));
+    addRpnpers(rpnpers) {
+      const uri = this.endpointUrl + 'rpnpers';
+      this.http.post(uri, rpnpers).subscribe(
+        res => console.log('Creation reussi'));
     }
 
-    //getUsers(): Observable<IUser[]> {
-    //    let headers = new Headers();
-    //    headers.append('x-access-token', this.auth.getToken());
-    //   // console.log("this.auth.getToken() = "+this.auth.getToken())
-    //    return this.http2.get(this.endpointUrl + 'users', {headers: headers})
-    //        .map((response: Response) => <IUser[]>response.json())
-    //       // .do(data => console.log('All: ' + JSON.stringify(data)))
-    //        .catch(this.handleError);
-    //}
+    editRpnpers(id) {
+      const uri = this.endpointUrl + "rpnpers/" + id;
+      //console.log(uri);
+      return this
+        .http
+        .get(uri)
+        .map(res => {
+          return res;
+        });
+    }
+
+    updateRpnpers(rpnpers, id) {
+      console.log('rpnpers = ' + JSON.stringify(rpnpers))
+      const uri = this.endpointUrl + "rpnpers/" + id;
+      this
+        .http
+        .put(uri, rpnpers)
+        .subscribe(res => console.log('Done'));
+    }
 
     private handleError(error: Response) {
         return Observable.throw(error)
       }
 
-    getById(_id: number) {
-      return this.http.get<IRpnpers>(this.endpointUrl + 'rpnpers/' + _id);
-    }
 
-    getAllRpnpersPers(pers_id: string) {
-      return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers/' + pers_id);
-    }
- 
     delete(_id: string) {
         return this.http.delete(this.endpointUrl + 'rpnpers/' + _id);
     }

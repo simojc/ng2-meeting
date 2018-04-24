@@ -72,7 +72,12 @@ import {
 } from './common/index'
 
 import { GhomalaComponent } from './ghomala/index';
-import { RpnpersComponent } from './rpn/index';
+//import { RpnpersComponent } from './rpn/index';
+import {
+  RpnpersComponent,
+  CreateRpnComponent,
+  EditRpnComponent
+} from './rpn/index';
 import { TontComponent, TontThumbnailComponent } from './tont/index';
 import { PersComponent, CreatePersComponent, EditPersComponent } from './pers/index';
 import { EngmtComponent, EngmtThumbnailComponent } from './engmt/index';
@@ -122,6 +127,8 @@ import { UserService } from './user/user.service'
     DatatableDemoComponent,
     GhomalaComponent,
     RpnpersComponent,
+    CreateRpnComponent,
+    EditRpnComponent,
     EngmtComponent,
     TontComponent,
     PersComponent, CreatePersComponent, EditPersComponent,

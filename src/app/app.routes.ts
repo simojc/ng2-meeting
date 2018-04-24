@@ -29,7 +29,12 @@ import { DatatableDemoComponent } from './data-table-demo/index';
 
 import { GhomalaComponent } from './ghomala/index';
 
-import { RpnpersComponent } from './rpn/index';
+import {
+  RpnpersComponent,
+  CreateRpnComponent,
+  EditRpnComponent
+} from './rpn/index';
+
 import { TontComponent } from './tont/index';
 import {
   PersComponent,
@@ -66,6 +71,8 @@ export const appRoutes = [
   { path: 'ghomala', component: GhomalaComponent },
 
   { path: 'rpn', component: RpnpersComponent },
+  { path: 'rpn/new', component: CreateRpnComponent },
+  { path: 'rpn/edit/:id', component: EditRpnComponent },
   { path: 'membres', component: PersComponent },
   { path: 'membres/new', component: CreatePersComponent },
   { path: 'membres/edit/:id', component: EditPersComponent },

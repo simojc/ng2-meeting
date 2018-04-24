@@ -1,5 +1,8 @@
 <body>
   <div style="padding: 25px">
+    <div style="display: inline-block; text-align: right; width: 100%">
+      <a routerLink="/rpn/new">  Ajouter </a>
+    </div>
     <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
       <data-table id="rpnpers-grid"
                   headerTitle="Adhésion RPN"
@@ -16,10 +19,10 @@
                            [resizable]="true">
         </data-table-column>
         <!-- <data-table-column [property]="'id'"
-                           [header]="'id'"
-                           [sortable]="true"
-                           [resizable]="true">
-        </data-table-column> -->
+                     [header]="'id'"
+                     [sortable]="true"
+                     [resizable]="true">
+  </data-table-column> -->
 
         <data-table-column [property]="'mtrle'"
                            [header]="'Matricule RPN'"
@@ -45,15 +48,25 @@
         </data-table-column>
 
         <data-table-column [property]="'message'"
-                           [header]="'Message'"  
+                           [header]="'Message'"
                            width="220px"
-                           color= "#ff0000">  
+                           color="#ff0000">
           <ng-template #dataTableCell let-item="item">
             <span style="color: rgb(232, 0, 0)"> {{item.message}}</span>
-        </ng-template>
-        <ng-template #dataTableHeader let-item="item">
-                            <span style="color: rgb(232, 0, 0)">Message</span>
-        </ng-template>
+          </ng-template>
+          <ng-template #dataTableHeader let-item="item">
+            <span style="color: rgb(232, 0, 0)">Message</span>
+          </ng-template>
+        </data-table-column>
+
+        <data-table-column header="Actions">
+          <ng-template #dataTableHeader let-item="item">
+            <i>Actions</i>
+          </ng-template>
+          <ng-template #dataTableCell let-item="item">
+            <button (click)="Edit(item.id)" class="btn btn-sm btn-default">Modifier</button>
+            <!-- <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a> -->
+          </ng-template>
         </data-table-column>
 
       </data-table>

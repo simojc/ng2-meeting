@@ -29,8 +29,8 @@ export class PersService {
       }
 	  
 	  getPersByType(): Observable<IPers[]> {
-      console.log(this.endpointUrl + "pers?type='M' ")
-        return this.http.get(this.endpointUrl + "pers?type='M' " )
+        console.log(this.endpointUrl + "pers?type='M'?groupe=" + this.currentUser.groupe_id)
+        return this.http.get(this.endpointUrl + "pers?type='M'?groupe=" + this.currentUser.groupe_id)
         .map((response: Response) =>  {         
            return response
         })  
@@ -55,7 +55,7 @@ export class PersService {
     }
 
     addPersonne(personne: IPers) {
-      const uri = this.endpointUrl + 'pers/add';
+      const uri = this.endpointUrl + 'pers';
       this.http.post(uri, personne).subscribe(
         res => console.log('Creation reussi'));
     }

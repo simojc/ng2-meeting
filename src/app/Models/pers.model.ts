@@ -1,7 +1,7 @@
 
 export interface IPers {
   id: number
-  user_id: number
+  //user_id: number   Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
   type: string
   nom: string
   prenom: string
@@ -13,6 +13,7 @@ export interface IPers {
   dom_activ: string			
   titre_adh: string
   location_id: number
+  groupe_id: number
 }
 
 export const TypePers = [

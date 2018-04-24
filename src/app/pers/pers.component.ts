@@ -34,7 +34,7 @@ export class PersComponent implements OnInit {
   itemCount = 0;
 
   constructor(private alertService: AlertService, private persService: PersService,
-    private router: Router,) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

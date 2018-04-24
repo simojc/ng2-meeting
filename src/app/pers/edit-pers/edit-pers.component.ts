@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertService, PersService } from '../../_services/index';
-import { IPers, TypePers } from '../../Models/index';
+import { AlertService, PersService, AutresService} from '../../_services/index';
+import { IPers, TypePers, ILocation } from '../../Models/index';
 
 @Component({
   selector: 'pers-edit',
@@ -10,12 +10,14 @@ import { IPers, TypePers } from '../../Models/index';
   styleUrls: ['./edit-pers.component.css']
 })
 export class EditPersComponent implements OnInit {
-
+  locations: ILocation[];
   personne: any;
   typePers = TypePers;
   angForm: FormGroup;
   title = 'Modifier personne';
-  constructor(private route: ActivatedRoute, private router: Router, private persService: PersService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router, private persService: PersService, private fb: FormBuilder,
+    private autresService: AutresService,
+    private alertService: AlertService) {
     this.createForm();
    }
 
@@ -38,7 +40,7 @@ export class EditPersComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      user_id: ['', Validators.required],
+     // user_id: ['', Validators.required],  Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
       type: ['', Validators.required],
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -62,12 +64,12 @@ export class EditPersComponent implements OnInit {
   updatePersonne(formValues) {
     this.route.params.subscribe(params => {
     let personne = {
-      id: params['id'],
-     // user_id: this.personne.user_id,
+      //id: params['id'],
+     // user_id: this.personne.user_id,   Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
       type: formValues.type,
       nom: formValues.nom,
       prenom: formValues.prenom,
-      sexe: formValues.sexe,
+      //sexe: formValues.sexe,
       email: formValues.email,
       telcel: formValues.telcel,
       telres: formValues.telres,
@@ -90,6 +92,13 @@ export class EditPersComponent implements OnInit {
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['membres']);
   }
+  private loadLocations() {
+    this.autresService.getLocations().subscribe(
+      locations => { this.locations = locations; },
+      error => { this.alertService.error(error); }
+    );
+  }
+
 
 
 }

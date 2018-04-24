@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { IUser } from '../Models/index'
 import { AlertService, PersService } from '../_services/index';
 
@@ -32,7 +33,8 @@ export class PersComponent implements OnInit {
   items = [];
   itemCount = 0;
 
-  constructor(private alertService: AlertService, private persService: PersService) { }
+  constructor(private alertService: AlertService, private persService: PersService,
+    private router: Router,) { }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -48,6 +50,10 @@ export class PersComponent implements OnInit {
       error => { this.alertService.error(error); }
     );
 
+  }
+
+  EditPers(id) {
+    this.router.navigate(['/membres/edit', id]);
   }
 
 

@@ -2,8 +2,8 @@
   <div class="panel-heading">
     {{ title }}
   </div>
-  <div class="panel-body">
-    <!--<form [formGroup]="angForm" novalidate>-->
+  <!-- <div class=" col-md-6 panel-body"> -->
+      <div class=" col-md-6 ">
 
     <form [formGroup]="angForm" (ngSubmit)="addPersonne(angForm.value)" autocomplete="off">
 
@@ -70,24 +70,28 @@
       <div class="form-group">
         <label class="col-md-4">
           Téléphone mobile
-          <input type="text" class="form-control" formControlName="telcel" #telcel />
         </label>
+          <input type="text" class="form-control" formControlName="telcel" #telcel />
+      
       </div>
 
       <div class="form-group">
         <label class="col-md-4">
           Téléphone résidentiel
-          <input type="text" class="form-control" formControlName="telres" #telres />
         </label>
+          <input type="text" class="form-control" formControlName="telres" #telres />
+     
       </div>
 
       <div class="form-group">
-        <label class="col-md-4">
-          emploi et domaine d'activité
+        <label class="col-md-4"> Emploi     </label>
           <input type="text" class="form-control" formControlName="emploi" #emploi />
-          <input type="text" class="form-control" formControlName="dom_activ" #dom_activ />
-        </label>
       </div>
+
+      <div class="form-group">
+          <label class="col-md-4"> Domaine d'activité     </label>          
+            <input type="text" class="form-control" formControlName="dom_activ" #dom_activ />
+        </div>
 
       <div class="form-group">
         <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Ajouter</button>
@@ -97,3 +101,4 @@
 </div>
 </div>
 
+<hr>

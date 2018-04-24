@@ -71,7 +71,8 @@ export class PersService {
     }
 
     editPersonne(id) {
-      const uri = 'this.endpointUrl + "pers/"' + id;
+      const uri = this.endpointUrl + "pers/" + id;
+      //console.log(uri);
       return this
         .http
         .get(uri)
@@ -80,16 +81,17 @@ export class PersService {
         });
     }
 
-    updatePersonne(personne: IPers, id: number) {
-      const uri = 'this.endpointUrl + "pers/"' + id;
+    updatePersonne(personne, id) {
+      console.log('personne = '+JSON.stringify(personne))
+      const uri = this.endpointUrl + "pers/" + id;
       this
         .http
-        .post(uri, personne)
+        .put(uri, personne)
         .subscribe(res => console.log('Done'));
     }
 
     deletePersonne(id) {
-      const uri = 'this.endpointUrl + "pers/delete/"' + id;
+      const uri = this.endpointUrl + "pers/delete/" + id;
       return this
         .http
         .get(uri)

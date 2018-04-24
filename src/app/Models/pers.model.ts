@@ -12,6 +12,7 @@ export interface IPers {
   emploi: string			
   dom_activ: string			
   titre_adh: string
+  location_id: number
 }
 
 export const TypePers = [

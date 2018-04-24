@@ -2,8 +2,8 @@
   <div class="panel-heading">
     {{ title }}
   </div>
-  <div class="panel-body">
-    <!--<form [formGroup]="angForm" novalidate>-->
+  <!-- <div class="panel-body" *ngIf="personne"> -->
+      <div class="col-md-6" *ngIf="personne"> 
 
     <form [formGroup]="angForm" (ngSubmit)="updatePersonne(angForm.value)" autocomplete="off">
 
@@ -30,7 +30,7 @@
       <div class="form-group">
         <label class="center-block">
           Sélectionner le type personne:
-          <select class="form-control" formControlName="type" #type>
+          <select class="form-control" formControlName="type" #type [(ngModel)]="personne.type">
             <option *ngFor="let type of typePers" [value]="type.code">{{type.libelle}}</option>
           </select>
         </label>
@@ -69,28 +69,28 @@
 
       <div class="form-group">
         <label class="col-md-4">
-          Téléphone mobile
-          <input type="text" class="form-control" formControlName="telcel" #telcel [(ngModel)]="personne.telcel" />
-        </label>
+          Téléphone mobile     </label>
+          <input type="text" class="form-control" formControlName="telcel" #telcel [(ngModel)]="personne.telcel" />       
       </div>
 
       <div class="form-group">
         <label class="col-md-4">
-          Téléphone résidentiel
-          <input type="text" class="form-control" formControlName="telres" #telres [(ngModel)]="personne.telres" />
-        </label>
+          Téléphone résidentiel    </label>
+          <input type="text" class="form-control" formControlName="telres" #telres [(ngModel)]="personne.telres" />      
       </div>
 
       <div class="form-group">
-        <label class="col-md-4">
-          emploi et domaine d'activité
-          <input type="text" class="form-control" formControlName="emploi" #emploi [(ngModel)]="personne.emploi" />
-          <input type="text" class="form-control" formControlName="dom_activ" #dom_activ [(ngModel)]="personne.dom_activ" />
-        </label>
+        <label class="col-md-4"> Emploi          </label>
+          <input type="text" class="form-control" formControlName="emploi" #emploi [(ngModel)]="personne.emploi" />         
       </div>
 
       <div class="form-group">
-        <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Ajouter</button>
+          <label class="col-md-4"> Domaine d'activité         </label>           
+            <input type="text" class="form-control" formControlName="dom_activ" #dom_activ [(ngModel)]="personne.dom_activ" />
+        </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary">Enregistrer</button>
         <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
       </div>
     </form>

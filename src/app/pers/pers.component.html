@@ -1,7 +1,7 @@
 
 <body>
   <div style="padding: 25px">
-    <a routerLink="membres/new">  <h4> Créer </h4> </a>
+    <a routerLink="/membres/new">  <h4> Créer </h4> </a>
     <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
       <data-table id="pers-grid"
                   headerTitle="Les membres"
@@ -46,7 +46,7 @@
           </ng-template>
           <ng-template #dataTableCell let-item="item">
             <button (click)="EditPers(item.id)" class="btn btn-sm btn-default">Modif btn</button>
-            <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a>
+            <!-- <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a> -->
           </ng-template>
         </data-table-column>
 

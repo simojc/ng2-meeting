@@ -28,7 +28,9 @@ export class EditPersComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      console.log("params['id'] = "+ params['id']);
       this.persService.editPersonne(params['id']).subscribe(res => {
+        console.log("res = "+  JSON.stringify(res)) 
         this.personne = res;
       });
     });
@@ -59,9 +61,9 @@ export class EditPersComponent implements OnInit {
 
   updatePersonne(formValues) {
     this.route.params.subscribe(params => {
-    let personne: IPers = {
+    let personne = {
       id: params['id'],
-      user_id: formValues.user_id,
+     // user_id: this.personne.user_id,
       type: formValues.type,
       nom: formValues.nom,
       prenom: formValues.prenom,
@@ -71,7 +73,9 @@ export class EditPersComponent implements OnInit {
       telres: formValues.telres,
       emploi: formValues.emploi,
       dom_activ: formValues.dom_activ,
-      titre_adh: formValues.titre_adh
+      titre_adh: formValues.titre_adh,
+      //location_id:this.personne.location_id
+      
     };
     this.persService.updatePersonne(personne, params['id']);
     // this.saveNewPersonne.emit();
@@ -79,6 +83,12 @@ export class EditPersComponent implements OnInit {
      this.router.navigate(['membres']);
     })
  
+  }
+
+  cancel() {
+    //this.cancelAddPersonne.emit()
+    // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
+    this.router.navigate(['membres']);
   }
 
 

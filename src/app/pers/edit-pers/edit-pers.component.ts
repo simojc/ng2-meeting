@@ -19,20 +19,14 @@ export class EditPersComponent implements OnInit {
     private autresService: AutresService,
     private alertService: AlertService) {
     this.createForm();
+    this.loadLocations();
    }
-
-  //createForm() {
-  //  this.angForm = this.fb.group({
-  //    name: ['', Validators.required ],
-  //    price: ['', Validators.required ]
-  // });
-  //}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log("params['id'] = "+ params['id']);
+      //console.log("params['id'] = "+ params['id']);
       this.persService.editPersonne(params['id']).subscribe(res => {
-        console.log("res = "+  JSON.stringify(res)) 
+       // console.log("res = "+  JSON.stringify(res)) 
         this.personne = res;
       });
     });
@@ -46,6 +40,7 @@ export class EditPersComponent implements OnInit {
       prenom: ['', Validators.required],
       sexe: ['', Validators.required],
       email: ['', Validators.required],
+      location_id: ['', Validators.required],
       telcel: '',
       telres: '',
       emploi: '',
@@ -69,16 +64,18 @@ export class EditPersComponent implements OnInit {
       type: formValues.type,
       nom: formValues.nom,
       prenom: formValues.prenom,
-      //sexe: formValues.sexe,
+      sexe: formValues.sexe,
       email: formValues.email,
       telcel: formValues.telcel,
       telres: formValues.telres,
       emploi: formValues.emploi,
       dom_activ: formValues.dom_activ,
       titre_adh: formValues.titre_adh,
-      //location_id:this.personne.location_id
+      location_id:formValues.location_id
       
     };
+    console.log("personne = "+  JSON.stringify(personne)) ;
+
     this.persService.updatePersonne(personne, params['id']);
     // this.saveNewPersonne.emit();
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
@@ -92,9 +89,11 @@ export class EditPersComponent implements OnInit {
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['membres']);
   }
+
   private loadLocations() {
     this.autresService.getLocations().subscribe(
-      locations => { this.locations = locations; },
+      locations => { 
+                    this.locations = locations; },
       error => { this.alertService.error(error); }
     );
   }

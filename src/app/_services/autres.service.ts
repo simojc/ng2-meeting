@@ -19,6 +19,7 @@ export class AutresService {
     private endpointUrl = environment.API_URL;
     
     getLocations() {
+        console.log(this.endpointUrl + 'locations')
         return this.http.get<ILocation[]>(this.endpointUrl + 'locations');
     }
 

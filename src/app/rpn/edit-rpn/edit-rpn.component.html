@@ -7,10 +7,9 @@
 
     <form [formGroup]="angForm" (ngSubmit)="updateRpnpers(angForm.value)" autocomplete="off">
 
-
       <div class="form-group">
         <label for="pers_id"> Personne </label>
-        <select class="form-control" formControlName="pers_id" #pers_id [(ngModel)]="pers_id">
+        <select class="form-control" formControlName="pers_id" #pers_id [(ngModel)]="rpnpers.pers_id">
           <option *ngFor="let pers of personnes" value={{pers.id}}>
             {{pers.id}} - {{pers.nom}}  - {{pers.prenom}}
           </option>
@@ -24,7 +23,7 @@
 
       <div class="form-group">
         <label for="repdt1_id"> Répondant 1 </label>
-        <select class="form-control" formControlName="repdt1_id" #repdt1_id [(ngModel)]="repdt1_id">
+        <select class="form-control" formControlName="repdt1_id" #repdt1_id [(ngModel)]="rpnpers.repdt1_id">
           <option *ngFor="let pers of personnes" value={{pers.id}}>
             {{pers.id}} - {{pers.nom}}  - {{pers.prenom}}
           </option>
@@ -38,7 +37,7 @@
 
       <div class="form-group">
         <label for="repdt2_id"> Répondant 2 </label>
-        <select class="form-control" formControlName="repdt2_id" #repdt2_id [(ngModel)]="repdt2_id">
+        <select class="form-control" formControlName="repdt2_id" #repdt2_id [(ngModel)]="rpnpers.repdt2_id">
           <option *ngFor="let pers of personnes" value={{pers.id}}>
             {{pers.id}} - {{pers.nom}}  - {{pers.prenom}}
           </option>
@@ -47,7 +46,7 @@
 
       <div class="form-group">
         <label class="col-md-4"> Matricule RPN </label>
-        <input type="text" class="form-control" formControlName="mtrle" #mtrle [(ngModel)]="personne.mtrle" />
+        <input type="text" class="form-control" formControlName="mtrle" #mtrle [(ngModel)]="rpnpers.mtrle" />
       </div>
       <div *ngIf="angForm.controls['mtrle'].invalid && (angForm.controls['mtrle'].dirty || angForm.controls['mtrle'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['mtrle'].errors.required">
@@ -57,7 +56,7 @@
 
       <div class="form-group">
         <label class="col-md-4"> Date adhésion </label>
-        <input type="text" class="form-control" formControlName="dtadh" #dtadh [(ngModel)]="personne.dtadh" />
+        <input type="text" class="form-control" formControlName="dtadh" #dtadh [(ngModel)]="rpnpers.dtadh" />
       </div>
       <div *ngIf="angForm.controls['dtadh'].invalid && (angForm.controls['dtadh'].dirty || angForm.controls['dtadh'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['dtadh'].errors.required">
@@ -67,12 +66,12 @@
 
       <div class="form-group">
         <label class="col-md-4"> Montant dépôt </label>
-        <input type="text" class="form-control" formControlName="depot" #depot [(ngModel)]="personne.depot" />
+        <input type="text" class="form-control" formControlName="depot" #depot [(ngModel)]="rpnpers.depot" />
       </div>
 
       <div class="form-group">
         <label class="col-md-4"> Date MAJ dépôt </label>
-        <input type="text" class="form-control" formControlName="dtmajdpt" #dtadh [(ngModel)]="personne.dtmajdpt" />
+        <input type="text" class="form-control" formControlName="dtmajdpt" #dtadh [(ngModel)]="rpnpers.dtmajdpt" />
       </div>
 
       <div class="form-group">

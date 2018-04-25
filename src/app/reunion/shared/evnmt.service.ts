@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
 import { Http, Response, Headers, RequestOptions  } from '@angular/http'
 
-import { IEvnmt, IEvnmtdtl, ILocation } from '../../Models/index'
+import { IEvnmt, IEvnmtdtl } from '../../Models/index'
 
 import { environment } from '../../../environments/environment';
 
@@ -30,11 +30,11 @@ export class EvnmtService {
         }).catch(this.handleError)
     }
 
-    getLocation(id: number): Observable<ILocation> {
-      return this.http.get(this.endpointUrl + "locations/" + id).map((response: Response) => {
-        return <ILocation>response.json()
-      }).catch(this.handleError)
-  }
+  //  getLocation(id: number): Observable<ILocation> {
+  //    return this.http.get(this.endpointUrl + "locations/" + id).map((response: Response) => {
+  //      return <ILocation>response.json()
+  //    }).catch(this.handleError)
+  //}
 
   saveEvnmt(evnmt): Observable<IEvnmt> {
     let headers = new Headers({ 'Content-Type': 'application/json' })

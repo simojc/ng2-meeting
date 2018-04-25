@@ -1,16 +1,8 @@
-
 import { Component, OnInit } from '@angular/core'
-
 import { EvnmtService } from '../shared/evnmt.service'
-
 import { ActivatedRoute } from '@angular/router'
 import { AlertService } from '../../_services/index';
-
-//import { ToastrService } from '../../common/toastr.service'
-
-import { IEvnmtdtl, IEvnmt, IUser, ILocation } from '../../Models/index'
-
-//import { ActivatedRoute } from '@angular/router'
+import { IEvnmtdtl, IEvnmt, IUser } from '../../Models/index'
 
 @Component({
 
@@ -46,16 +38,6 @@ ngOnInit() {
   this.evnmts = this.route.snapshot.data['evnmts']
   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 }
-
-
-
-
-// ngOnInit() {
-// 	this.evnmtService.getEvnmts().subscribe(
-// 		  evnmts => { this.evnmts = evnmts;  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));},
-// 			 error => { this.alertService.error(error);}
-// 	);
-// }
 
 }
 

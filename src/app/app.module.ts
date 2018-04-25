@@ -47,6 +47,7 @@ import {
    ErrorInterceptorProvider, TokenInterceptor,
    AuthGuard,
    AlertComponent,
+   FooterComponent,
    LocationValidator
   } from './events/index'
 
@@ -114,6 +115,7 @@ import { UserService } from './user/user.service'
     Error404Component,
     CollapsibleWellComponent,
     AlertComponent,
+    FooterComponent,
     CreateReunionComponent,
     ReunionsListComponent,
     ReunionsThumbnailComponent,

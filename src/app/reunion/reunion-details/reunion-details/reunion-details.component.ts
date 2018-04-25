@@ -35,19 +35,19 @@ export class EvnmtDetailsComponent implements OnInit {
     this.route.data.forEach((data) => {
       this.evnmt = this.route.snapshot.data['evnmt'];
       this.addMode = false;
-       this.getLocation();
+     //  this.getLocation();
       this.loadEvnmtdtls();
     })
   }
 
-  private getLocation() {
-    if (this.evnmt.location_id) {
-      this.evnmtService.getLocation(this.evnmt.location_id).subscribe(
-          loc => { this.evnmt.location  = loc;  },
-          error => { this.alertService.error(error);}
-      );
-    }
-  }
+  //private getLocation() {
+  //  if (this.evnmt.location_id) {
+  //    this.evnmtService.getLocation(this.evnmt.location_id).subscribe(
+  //        loc => { this.evnmt.location  = loc;  },
+  //        error => { this.alertService.error(error);}
+  //    );
+  //  }
+  //}
 
   addEvnmtdtl() {
     this.addMode = true

@@ -2,7 +2,12 @@
 export interface IEvnmt {
   id: number
   groupe_id: number
-  location_id
+  //location_id: number
+
+  address: string
+  city: string  
+  country: string
+
   nom: string
   date: Date
   hrdeb: string
@@ -16,7 +21,7 @@ export interface IEvnmt {
   resp2: string
   affich: boolean
   groupe: IGroupe
-  location: ILocation
+  //location: ILocation
   evnmtdtls: IEvnmtdtl[]
 }
 export interface IEvnmtdtl {
@@ -44,11 +49,11 @@ export interface IGroupe {
   tel: string
 }
 
-export interface ILocation {
-  id: number 
-  address: string 
-  city: string  
-  country: string      
-}
+//export interface ILocation {
+//  id: number 
+//  address: string 
+//  city: string  
+//  country: string      
+//}
 
 

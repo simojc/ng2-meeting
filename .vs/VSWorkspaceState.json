@@ -3,17 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\common",
-    "\\src\\app\\data-table-demo\\demo1",
-    "\\src\\app\\data-table-demo\\demo2",
-    "\\src\\app\\events\\create-event",
+    "\\src\\app\\Models",
     "\\src\\app\\pers",
     "\\src\\app\\pers\\create-pers",
-    "\\src\\app\\pers\\edit-pers",
-    "\\src\\app\\reunion",
-    "\\src\\app\\reunion\\create-reunion",
+    "\\src\\app\\reunion\\reunions-thumbnail",
+    "\\src\\app\\rpn",
     "\\src\\app\\_services"
   ],
-  "SelectedNode": "\\src\\app\\reunion\\create-reunion\\create-reunion.component.ts",
+  "SelectedNode": "\\src\\app\\app.routes.ts",
   "PreviewInSolutionExplorer": false
 }

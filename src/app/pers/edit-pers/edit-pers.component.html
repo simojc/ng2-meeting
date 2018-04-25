@@ -1,128 +1,152 @@
-<div class="panel panel-primary">
+<!--<div class="panel panel-primary">-->
+<div class="row">
   <div class="panel-heading">
     {{ title }}
   </div>
   <!-- <div class="panel-body" *ngIf="personne"> -->
-      <div class="col-md-6" *ngIf="personne"> 
+  <div class="col-md-6" *ngIf="personne">
 
-        <form [formGroup]="angForm" (ngSubmit)="updatePersonne(angForm.value)" autocomplete="off">
+    <form [formGroup]="angForm" (ngSubmit)="updatePersonne(angForm.value)" autocomplete="off">
 
-          <div class="form-group">
-            <label class="col-md-4">Nom</label>
-            <input type="text" class="form-control" formControlName="nom" #nom [(ngModel)]="personne.nom" />
-          </div>
-          <div *ngIf="angForm.controls['nom'].invalid && (angForm.controls['nom'].dirty || angForm.controls['nom'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['nom'].errors.required">
-              Le nom est obligatoire.
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="col-md-4">Nom</label>
+        <input type="text" class="form-control" formControlName="nom" #nom [(ngModel)]="personne.nom" />
+      </div>
+      <div *ngIf="angForm.controls['nom'].invalid && (angForm.controls['nom'].dirty || angForm.controls['nom'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['nom'].errors.required">
+          Le nom est obligatoire.
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-md-4">Prénom</label>
-            <input type="text" class="form-control" formControlName="prenom" #prenom [(ngModel)]="personne.prenom" />
-          </div>
-          <div *ngIf="angForm.controls['prenom'].invalid && (angForm.controls['prenom'].dirty || angForm.controls['prenom'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['prenom'].errors.required">
-              Le prénom est obligatoire.
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="col-md-4">Prénom</label>
+        <input type="text" class="form-control" formControlName="prenom" #prenom [(ngModel)]="personne.prenom" />
+      </div>
+      <div *ngIf="angForm.controls['prenom'].invalid && (angForm.controls['prenom'].dirty || angForm.controls['prenom'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['prenom'].errors.required">
+          Le prénom est obligatoire.
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="center-block">
-              Sexe:
-              <!--<input type="text" class="form-control" formControlName="sexe" #sexe [(ngModel)]="personne.sexe" readonly />-->
-              <select class="form-control" formControlName="sexe" #sexe [(ngModel)]="personne.sexe" >
-                <option value="Masculin">Masculin</option>
-                <option value="Féminin">Féminin</option>
-                <option value="Autre">Autres</option>
-                <option hidden selected> Sélectionner une valeur</option>
-              </select>
-            </label>
-          </div>
- 
-          <div *ngIf="angForm.controls['sexe'].invalid && (angForm.controls['sexe'].dirty || angForm.controls['sexe'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['sexe'].errors.required">
-              Le sexe est obligatoire.
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="center-block">
+          Sexe:
+          <!--<input type="text" class="form-control" formControlName="sexe" #sexe [(ngModel)]="personne.sexe" readonly />-->
+          <select class="form-control" formControlName="sexe" #sexe [(ngModel)]="personne.sexe">
+            <option value="Masculin">Masculin</option>
+            <option value="Féminin">Féminin</option>
+            <option value="Autre">Autres</option>
+            <option hidden selected> Sélectionner une valeur</option>
+          </select>
+        </label>
+      </div>
 
-          <div class="form-group">
-            <label for="location_id"> Adresse </label>
-            <select class="form-control" formControlName="location_id" #location_id [(ngModel)]="personne.location_id" >
-              <option *ngFor="let location of locations" value={{location.id}}>
-                {{location.address}} - {{location.city}}  - {{location.country}}
-              </option>
-            </select>
-          </div>
-          <div *ngIf="angForm.controls['location_id'].invalid && (angForm.controls['location_id'].dirty || angForm.controls['location_id'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['location_id'].errors.required">
-              L'adresse est obligatoire.
-            </div>
-          </div>
+      <div *ngIf="angForm.controls['sexe'].invalid && (angForm.controls['sexe'].dirty || angForm.controls['sexe'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['sexe'].errors.required">
+          Le sexe est obligatoire.
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="center-block">
-              Sélectionner le type personne:
-              <select class="form-control" formControlName="type" #type [(ngModel)]="personne.type">
-                <option *ngFor="let type of typePers" [value]="type.code">{{type.libelle}}</option>
-              </select>
-            </label>
-          </div>
-          <div *ngIf="angForm.controls['type'].invalid && (angForm.controls['type'].dirty || angForm.controls['type'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['type'].errors.required">
-              Le type de personne est obligatoire.
-            </div>
-          </div>
+      <!--<div class="form-group">
+        <label for="location_id"> Adresse </label>
+        <select class="form-control" formControlName="location_id" #location_id [(ngModel)]="personne.location_id" >
+          <option *ngFor="let location of locations" value={{location.id}}>
+            {{location.address}} - {{location.city}}  - {{location.country}}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="angForm.controls['location_id'].invalid && (angForm.controls['location_id'].dirty || angForm.controls['location_id'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['location_id'].errors.required">
+          L'adresse est obligatoire.
+        </div>
+      </div>-->
 
-          <!--<div class="form-group">
-            <label class="col-md-4">Mme/M.</label>
-            <input type="text" class="form-control" formControlName="sexe" #sexe [(ngModel)]="personne.sexe" readonly />
-          </div>
-          <div *ngIf="angForm.controls['sexe'].invalid && (angForm.controls['sexe'].dirty || angForm.controls['sexe'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['sexe'].errors.required">
-              Le sexe est obligatoire.
-            </div>
-          </div>-->
+      <fieldset>
+        <legend>Adresse </legend>
+        <ol style="list-style: none;">
+          <li>
+            <label for=address> Numéro, rue, code postal: </label>
+            <input type="text" class="form-control" formControlName="address" #address placeholder="Addresse..." [(ngModel)]="personne.address" />
+          </li>
+          <li>
+            <label for=city> Ville: </label>
+            <input type="text" class="form-control" formControlName="city" #city placeholder="Ville..." [(ngModel)]="personne.city" />
+          </li>
+          <li>
+            <label for=country> Pays: </label>
+            <input type="text" class="form-control" formControlName="country" #country placeholder="Pays..." [(ngModel)]="personne.country" />
+          </li>
+        </ol>
+      </fieldset>
+      <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['address'].errors.required">
+          L'adresse est obligatoire.
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-md-4"> Courriel </label>
-            <input type="text" class="form-control" formControlName="email" #email [(ngModel)]="personne.email" />
-          </div>
-          <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['email'].errors.required">
-              Le prénom est obligatoire.
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="center-block">
+          Sélectionner le type personne:
+          <select class="form-control" formControlName="type" #type [(ngModel)]="personne.type">
+            <option *ngFor="let type of typePers" [value]="type.code">{{type.libelle}}</option>
+          </select>
+        </label>
+      </div>
+      <div *ngIf="angForm.controls['type'].invalid && (angForm.controls['type'].dirty || angForm.controls['type'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['type'].errors.required">
+          Le type de personne est obligatoire.
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-md-4">
-              Téléphone mobile
-            </label>
-            <input type="text" class="form-control" formControlName="telcel" #telcel [(ngModel)]="personne.telcel" />
-          </div>
+      <!--<div class="form-group">
+        <label class="col-md-4">Mme/M.</label>
+        <input type="text" class="form-control" formControlName="sexe" #sexe [(ngModel)]="personne.sexe" readonly />
+      </div>
+      <div *ngIf="angForm.controls['sexe'].invalid && (angForm.controls['sexe'].dirty || angForm.controls['sexe'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['sexe'].errors.required">
+          Le sexe est obligatoire.
+        </div>
+      </div>-->
 
-          <div class="form-group">
-            <label class="col-md-4">
-              Téléphone résidentiel
-            </label>
-            <input type="text" class="form-control" formControlName="telres" #telres [(ngModel)]="personne.telres" />
-          </div>
+      <div class="form-group">
+        <label class="col-md-4"> Courriel </label>
+        <input type="text" class="form-control" formControlName="email" #email [(ngModel)]="personne.email" />
+      </div>
+      <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['email'].errors.required">
+          Le prénom est obligatoire.
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-md-4"> Emploi          </label>
-            <input type="text" class="form-control" formControlName="emploi" #emploi [(ngModel)]="personne.emploi" />
-          </div>
+      <div class="form-group">
+        <label class="col-md-4">
+          Téléphone mobile
+        </label>
+        <input type="text" class="form-control" formControlName="telcel" #telcel [(ngModel)]="personne.telcel" />
+      </div>
 
-          <div class="form-group">
-            <label class="col-md-4"> Domaine d'activité         </label>
-            <input type="text" class="form-control" formControlName="dom_activ" #dom_activ [(ngModel)]="personne.dom_activ" />
-          </div>
+      <div class="form-group">
+        <label class="col-md-4">
+          Téléphone résidentiel
+        </label>
+        <input type="text" class="form-control" formControlName="telres" #telres [(ngModel)]="personne.telres" />
+      </div>
 
-          <div class="form-group">
-            <button class="btn btn-primary">Enregistrer</button>
-            <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
-          </div>
-        </form>
+      <div class="form-group">
+        <label class="col-md-4"> Emploi          </label>
+        <input type="text" class="form-control" formControlName="emploi" #emploi [(ngModel)]="personne.emploi" />
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4"> Domaine d'activité         </label>
+        <input type="text" class="form-control" formControlName="dom_activ" #dom_activ [(ngModel)]="personne.dom_activ" />
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary">Enregistrer</button>
+        <button type="button" (click)="cancel()" class="btn btn-default">Annuler</button>
+      </div>
+    </form>
   </div>
 </div>
 

@@ -9,9 +9,9 @@
           <!-- <div>  Description: {{evnmt.descr}}  </div> -->        
           <div>  Famille d'accueil: {{evnmt.famaccueil}}  </div>        
           <!-- <div> Price: {{ event?.price | currency:'USD':"symbol"}}   <span>&nbsp; </span>  </div> -->        
-          <div *ngIf="evnmt.location">
-              <span> Adresse: {{evnmt.location.address}}  </span>
-              <span class="pad-left"> {{evnmt.location.city}}, , {{evnmt.location.country}}</span>
+          <div *ngIf="evnmt.address">
+              <span> Adresse: {{evnmt.address}}  </span>
+              <span class="pad-left"> {{evnmt.city}}, , {{evnmt.country}}</span>
           </div>
           <div style="display: inline-block; text-align: right; width: 100%">
                 <a routerLink="/reunions/{{evnmt.id}}">  <h5> Voir Detail </h5> </a>

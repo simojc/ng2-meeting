@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AlertService, PersService, AutresService } from '../../_services/index';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IPers, TypePers, ILocation, IUser} from '../../Models/index';
+import { IPers, TypePers,  IUser} from '../../Models/index';
 
 @Component({
   selector: 'pers-create',
@@ -14,7 +14,6 @@ export class CreatePersComponent implements OnInit {
   title = 'Ajouter personne';
   @Output() saveNewPersonne = new EventEmitter()
   @Output() cancelAddPersonne = new EventEmitter()
-  locations: ILocation[];
   typePers = TypePers
   currentUser: IUser;
 
@@ -25,7 +24,7 @@ export class CreatePersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadLocations();
+   // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -33,7 +32,7 @@ export class CreatePersComponent implements OnInit {
     this.angForm = this.fb.group({
       id: '',
      // user_id: ['', Validators.required], Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
-      location_id: ['', Validators.required],
+    
       type: ['', Validators.required],
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -43,7 +42,11 @@ export class CreatePersComponent implements OnInit {
       telres: '',
       emploi: '',
       dom_activ: '',
-      titre_adh: ''
+      titre_adh: '',
+      address: ['', Validators.required],
+      city: '',
+      country: '',
+
     });
   }
 
@@ -51,7 +54,12 @@ export class CreatePersComponent implements OnInit {
     let personne: IPers = {
       id: undefined,
       //user_id: formValues.user_id,  Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
-      location_id: formValues.location_id,
+     // location_id: formValues.location_id,
+
+      address: formValues.address,
+      city: formValues.city,  
+      country: formValues.country,
+
       type: formValues.type,
       nom: formValues.nom,
       prenom: formValues.prenom,
@@ -71,12 +79,12 @@ export class CreatePersComponent implements OnInit {
   }
 
 
-  private loadLocations() {
-    this.autresService.getLocations().subscribe(
-      locations => { this.locations = locations; },
-      error => { this.alertService.error(error); }
-    );
-  }
+  //private loadLocations() {
+  //  this.autresService.getLocations().subscribe(
+  //    locations => { this.locations = locations; },
+  //    error => { this.alertService.error(error); }
+  //  );
+  //}
 
   cancel() {
     this.cancelAddPersonne.emit()

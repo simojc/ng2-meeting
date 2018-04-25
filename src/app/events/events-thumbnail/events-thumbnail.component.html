@@ -13,12 +13,10 @@
     <span *ngSwitchDefault> (Temps normal) </span>
   </div>
   <div> Price: {{ event?.price | currency:'USD':"symbol"}}   <span>&nbsp; </span>  </div>
-  <div *ngIf="event?.location">
+  <div *ngIf="event?.address">
     <!--  Affichage conditionnelle  -->
-    <span> Adresse: {{event.location.address}}  </span>
-
-    <span class="pad-left"> {{event.location.city}}, {{event.location.stateProvince}}, {{event.location.country}}</span>
-
+    <span> Adresse: {{event.address}}  </span>
+    <span class="pad-left"> {{event.city}}, {{event.country}}</span>
   </div>
 
   <!--  Affichage conditionnelle    <div *ngIf="event?.onlineUrl">  -->

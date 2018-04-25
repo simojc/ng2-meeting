@@ -7,7 +7,7 @@ import { EventService } from '../shared/index'
 
 import { AutresService, AlertService } from '../../_services/index';
 
-import {  IGroupe, ILocation} from '../../Models/index';
+import {  IGroupe} from '../../Models/index';
 
 @Component({
 
@@ -24,14 +24,14 @@ import {  IGroupe, ILocation} from '../../Models/index';
 
   export class CreateEventComponent {
       isDirty: boolean = true
-      locations: ILocation [];
+     // locations: ILocation [];
       groupes: IGroupe [];
       
       constructor(private router: Router, 
                 private eventService: EventService, 
                 private autresService: AutresService,
                 private alertService: AlertService) {
-                  this.loadLocations();
+                 // this.loadLocations();
       }
 
       saveEvent(formValues) {
@@ -42,12 +42,12 @@ import {  IGroupe, ILocation} from '../../Models/index';
         })
       }
 
-      private loadLocations() {
-        this.autresService.getLocations().subscribe(
-          locations => { this.locations = locations; },
-         error => { this.alertService.error(error);}
-        );
-      }
+      //private loadLocations() {
+      //  this.autresService.getLocations().subscribe(
+      //    locations => { this.locations = locations; },
+      //   error => { this.alertService.error(error);}
+      //  );
+      //}
 
     cancel() {
       this.router.navigate(['/events'])

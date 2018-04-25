@@ -1,8 +1,8 @@
 
-import { Component, Input , OnInit} from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 
-import { IEvnmt, ILocation } from '../../Models/index'
+import { IEvnmt } from '../../Models/index'
 import { EvnmtService } from '../shared/evnmt.service'
 import { AlertService } from '../../_services/index';
 
@@ -16,42 +16,22 @@ import { AlertService } from '../../_services/index';
 	`]
 })
 
-export class ReunionsThumbnailComponent implements OnInit {
+export class ReunionsThumbnailComponent {
 
   //@Input() evnmt: IEvnmt
-  _evnmt:IEvnmt;
-  public currentLocation: ILocation
+  _evnmt: IEvnmt;
 
-  constructor(private alertService: AlertService, private evnmtService: EvnmtService,private router: Router, private route: ActivatedRoute) {
-   // this.route.params.subscribe(params => console.log(params));
+  constructor(private alertService: AlertService, private evnmtService: EvnmtService, private router: Router, private route: ActivatedRoute) {
+    // this.route.params.subscribe(params => console.log(params));
   }
 
   @Input()
-  set evnmt(w_evnmt: IEvnmt ){
+  set evnmt(w_evnmt: IEvnmt) {
     this._evnmt = w_evnmt;
-    if (this._evnmt.location_id) {
-      this.evnmtService.getLocation(this._evnmt.location_id).subscribe(
-          loc => { this._evnmt.location  = loc;  },
-          error => { this.alertService.error(error);}
-      );
-      // return this._evnmt;
-    }
   }
 
-  get evnmt(){
+  get evnmt() {
     return this._evnmt;
-}
+  }
 
-
-
-  ngOnInit() {
-    // if (this.evnmt.location_id) {
-    //  	      this.evnmtService.getLocation(this.evnmt.location_id).subscribe(
-    //    		      loc => { this.currentLocation  = loc; console.log(this.currentLocation ) },
-    //    			 error => { this.alertService.error(error);}
-    //       );   
-    //     }
-          
-    }
-  
 }

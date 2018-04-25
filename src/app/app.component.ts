@@ -6,18 +6,8 @@ import { Component } from '@angular/core';
   <nav-bar> </nav-bar>
   <alert></alert>
 	<router-outlet> </router-outlet>
-  `,
-  styles: [`
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
-  }		
-`]
+  <footer> </footer>
+  `
 })
 export class AppComponent {
   title = 'app';

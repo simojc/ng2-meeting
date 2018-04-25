@@ -1,4 +1,5 @@
-<div class="panel panel-primary">
+<!--<div class="panel panel-primary">-->
+<div class="row">
   <div class="panel-heading">
     {{ title }}
   </div>
@@ -9,7 +10,7 @@
 
       <div class="form-group">
         <label for="pers_id"> Personne </label>
-        <select class="form-control" formControlName="pers_id" #pers_id >
+        <select class="form-control" formControlName="pers_id" #pers_id>
           <option *ngFor="let pers of personnes" value={{pers.id}}>
             {{pers.id}} - {{pers.nom}}  - {{pers.prenom}}
           </option>
@@ -81,5 +82,3 @@
     </form>
   </div>
 </div>
-
-<hr>

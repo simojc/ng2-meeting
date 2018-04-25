@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService, RpnpersService, AutresService, PersService} from '../../_services/index';
-import { IRpnpers, IPers, ILocation } from '../../Models/index';
+import { IRpnpers, IPers } from '../../Models/index';
 
 @Component({
   selector: 'pers-edit',

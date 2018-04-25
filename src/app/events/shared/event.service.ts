@@ -14,7 +14,7 @@ export class EventService {
 
   constructor(private http: Http) { }
 
-  getEvents(): Observable<IEvent[]> {
+  getEvents_maison(): Observable<IEvent[]> {
 
     //console.log("this.endpointUrl  =" + this.endpointUrl)
 
@@ -24,7 +24,7 @@ export class EventService {
         .catch(this.handleError);
   }
 
-  getEvent(id: number): Observable<IEvent> {
+  getEvent_maison(id: number): Observable<IEvent> {
     return this.http.get(this.endpointUrl + "events/" + id)
     .map((response: Response) => <IEvent>response.json())
     //.do(data => console.log('Event: ' + JSON.stringify(data)))
@@ -38,14 +38,14 @@ export class EventService {
   // }
 
   // Lit dans l'objet défini ci-dessous
-  getEvents_bur(): Subject<IEvent[]> {
+  getEvents(): Subject<IEvent[]> {
     let subject = new Subject<IEvent[]>()
     setTimeout(() => { subject.next(EVENTS); subject.complete(); }
       , 10)
     return subject
   }
 
-  getEvent_bur(id: number): IEvent {
+  getEvent(id: number): IEvent {
     console.log("Dans  EventService  id =  " + id)
     return EVENTS.find(event => event.id == id)
   }
@@ -79,11 +79,11 @@ const EVENTS: IEvent[] = [
     time: '10:00 am',
     price: 599.99,
     imageUrl: '/assets/images/angularconnect-shield.png',
-    location: {
+   
       address: '1057 DT',
       city: 'London',
-      country: 'England'
-    },
+      country: 'England',
+  
     sessions: [
       {
         id: 1,
@@ -157,11 +157,11 @@ const EVENTS: IEvent[] = [
     time: '9:00 am',
     price: 950.00,
     imageUrl: '/assets/images/ng-nl.png',
-    location: {
+
       address: 'The NG-NL Convention Center & Scuba Shop',
       city: 'Amsterdam',
       country: 'Netherlands'
-    },
+    ,
     sessions: [
       {
         id: 1,
@@ -217,11 +217,11 @@ const EVENTS: IEvent[] = [
     time: '9:00 am',
     price: 759.00,
     imageUrl: '/assets/images/ng-conf.png',
-    location: {
+  
       address: 'The Palatial America Hotel',
       city: 'Salt Lake City',
       country: 'USA'
-    },
+    ,
     sessions: [
       {
         id: 1,
@@ -299,11 +299,10 @@ const EVENTS: IEvent[] = [
     time: '8:00 am',
     price: 800.00,
     imageUrl: 'assets/images/basic-shield.png',
-    location: {
       address: 'The UN Angular Center',
       city: 'New York',
       country: 'USA'
-    },
+    ,
     sessions: [
       {
         id: 1,
@@ -348,11 +347,11 @@ const EVENTS: IEvent[] = [
     time: '9:00 am',
     price: 400.00,
     imageUrl: '/assets/images/ng-vegas.png',
-    location: {
+  
       address: 'The Excalibur',
       city: 'Las Vegas',
       country: 'USA'
-    },
+    ,
     sessions: [
       {
         id: 1,
@@ -388,9 +387,9 @@ const EVENTS: IEvent[] = [
     price: 400.00,
     imageUrl: '/assets/images/ng-vegas.png',
     // location: {
-    // address: 'Bonango',
-    // city: 'Nkongsamba',
-    // country: 'Cameroun'
+     address: 'Bonango',
+     city: 'Nkongsamba',
+     country: 'Cameroun',
     // },
     onlineUrl: 'www.Nkongsamba.com',
     sessions: []
@@ -398,33 +397,3 @@ const EVENTS: IEvent[] = [
 ]
 
 
-/*
-@Injectable()
-export class EventService{
-	//constructor(private http:Http) { }
-    getEvents(): Subject<IEvent[]> {
-        let subject = new Subject<IEvent[]>()
-	 setTimeout(() => {subject.next(EVENTS); subject.complete(); }
-	 , 10)
-		return subject
-	}
-
-    getEvent(id: number): IEvent {
-		return EVENTS.find(event => event.id === id)
-    }
-
-    saveEvent(event) {
-        event.id = 99
-        event.session = []
-        EVENTS.push(event)
-    }
-
-    updateEvent(event) {
-        let index = EVENTS.findIndex(x => x.id = event.id)
-        EVENTS[index] = event
-    }
-
-}
-
-const EVENTS: IEvent[] = []
-*/

@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService, PersService, AutresService} from '../../_services/index';
-import { IPers, TypePers, ILocation } from '../../Models/index';
+import { IPers, TypePers } from '../../Models/index';
 
 @Component({
   selector: 'pers-edit',
@@ -10,7 +10,7 @@ import { IPers, TypePers, ILocation } from '../../Models/index';
   styleUrls: ['./edit-pers.component.css']
 })
 export class EditPersComponent implements OnInit {
-  locations: ILocation[];
+ // locations: ILocation[];
   personne: any;
   typePers = TypePers;
   angForm: FormGroup;
@@ -19,7 +19,7 @@ export class EditPersComponent implements OnInit {
     private autresService: AutresService,
     private alertService: AlertService) {
     this.createForm();
-    this.loadLocations();
+   // this.loadLocations();
    }
 
   ngOnInit() {
@@ -40,7 +40,9 @@ export class EditPersComponent implements OnInit {
       prenom: ['', Validators.required],
       sexe: ['', Validators.required],
       email: ['', Validators.required],
-      location_id: ['', Validators.required],
+      address: ['', Validators.required],
+      city: '',
+      country: '',
       telcel: '',
       telres: '',
       emploi: '',
@@ -71,7 +73,9 @@ export class EditPersComponent implements OnInit {
       emploi: formValues.emploi,
       dom_activ: formValues.dom_activ,
       titre_adh: formValues.titre_adh,
-      location_id:formValues.location_id
+      address: formValues.address,
+      city: formValues.city,
+      country: formValues.country,
       
     };
     console.log("personne = "+  JSON.stringify(personne)) ;
@@ -90,13 +94,13 @@ export class EditPersComponent implements OnInit {
     this.router.navigate(['membres']);
   }
 
-  private loadLocations() {
-    this.autresService.getLocations().subscribe(
-      locations => { 
-                    this.locations = locations; },
-      error => { this.alertService.error(error); }
-    );
-  }
+  //private loadLocations() {
+  //  this.autresService.getLocations().subscribe(
+  //    locations => { 
+  //                  this.locations = locations; },
+  //    error => { this.alertService.error(error); }
+  //  );
+  //}
 
 
 

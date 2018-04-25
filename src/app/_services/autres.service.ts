@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {Observable} from 'rxjs/Rx';
-import { IUser, IGroupe, ILocation, IPers} from '../Models/index';
+import { IUser, IGroupe,  IPers} from '../Models/index';
 //import { AlertService } from '../_services/index';
 //import { AuthService } from '/../auth.service'
 import { environment } from '../../environments/environment';
@@ -18,10 +18,10 @@ export class AutresService {
     //private endpointUrl = api/locations;
     private endpointUrl = environment.API_URL;
     
-    getLocations() {
-        console.log(this.endpointUrl + 'locations')
-        return this.http.get<ILocation[]>(this.endpointUrl + 'locations');
-    }
+    //getLocations() {
+    //    console.log(this.endpointUrl + 'locations')
+    //    return this.http.get<ILocation[]>(this.endpointUrl + 'locations');
+    //}
 
     getGroupes() {
         return this.http.get<IGroupe[]>(this.endpointUrl + 'groupes');

@@ -12,7 +12,11 @@ export interface IPers {
   emploi: string			
   dom_activ: string			
   titre_adh: string
-  location_id: number
+  //location_id: number
+  address: string
+  city: string
+  country: string
+
   groupe_id: number
 }
 

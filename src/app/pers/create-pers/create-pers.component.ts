@@ -26,13 +26,13 @@ export class CreatePersComponent implements OnInit {
   ngOnInit() {
    // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log("this.currentUser= " +JSON.stringify(this.currentUser))
   }
 
   createForm() {
     this.angForm = this.fb.group({
       id: '',
      // user_id: ['', Validators.required], Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
-    
       type: ['', Validators.required],
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -45,8 +45,7 @@ export class CreatePersComponent implements OnInit {
       titre_adh: '',
       address: ['', Validators.required],
       city: '',
-      country: '',
-
+      country: ''
     });
   }
 
@@ -77,14 +76,6 @@ export class CreatePersComponent implements OnInit {
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['membres']);
   }
-
-
-  //private loadLocations() {
-  //  this.autresService.getLocations().subscribe(
-  //    locations => { this.locations = locations; },
-  //    error => { this.alertService.error(error); }
-  //  );
-  //}
 
   cancel() {
     this.cancelAddPersonne.emit()

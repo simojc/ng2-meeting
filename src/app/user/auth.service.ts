@@ -58,10 +58,11 @@ export class AuthService {
         })
         // The (err) => {} param on subscribe can't catch server down error so I keep only the catch
         .subscribe(data => {
-          console.log("Dans le service currentUser :" + JSON.stringify(this.currentUser))
+          
           localStorage.setItem('currentUser', JSON.stringify(data.user));
           localStorage.setItem('token', JSON.stringify(data.token));
           this.currentUser = data.user;
+          console.log("Dans le service currentUser :" + JSON.stringify(this.currentUser))
           resolve(data)
         })
 

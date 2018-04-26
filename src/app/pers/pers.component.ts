@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router'
 import { IUser } from '../Models/index'
 import { AlertService, PersService } from '../_services/index';
@@ -52,8 +52,16 @@ export class PersComponent implements OnInit {
 
   }
 
+  openAddForm(){
+    this.router.navigate(['/membres/new']);
+  }
+
   EditPers(id) {
     this.router.navigate(['/membres/edit', id]);
+  }
+
+  addPers(){
+    this.router.navigate(['/membres/new']);
   }
 
 

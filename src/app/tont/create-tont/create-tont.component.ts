@@ -5,11 +5,11 @@ import { AlertService, RpnpersService, AutresService, PersService } from '../../
 import { IRpnpers, IPers, IUser } from '../../Models/index';
 
 @Component({
-  selector: 'rpn-create',
-  templateUrl: './create-rpn.component.html',
-  styleUrls: ['./create-rpn.component.css']
+  selector: 'tont-create',
+  templateUrl: './create-tont.component.html',
+  styleUrls: ['./create-tont.component.css']
 })
-export class CreateRpnComponent implements OnInit {
+export class CreateTontComponent implements OnInit {
 
   title = 'Nouvelle adhésion RPN';
   rpnpers: any;

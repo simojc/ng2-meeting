@@ -1,4 +1,5 @@
-import { Component, Inject, forwardRef , Output, EventEmitter} from '@angular/core';
+import { Component, Inject, forwardRef, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router'
 import { DataTable } from './table';
 
 
@@ -11,16 +12,14 @@ import { DataTable } from './table';
   }
 })
 export class DataTableHeader {
-  @Output() openAddForm = new EventEmitter()
+
     columnSelectorOpen = false;
 
     _closeSelector() {
         this.columnSelectorOpen = false;
     }
 
-    constructor(@Inject(forwardRef(() => DataTable)) public dataTable: DataTable) {}
+    constructor( @Inject(forwardRef(() => DataTable)) public dataTable: DataTable, private router: Router) {}
     
-    addPers(){
-      this.openAddForm.emit();
-      }
+
   }

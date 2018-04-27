@@ -85,7 +85,7 @@ import { EngmtComponent, EngmtThumbnailComponent } from './engmt/index';
 
 import { MyGridApplicationComponent } from './my-grid/my-grid.component'
 
-import { DataTableDemo1, DatatableDemoComponent } from './data-table-demo/index';
+import { DataTableDemo1, DataTableDemo2, DataTableDemo3, DatatableDemoComponent } from './data-table-demo/index';
 
 import { Error404Component } from './errors/404.component'
 
@@ -125,7 +125,7 @@ import { UserService } from './user/user.service'
     MyGridApplicationComponent,
     RedComponentComponent,
     GroupeComponent,
-    DataTableDemo1,
+    DataTableDemo1, DataTableDemo2, DataTableDemo3,    
     DatatableDemoComponent,
     GhomalaComponent,
     RpnpersComponent,

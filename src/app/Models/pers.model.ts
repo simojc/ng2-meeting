@@ -16,7 +16,6 @@ export interface IPers {
   address: string
   city: string
   country: string
-
   groupe_id: number
 }
 

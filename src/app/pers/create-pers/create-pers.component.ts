@@ -31,7 +31,7 @@ export class CreatePersComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      id: '',
+      //id: '',
      // user_id: ['', Validators.required], Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
       type: ['', Validators.required],
       nom: ['', Validators.required],
@@ -54,7 +54,6 @@ export class CreatePersComponent implements OnInit {
       id: undefined,
       //user_id: formValues.user_id,  Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
      // location_id: formValues.location_id,
-
       address: formValues.address,
       city: formValues.city,  
       country: formValues.country,
@@ -69,8 +68,9 @@ export class CreatePersComponent implements OnInit {
       emploi: formValues.emploi,
       dom_activ: formValues.dom_activ,
       titre_adh: formValues.titre_adh,
-      groupe_id: this.currentUser.groupe_id,
+      groupe_id: this.currentUser.groupe_id
     }
+    console.log("personne = "+ JSON.stringify(personne))
     this.persService.addPersonne(personne);
     this.saveNewPersonne.emit();
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2

@@ -15,8 +15,6 @@
                     [items]="items"
                     [itemCount]="itemCount"
                     (reload)="loadMembers()"
-                    (rowClick)="rowClick($event)"
-                    (rowDoubleClick)="rowDoubleClick($event)"
                     [rowTooltip]="rowTooltip">
           <data-table-column [property]="'nom_pers'"
                              [header]="'Nom et prénom'"
@@ -45,6 +43,11 @@
                              [header]="'Adresse'"
                              width="250px">
           </data-table-column>
+
+          <data-table-column [property]="'groupe_id'"
+          [header]="'Groupe'">
+        </data-table-column>        
+
 
           <data-table-column header="Actions">
             <ng-template #dataTableHeader let-item="item">

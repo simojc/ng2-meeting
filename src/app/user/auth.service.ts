@@ -43,7 +43,7 @@ export class AuthService {
       let options = new RequestOptions({ headers: headers })
 
       let loginInfo = { email: courriel, password: motpass }
-
+console.log("JSON.stringify(loginInfo) = "+JSON.stringify(loginInfo))
       this.http
         .post(this.endpointUrl + 'login', JSON.stringify(loginInfo), options)
         .map(res => res.json())

@@ -55,6 +55,7 @@ export class PersService {
     }
 
     addPersonne(personne: IPers) {
+      console.log("personne = "+ JSON.stringify(personne))
       const uri = this.endpointUrl + 'pers';
       this.http.post(uri, personne).subscribe(
         res => console.log('Creation reussi'));

@@ -9,6 +9,8 @@ export { DataTableDemo3 } from './demo3/data-table-demo3.component'
   <body>
 			<div style="padding: 25px">
       <data-table-demo-1></data-table-demo-1>
+<data-table-demo-2></data-table-demo-2>
+<data-table-demo-3></data-table-demo-3>
     </div>
     </body>
      `,

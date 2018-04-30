@@ -1,24 +1,24 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertService, RpnpersService, AutresService, PersService } from '../../_services/index';
-import { IRpnpers, IPers, IUser } from '../../Models/index';
+import { AlertService, TontService, AutresService, PersService } from '../../_services/index';
+import { ITont, ITontpers, IPers, IUser } from '../../Models/index';
 
 @Component({
-  selector: 'rpn-create',
-  templateUrl: './create-rpn.component.html',
-  styleUrls: ['./create-rpn.component.css']
+  selector: 'tont-create',
+  templateUrl: './create-tont.component.html',
+  styleUrls: ['./create-tont.component.css']
 })
-export class CreateRpnComponent implements OnInit {
+export class CreateTontComponent implements OnInit {
 
-  title = 'Nouvelle adhésion RPN';
-  rpnpers: any;
+  title = 'Nouvelle ';
+  tontpers: any;
   personnes: IPers[];
   angForm: FormGroup;
   currentUser: IUser;
 
   constructor(private route: ActivatedRoute, private router: Router,
-    private rpnpersService: RpnpersService, private fb: FormBuilder,
+    private tontService: TontService, private fb: FormBuilder,
     private autresService: AutresService,
     private alertService: AlertService,
     private persService: PersService) {
@@ -28,7 +28,7 @@ export class CreateRpnComponent implements OnInit {
   ngOnInit() {
    // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.loadPersonnes();
+    this.loadPersonnes;
   }
 
   createForm() {
@@ -55,8 +55,7 @@ export class CreateRpnComponent implements OnInit {
       depot: formValues.depot,
       dtmajdpt: formValues.dtmajdpt
     }
-    this.rpnpersService.addRpnpers(rpnpers);
-    //this.saveNewPersonne.emit();
+    //this.rpnpersService.addRpnpers(rpnpers);
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['rpn']);
   }

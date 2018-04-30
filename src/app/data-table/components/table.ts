@@ -161,7 +161,17 @@ export class DataTable implements DataTableParams, OnInit {
         return this._reloading;
     }
 
+
+
     @Output() reload = new EventEmitter();
+
+    @Output() openAddForm = new EventEmitter()
+
+    addPers() {
+      this.openAddForm.emit();
+      console.log("addPers openAddForm émit dans table.ts ");
+    }
+
 
     reloadItems() {
         this._reloading = true;

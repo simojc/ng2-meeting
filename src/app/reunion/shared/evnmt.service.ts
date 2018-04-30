@@ -30,13 +30,8 @@ export class EvnmtService {
         }).catch(this.handleError)
     }
 
-  //  getLocation(id: number): Observable<ILocation> {
-  //    return this.http.get(this.endpointUrl + "locations/" + id).map((response: Response) => {
-  //      return <ILocation>response.json()
-  //    }).catch(this.handleError)
-  //}
-
   saveEvnmt(evnmt): Observable<IEvnmt> {
+    console.log(this.endpointUrl + "evnmts," + JSON.stringify(evnmt));
     let headers = new Headers({ 'Content-Type': 'application/json' })
     let options = new RequestOptions({ headers: headers })
     return this.http.post(this.endpointUrl + "evnmts", JSON.stringify(evnmt),
@@ -44,7 +39,6 @@ export class EvnmtService {
         return response.json()
       }).catch(this.handleError)
   }
-
 
   private handleError(error: Response) {
     return Observable.throw(error.statusText)

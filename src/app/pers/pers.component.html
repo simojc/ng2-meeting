@@ -1,68 +1,70 @@
 
 <body>
   <div style="padding: 25px">
-   
-      <!-- <div style="display: inline-block; text-align: right; width: 100%">
-        <a routerLink="/membres/new">  Ajouter </a>
-      </div> -->
-      <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
-       <button type="button" class="btn btn-default btn-sm "
-          (click)="addPers()">
-          <span class="glyphicon glyphicon-plus"></span>
-      </button>
-        <data-table id="pers-grid"
-                    headerTitle="Les membres"
-                    [items]="items"
-                    [itemCount]="itemCount"
-                    (reload)="loadMembers()"
-                    [rowTooltip]="rowTooltip">
-          <data-table-column [property]="'nom_pers'"
-                             [header]="'Nom et prénom'"
-                             [sortable]="true"
-                             [resizable]="true">
-          </data-table-column>
-          <data-table-column [property]="'sexe'"
-                             [header]="'Mme / M.'"
-                             [sortable]="true"
-                             width="100px">
 
-          </data-table-column>
-          <data-table-column [property]="'email'"
-                             [header]="'Courriel'">
-          </data-table-column>
+    <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
+      <!--<button type="button" class="btn btn-default btn-sm "
+            (click)="addPers()">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>-->
 
-          <data-table-column [property]="'telcel'"
-                             [header]="'Tél. cellulaire'">
-          </data-table-column>
+      <data-table id="pers-grid"
+                  headerTitle="Les membres"
+                  [items]="items"
+                  [itemCount]="itemCount"
+                  (reload)="loadMembers()"
+                  (rowClick)="rowClick($event)"
+                  (rowDoubleClick)="rowDoubleClick($event)"
+                  [rowTooltip]="rowTooltip">
+        <data-table-column [property]="'nom_pers'"
+                           [header]="'Nom et prénom'"
+                           [sortable]="true"
+                           [resizable]="true">
+        </data-table-column>
+        <data-table-column [property]="'sexe'"
+                           [header]="'Mme / M.'"
+                           [sortable]="true"
+                           width="100px">
 
-          <data-table-column [property]="'telres'"
-                             [header]="'Tél. résidentiel'">
-          </data-table-column>
+        </data-table-column>
+        <data-table-column [property]="'email'"
+                           [header]="'Courriel'">
+        </data-table-column>
 
-          <data-table-column [property]="'location'"
-                             [header]="'Adresse'"
-                             width="250px">
-          </data-table-column>
+        <data-table-column [property]="'telcel'"
+                           [header]="'Tél. cellulaire'">
+        </data-table-column>
 
-          <data-table-column [property]="'groupe_id'"
-          [header]="'Groupe'">
-        </data-table-column>        
+        <data-table-column [property]="'telres'"
+                           [header]="'Tél. résidentiel'">
+        </data-table-column>
 
+        <data-table-column [property]="'location'"
+                           [header]="'Adresse'"
+                           width="250px">
+        </data-table-column>
 
-          <data-table-column header="Actions">
-            <ng-template #dataTableHeader let-item="item">
-              Actions
-            </ng-template>
-            <ng-template #dataTableCell let-item="item">
-              <!-- <button (click)="EditPers(item.id)" class="btn btn-sm btn-default">Modifier</button> -->
-              <button (click)="EditPers(item.id)"  class="btn btn-link">
-                <span class="glyphicon glyphicon-edit"></span>
+        <data-table-column header="Actions">
+          <ng-template #dataTableHeader let-item="item">
+            Actions
+          </ng-template>
+          <ng-template #dataTableCell let-item="item">
+            <!-- <button (click)="EditPers(item.id)" class="btn btn-sm btn-default">Modifier</button> -->
+            <button (click)="EditPers(item.id)" class="btn btn-link">
+              <span class="glyphicon glyphicon-edit"></span>
             </button>
-              <!-- <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a> -->
-            </ng-template>
-          </data-table-column>
-        </data-table>
-      </div>
-
+            <!-- <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a> -->
+          </ng-template>
+        </data-table-column>
+      </data-table>
     </div>
+
+    <div *ngIf="this.currentUser?.admin" align="left">
+      <button type="button" class="btn btn-primary"
+              (click)="addPers()">
+        Nouveau membre
+      </button>
+    </div>
+
+  </div>
 </body>

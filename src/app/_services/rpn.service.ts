@@ -18,7 +18,8 @@ export class RpnpersService {
     
     getAll(resp_id: number) {
      // console.log(this.endpointUrl + 'rpnpers/resp_id');
-        return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers/' + resp_id);
+        return this.http.get<IRpnpers[]>(this.endpointUrl + "rpnpers?resp_id=" + resp_id);
+        //return this.http.get(this.endpointUrl + "pers?type='M' & groupe=" + this.currentUser.groupe_id)
     }
 
     addRpnpers(rpnpers) {

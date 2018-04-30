@@ -49,20 +49,15 @@ export class PersComponent implements OnInit {
       },
       error => { this.alertService.error(error); }
     );
-
   }
 
-  openAddForm(){
-    this.router.navigate(['/membres/new']);
-  }
 
   EditPers(id) {
     this.router.navigate(['/membres/edit', id]);
   }
 
-  addPers(){
+  addPers() {
     this.router.navigate(['/membres/new']);
   }
-
 
 }

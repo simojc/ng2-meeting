@@ -17,6 +17,7 @@ export class PersService {
     private endpointUrl = environment.API_URL;
     
     getAll() {
+      //console.log("url getAll Pers = "+ this.endpointUrl + 'pers');
       return this.http.get<IPers[]>(this.endpointUrl + 'pers');
     }
 
@@ -61,16 +62,6 @@ export class PersService {
         res => console.log('Creation reussi'));
     }
 
-    addPersonne2(personne): Observable<IPers> {
-      let headers = new Headers({ 'Content-Type': 'application/json' })
-      let options = new RequestOptions({ headers: headers })
-      return this.http2.post(this.endpointUrl + "pers", JSON.stringify(personne),
-        options).map((response: Response) => {
-          console.log(" Creation reussi  ")
-          return response.json()
-        }).catch(this.handleError)
-    }
-
     editPersonne(id) {
       const uri = this.endpointUrl + "pers/" + id;
       //console.log(uri);
@@ -83,8 +74,8 @@ export class PersService {
     }
 
     updatePersonne(personne, id) {
-    //  console.log('personne = '+JSON.stringify(personne))
       const uri = this.endpointUrl + "pers/" + id;
+     // console.log('uri = '+JSON.stringify(uri))
       this
         .http
         .put(uri, personne)

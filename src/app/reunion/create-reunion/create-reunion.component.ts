@@ -6,7 +6,7 @@ import { FormsModule }   from '@angular/forms';
 import { EvnmtService } from '../shared/index'
 
 import {  AlertService } from '../../_services/index';
-import { IGroupe } from '../../Models/index';
+import { IGroupe, IUser } from '../../Models/index';
 
 @Component({
 
@@ -22,27 +22,22 @@ import { IGroupe } from '../../Models/index';
 })
 export class CreateReunionComponent {
   isDirty: boolean = true
+  currentUser: IUser;
   //locations: ILocation[];
   constructor(private router: Router, private evnmtService: EvnmtService,
     private alertService: AlertService) {
-   // this.loadLocations();
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   saveEvnmt(formValues) {
+    console.log(formValues)
     this.evnmtService.saveEvnmt(formValues).subscribe(evnmt => {
-      console.log(formValues)
+      //console.log(formValues)
       this.isDirty = false
       this.router.navigate(['/reunions'])
     })
 
   }
-
-  //private loadLocations() {
-  //  this.autresService.getLocations().subscribe(
-  //    locations => { this.locations = locations; },
-  //    error => { this.alertService.error(error); }
-  //  );
-  //}
 
   cancel() {
     this.router.navigate(['/reunions'])

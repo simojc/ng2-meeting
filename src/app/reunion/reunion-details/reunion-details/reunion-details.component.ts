@@ -2,8 +2,9 @@
 import { Component, OnInit } from '@angular/core'
 import { EvnmtService } from '../../shared/evnmt.service'
 import { ActivatedRoute, Params } from '@angular/router'
+import { AuthService } from '../../../user/auth.service'
 
-import { IEvnmt, IEvnmtdtl } from '../../../Models/index'
+import { IEvnmt, IEvnmtdtl, IUser } from '../../../Models/index'
 import { AlertService, EvnmtdtlService } from '../../../_services/index';
 
 @Component({
@@ -23,10 +24,11 @@ export class EvnmtDetailsComponent implements OnInit {
   sortBy: string = 'ordre'
   event_id: number
   itemCount: number
+  currentUser:IUser
 
   constructor(private evnmtService: EvnmtService, private route: ActivatedRoute,
     private evnmtdtlService: EvnmtdtlService,
-    private alertService: AlertService) {
+    private alertService: AlertService,  private auth: AuthService) {
    // console.log("Dans EventDetailsComponent constructor --- params =   ");
     this.route.params.subscribe(params => console.log( params.id));
   }
@@ -38,16 +40,8 @@ export class EvnmtDetailsComponent implements OnInit {
      //  this.getLocation();
       this.loadEvnmtdtls();
     })
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
-
-  //private getLocation() {
-  //  if (this.evnmt.location_id) {
-  //    this.evnmtService.getLocation(this.evnmt.location_id).subscribe(
-  //        loc => { this.evnmt.location  = loc;  },
-  //        error => { this.alertService.error(error);}
-  //    );
-  //  }
-  //}
 
   addEvnmtdtl() {
     this.addMode = true

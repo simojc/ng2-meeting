@@ -11,6 +11,7 @@ import { IRpnpers, IPers } from '../../Models/index';
 })
 export class EditRpnComponent implements OnInit {
   rpnpers: any;
+  mat : string;
   personnes: IPers [];
   angForm: FormGroup;
   title = 'Modifier adhésion RPN';
@@ -22,15 +23,15 @@ export class EditRpnComponent implements OnInit {
     this.createForm();
    }
 
-  ngOnInit() {
+   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log("params['id'] = "+ params['id']);
-      this.rpnpersService.editRpnpers(params['id']).subscribe(res => {
-        console.log("res = "+  JSON.stringify(res)) 
+      //console.log("params['id'] = "+ params['id']);
+      this.rpnpersService.editRpnpers(params['id']).subscribe(res => {        
         this.rpnpers = res;
-        this.loadPersonnes;
+       // console.log("this.rpnpers = "+  JSON.stringify(this.rpnpers)) 
       });
     });
+    this.loadPersonnes() ;
   }
 
   createForm() {
@@ -62,9 +63,13 @@ export class EditRpnComponent implements OnInit {
  
   }
 
-  private loadPersonnes() {
+   private loadPersonnes() {
     this.persService.getAll().subscribe(
-      res => { this.personnes = res; },
+      res => { 
+        //console.log(" loadPersonnes res = "+  JSON.stringify(res)) 
+      this.personnes = res;        
+      //console.log(" loadPersonnes this.personnes = "+  JSON.stringify(this.personnes)) 
+     },
       error => { this.alertService.error(error); }
     );
   }

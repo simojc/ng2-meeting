@@ -27,7 +27,7 @@ export class EventDetailsComponent implements OnInit {
   public currentUser: IUser
 
   constructor(private eventService: EventService, private route: ActivatedRoute, 
-    private auth: AuthService,) { }
+    private auth: AuthService) { }
 
   ngOnInit() {
     this.route.data.forEach((data) => {

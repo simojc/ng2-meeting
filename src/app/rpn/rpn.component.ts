@@ -70,6 +70,11 @@ export class RpnpersComponent implements OnInit {
         Edit(id) {
           this.router.navigate(['/rpn/edit', id]);
         }
+    
+
+        add() {          
+          this.router.navigate(['/rpn/new']);
+        }
 
         deleteUser(_id: string) {
            // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });

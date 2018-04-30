@@ -2,16 +2,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService, RpnpersService, AutresService, PersService } from '../../_services/index';
-import { IRpnpers, IPers, IUser } from '../../Models/index';
+import { IEngmt, IPers, IUser } from '../../Models/index';
 
 @Component({
-  selector: 'rpn-create',
-  templateUrl: './create-rpn.component.html',
-  styleUrls: ['./create-rpn.component.css']
+  selector: 'engmt-create',
+  templateUrl: './create-engmt.component.html',
+  styleUrls: ['./create-engmt.component.css']
 })
-export class CreateRpnComponent implements OnInit {
+export class CreateEngmtComponent implements OnInit {
 
-  title = 'Nouvelle adhésion RPN';
+  title = 'Nouvel engagement';
   rpnpers: any;
   personnes: IPers[];
   angForm: FormGroup;
@@ -28,7 +28,7 @@ export class CreateRpnComponent implements OnInit {
   ngOnInit() {
    // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.loadPersonnes();
+    this.loadPersonnes;
   }
 
   createForm() {
@@ -58,7 +58,7 @@ export class CreateRpnComponent implements OnInit {
     this.rpnpersService.addRpnpers(rpnpers);
     //this.saveNewPersonne.emit();
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['rpn']);
+    this.router.navigate(['/']);
   }
 
   private loadPersonnes() {
@@ -70,7 +70,7 @@ export class CreateRpnComponent implements OnInit {
 
   cancel() {   
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['rpn']);
+    this.router.navigate(['/']);
   }
 
 }

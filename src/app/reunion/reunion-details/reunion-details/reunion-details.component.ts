@@ -39,20 +39,20 @@ export class EvnmtDetailsComponent implements OnInit {
       this.addMode = false;
      //  this.getLocation();
       this.loadEvnmtdtls();
-    })
+    });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   addEvnmtdtl() {
-    this.addMode = true
+    this.addMode = true;
   }
 
   saveNewReunionItem() {
-    this.addMode = false
+    this.addMode = false;
    }
 
    cancelAddReunionItem() {
-    this.addMode = false
+    this.addMode = false;
   }
 
   private loadEvnmtdtls() {
@@ -61,7 +61,7 @@ export class EvnmtDetailsComponent implements OnInit {
       evnmtdtls => {
         // console.log(" JSON.stringify(rpnpers) =   "+ JSON.stringify(rpnpers))
         this.evnmt.evnmtdtls = evnmtdtls;
-        this.itemCount = this.evnmt.evnmtdtls.length
+        this.itemCount = this.evnmt.evnmtdtls.length;
       },
       error => { this.alertService.error(error); }
     );

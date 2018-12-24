@@ -23,8 +23,8 @@ import { AlertService, EngmtService, AutresService } from '../_services/index';
 })
 
 export class EngmtComponent implements OnInit {
-  engmtpers: IEngmtpers[]
-  public currentUser: IUser
+  engmtpers: IEngmtpers[];
+  public currentUser: IUser;
   currentPers: IPers;
 
   items = [];
@@ -43,15 +43,15 @@ export class EngmtComponent implements OnInit {
       this.currentPers = pers;
       // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
       this.loadEngmt();
-      console.log(" JSON.stringify(engmtpers) =   "+ JSON.stringify(this.engmtpers))
-    })
+      // console.log(" JSON.stringify(engmtpers) =   "+ JSON.stringify(this.engmtpers))
+    });
   }
 
-  private loadEngmt() { 
+  private loadEngmt() {
     this.engmtService.getAllEngmtPers(this.currentPers.id).subscribe(
      engmtpers => {
        this.engmtpers = engmtpers;
-       this.itemCount = engmtpers.length
+       this.itemCount = engmtpers.length;
       },
       error => { this.alertService.error(error); }
     );

@@ -3,8 +3,8 @@ import { Component, Input, OnInit } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 
 import { IEvnmt } from '../../Models/index'
-import { EvnmtService } from '../shared/evnmt.service'
-import { AlertService } from '../../_services/index';
+// import { EvnmtService } from '../shared/evnmt.service'
+// import { AlertService } from '../../_services/index';
 
 @Component({
   selector: 'reunions-thumbnail',
@@ -12,16 +12,16 @@ import { AlertService } from '../../_services/index';
   styles: [`
 		.thumbnail {min-height: 201px;}
 		.pad-left {margin-left: 10px;}
-		.well div {color: #bbb;}		
+		.well div {color: #bbb;}
 	`]
 })
 
 export class ReunionsThumbnailComponent {
 
-  //@Input() evnmt: IEvnmt
+  // @Input() evnmt: IEvnmt
   _evnmt: IEvnmt;
 
-  constructor(private alertService: AlertService, private evnmtService: EvnmtService, private router: Router, private route: ActivatedRoute) {
+  constructor(  private router: Router, private route: ActivatedRoute) {
     // this.route.params.subscribe(params => console.log(params));
   }
 

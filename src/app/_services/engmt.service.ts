@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 import { IUser, IEngmt , IEngmtpers} from '../Models/index'
 import { AlertService } from '../_services/index';
-//import { AuthService } from './auth.service'
+// import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class EngmtService  {
     currentUser: IUser;
-    constructor(private http: HttpClient, private http2:Http) { 
+    constructor(private http: HttpClient, private http2: Http) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-    private endpointUrl = environment.API_URL;
-    
+    // private endpointUrl = environment.API_URL;
+    private endpointUrl = environment.API_URL_NODEJS;
+
     getAll() {
       return this.http.get<IEngmt[]>(this.endpointUrl + 'engmts');
     }
 
     private handleError(error: Response) {
-        return Observable.throw(error)
+        return Observable.throw(error);
       }
 
     getById(_id: number) {

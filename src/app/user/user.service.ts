@@ -15,13 +15,16 @@ export class UserService {
     }
 
     private endpointUrl = environment.API_URL;
-    
+
+    private endpointUrl_Node = environment.API_URL_NODEJS; // prob de CORS
+
     getAll() {
-        return this.http.get<IUser[]>(this.endpointUrl + 'users');
+        console.log(this.endpointUrl_Node + 'users');
+        return this.http.get<IUser[]>(this.endpointUrl_Node + 'users');
     }
 
     getUsers(): Observable<IUser[]> {
-        let headers = new Headers();
+        const headers = new Headers();
         headers.append('x-access-token', this.auth.getToken());
        // console.log("this.auth.getToken() = "+this.auth.getToken())
         return this.http2.get(this.endpointUrl + 'users', {headers: headers})
@@ -31,13 +34,13 @@ export class UserService {
     }
 
     private handleError(error: Response) {
-        return Observable.throw(error)
+        return Observable.throw(error);
       }
 
     getById(_id: string) {
         return this.http.get(this.endpointUrl + 'users/' + _id);
     }
- 
+
     create(user: IUser) {
         return this.http.post(this.endpointUrl + 'signup', user);
     }

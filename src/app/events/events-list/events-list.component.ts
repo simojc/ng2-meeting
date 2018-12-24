@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router'
 
 import { ToastrService } from '../../common/toastr.service'
 
-
 @Component({
 
   template: `
@@ -45,8 +44,6 @@ export class EventsListComponent implements OnInit {
   handlethumbnailClick(eventName) {
     this.toastr.success(eventName)
   }
-
-
 
 }
 

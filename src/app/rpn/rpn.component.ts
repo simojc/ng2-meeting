@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
- 
-import { IUser, IRpnpers, IPers } from  '../Models/index'
+
+import { IUser, IRpnpers, IPers } from '../Models/index'
 //import { UserService } from '../user.service';
-import { AlertService, RpnpersService, AutresService} from '../_services/index';
+import { AlertService, RpnpersService, AutresService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -27,7 +27,7 @@ import { AlertService, RpnpersService, AutresService} from '../_services/index';
    }
    `]
 })
- 
+
 export class RpnpersComponent implements OnInit {
     currentUser: IUser;
     currentPers: IPers;
@@ -36,48 +36,46 @@ export class RpnpersComponent implements OnInit {
     itemCount = 0;
 
     constructor(private alertService: AlertService, private rpnpersService: RpnpersService,
-      private autresService: AutresService, private router: Router) {
+        private autresService: AutresService, private router: Router) {
     }
- 
-        ngOnInit() {
-            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            this.autresService.getPersCurrentPers().subscribe(pers => {          
-                this.currentPers = pers;
-              // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
-               this.loadRpnPers();
-              })
-        }
-    
-          getMessageStyle(): any {			
-			      return {color: '#ff0000', 'font-weight': 'bold'}	
-		      // On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
-	      }
 
-        private loadRpnPers() {
-            // console.log("rpn.componet this.currentPers = " + this.currentPers.prenom)  
-            if (!!this.currentPers) {
-                this.rpnpersService.getAll(this.currentPers.id).subscribe(
-                    rpnpers => { 
+    ngOnInit() {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.autresService.getPersCurrentPers().subscribe(pers => {
+            this.currentPers = pers;
+            // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
+            this.loadRpnPers();
+        });
+    }
+    getMessageStyle(): any {
+        return { color: '#ff0000', 'font-weight': 'bold' }
+        // On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
+    }
+
+    private loadRpnPers() {
+        if (!!this.currentPers) {
+            this.rpnpersService.getAll(this.currentPers.id).subscribe(
+                rpnpers => {
                     // console.log(" JSON.stringify(rpnpers) =   "+ JSON.stringify(rpnpers))
-                        this.items = rpnpers;
-                        this.itemCount =  rpnpers.length  
-                    },
-                 error => { this.alertService.error(error);}
-              );
-           }
+                    this.items = rpnpers;
+                    this.itemCount = rpnpers.length;
+                },
+                error => { this.alertService.error(error); }
+            );
         }
+    }
 
-        Edit(id) {
-          this.router.navigate(['/rpn/edit', id]);
-        }
-    
+    Edit(id) {
+        this.router.navigate(['/rpn/edit', id]);
+    }
 
-        add() {          
-          this.router.navigate(['/rpn/new']);
-        }
 
-        deleteUser(_id: string) {
-           // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-        }
- 
+    add() {
+        this.router.navigate(['/rpn/new']);
+    }
+
+    deleteUser(_id: string) {
+        // this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
+    }
+
 }

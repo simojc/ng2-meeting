@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import {Observable} from 'rxjs/Rx';
-import { IUser, IRpnpers, IPers } from '../Models/index'
-import { AlertService } from './alert.service'
-import {  AutresService } from './autres.service'
-//import { AuthService } from './auth.service'
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+ import {Observable} from 'rxjs/Observable';
+import { IUser, IRpnpers, IPers } from '../Models/index';
+import { AlertService } from './alert.service';
+import {  AutresService } from './autres.service';
+// import { AuthService } from './auth.service'
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RpnpersService {
 
-    constructor(private http: HttpClient, private autresService: AutresService) { 
+    constructor(private http: HttpClient, private autresService: AutresService) {
     }
 
-    private endpointUrl = environment.API_URL;
-    
+    // private endpointUrl = environment.API_URL;
+    private endpointUrl = environment.API_URL_NODEJS;
+
     getAll(resp_id: number) {
-     // console.log(this.endpointUrl + 'rpnpers/resp_id');
-        return this.http.get<IRpnpers[]>(this.endpointUrl + "rpnpers?resp_id=" + resp_id);
-        //return this.http.get(this.endpointUrl + "pers?type='M' & groupe=" + this.currentUser.groupe_id)
+      // console.log(this.endpointUrl + 'rpnpers?resp_id = ' + resp_id);
+        return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers?resp_id=' + resp_id);
     }
 
     addRpnpers(rpnpers) {
@@ -29,8 +29,8 @@ export class RpnpersService {
     }
 
     editRpnpers(id) {
-      const uri = this.endpointUrl + "rpnpers/" + id;
-      //console.log(uri);
+      const uri = this.endpointUrl + 'rpnpers/' + id;
+      // console.log(uri);
       return this
         .http
         .get(uri)
@@ -40,8 +40,8 @@ export class RpnpersService {
     }
 
     updateRpnpers(rpnpers, id) {
-      console.log('rpnpers = ' + JSON.stringify(rpnpers))
-      const uri = this.endpointUrl + "rpnpers/" + id;
+      console.log('rpnpers = ' + JSON.stringify(rpnpers));
+      const uri = this.endpointUrl + 'rpnpers/' + id;
       this
         .http
         .put(uri, rpnpers)
@@ -49,9 +49,8 @@ export class RpnpersService {
     }
 
     private handleError(error: Response) {
-        return Observable.throw(error)
+        return Observable.throw(error);
       }
-
 
     delete(_id: string) {
         return this.http.delete(this.endpointUrl + 'rpnpers/' + _id);

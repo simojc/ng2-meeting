@@ -14,34 +14,31 @@ export class PersService {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-    private endpointUrl = environment.API_URL;
+    private endpointUrl_PHP = environment.API_URL;
+    private endpointUrl = environment.API_URL_NODEJS; // prob de CORS
     
     getAll() {
-      //console.log("url getAll Pers = "+ this.endpointUrl + 'pers');
+     
       return this.http.get<IPers[]>(this.endpointUrl + 'pers');
     }
 
   	getPersByMail(): Observable<IPers> {
         return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email)
-        .map((response: Response) =>  {         
+        .map((response: Response) =>  {
            return response
         })  
         .catch(this.handleError)
       }
 	  
 	  getPersByType(): Observable<IPers[]> {
-       // console.log(this.endpointUrl + "pers?type='M' & groupe=" + this.currentUser.groupe_id)
+        console.log(this.endpointUrl + "pers?type='M' & groupe=" + this.currentUser.groupe_id)
         return this.http.get(this.endpointUrl + "pers?type='M' & groupe=" + this.currentUser.groupe_id)
-        .map((response: Response) =>  {         
+        .map((response: Response) =>  {
            return response
         })  
         .catch(this.handleError)
       }
 
-    //getAll(resp_id: number) {
-    //  // console.log(this.endpointUrl + 'rpnpers/resp_id');
-    //  return this.http.get<IRpnpers[]>(this.endpointUrl + 'rpnpers/' + resp_id);
-    //}
 
     getPersByRepdt(repdt_id: number) {
       return this.http.get<IPers>(this.endpointUrl + 'pers/' + repdt_id);

@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 import { AuthService } from './auth.service';
-
+import { IUser, IPers } from '../Models/index';
+import { UserService } from './user.service';
+import { AlertService, AutresService } from '../_services/index';
 import { ToastrService } from '../common/toastr.service';
-
 import { Router } from '@angular/router';
 
 @Component({
-    templateUrl: './profile.component.html',
-    styles: [`
+  templateUrl: './profile.component.html',
+  styles: [`
 		em {float:right; color: #E05C65; padding-left: 10px;}
         .error input {background-color: #E05C65;}
         .error :: -webkik-input-placeholder {color: #999;} ;
@@ -20,47 +18,35 @@ import { Router } from '@angular/router';
 	`]
 })
 export class ProfileComponent implements OnInit {
-  profileForm: FormGroup;
-  private firstName: FormControl;
-  private lastName: FormControl;
 
-  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
-
+  currentUser: IUser;
+  currentPers: IPers;
+  constructor(private router: Router, private authService: AuthService,
+    private userService: UserService, private alertService: AlertService,
+    private autresService: AutresService) {
+    // console.log(this.currentUser)
   }
-
   ngOnInit() {
-    this.firstName = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
-    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required)
-    this.profileForm = new FormGroup({
-      firstName: this.firstName,
-      lastName: this.lastName
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // console.log('currentUser = ' + JSON.stringify(this.currentUser));
+    this.autresService.getPersCurrentPers().subscribe(pers => {
+      this.currentPers = pers[0];
+      // console.log(' (currentPers) =   ' + JSON.stringify(this.currentPers));
     });
   }
 
-  saveProfile(formValues) {
-    if (this.profileForm.valid) {
-      this.authService.updateCurrentUser(formValues.firstName,
-        formValues.lastName).subscribe(() => {
-          this.toastr.success('Successful profile saved')
-        });
+  convertPassword(motpasse: string) {
+    if (!motpasse) { motpasse = 'aaaaaaaaa'; }
+    const password = motpasse; // .toString();
+    let encryPass = '*';
+    for (let i = 0; i < password.length - 1; i++) {
+      encryPass = encryPass + '*';
     }
+    return encryPass;
   }
 
-  validateFirstName() {
-    return this.firstName.valid || this.firstName.untouched;
+  Edit(id) {
+    this.router.navigate(['user/changepwd', id]);
   }
 
-  validateLastName() {
-    return this.lastName.valid || this.lastName.untouched;
-  }
-
-  cancel() {
-    this.router.navigate(['events'])
-  }
-
-  logout() {
-    this.authService.logout().subscribe(() => {
-      this.router.navigate(['user/login'])
-    });
-  }
 }

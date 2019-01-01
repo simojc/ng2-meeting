@@ -27,6 +27,7 @@ export class EngmtComponent implements OnInit {
   public currentUser: IUser;
   currentPers: IPers;
 
+
   items = [];
   itemCount = 0;
 
@@ -40,15 +41,14 @@ export class EngmtComponent implements OnInit {
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.autresService.getPersCurrentPers().subscribe(pers => {
-      this.currentPers = pers;
-      // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
+      this.currentPers = pers ;
       this.loadEngmt();
-      // console.log(" JSON.stringify(engmtpers) =   "+ JSON.stringify(this.engmtpers))
+       // console.log(" JSON.stringify(engmtpers) =   "+ JSON.stringify(this.engmtpers))
     });
   }
 
   private loadEngmt() {
-    this.engmtService.getAllEngmtPers(this.currentPers.id).subscribe(
+    this.engmtService.getAllEngmtPers(this.currentPers[0].id).subscribe(
      engmtpers => {
        this.engmtpers = engmtpers;
        this.itemCount = engmtpers.length;

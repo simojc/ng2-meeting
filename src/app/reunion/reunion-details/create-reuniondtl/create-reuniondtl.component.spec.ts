@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateSessionComponent } from './create-reuniondtl.component';
+import { CreateReuniondtlComponent } from './create-reuniondtl.component';
 
 describe('CreateSessionComponent', () => {
   let component: CreateSessionComponent;

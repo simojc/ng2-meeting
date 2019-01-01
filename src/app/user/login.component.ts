@@ -1,9 +1,8 @@
 
-import { Component, Input } from '@angular/core'
-import { AuthService } from './auth.service'
+import { Component, Input } from '@angular/core';
+import { AuthService } from './auth.service';
 import { AlertService } from '../_services/index';
-
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
 
@@ -15,27 +14,19 @@ import { Router } from '@angular/router'
 
 export class LoginComponent {
 
-  private loading: boolean
+  private loading: boolean;
   constructor(private authService: AuthService, private router: Router,
     private alertService: AlertService) {
 
   }
-
-  // login(formValues) {
-  //   console.log("Avant...:   "+this.authService.isAuthenticated())
-  //     this.authService.login_cli(formValues.email, formValues.password)
-  //   console.log("Après...:   " + this.authService.isAuthenticated())
-  //     this.router.navigate(['events'])
-  // }
-
 
   login(formValues) {
     this.loading = true;
     this.authService.loginUser(formValues.email, formValues.password)
       .then(
       res => {
-        this.router.navigate(['events'])
-        // this.alertService.success(' login successful', true);
+        this.router.navigate(['/user/profile']);
+         this.alertService.success(' login successful', true);
         this.loading = false;
       },
       err => {
@@ -44,7 +35,11 @@ export class LoginComponent {
       });
   }
 
+  createuser() {
+    this.router.navigate(['user/createuser']);
+  }
+
   cancel() {
-    this.router.navigate(['events'])
+    this.router.navigate(['/']);
   }
 }

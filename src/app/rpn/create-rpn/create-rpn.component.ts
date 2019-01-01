@@ -17,6 +17,9 @@ export class CreateRpnComponent implements OnInit {
   angForm: FormGroup;
   currentUser: IUser;
 
+  @Output() saveNewRpnpers = new EventEmitter();
+  @Output() cancelAddRpnpers = new EventEmitter();
+
   constructor(private route: ActivatedRoute, private router: Router,
     private rpnpersService: RpnpersService, private fb: FormBuilder,
     private autresService: AutresService,
@@ -28,8 +31,9 @@ export class CreateRpnComponent implements OnInit {
   ngOnInit() {
    // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.loadPersonnes();
+     this.loadPersonnes();
   }
+
 
   createForm() {
     this.angForm = this.fb.group({
@@ -44,7 +48,7 @@ export class CreateRpnComponent implements OnInit {
   }
 
   addRpnpers(formValues) {
-    let rpnpers = {
+    const rpnpers = {
       id: undefined,
       groupe_id: this.currentUser.groupe_id,
       pers_id: formValues.pers_id,
@@ -54,11 +58,12 @@ export class CreateRpnComponent implements OnInit {
       mtrle: formValues.mtrle,
       depot: formValues.depot,
       dtmajdpt: formValues.dtmajdpt
-    }
+    };
     this.rpnpersService.addRpnpers(rpnpers);
-    //this.saveNewPersonne.emit();
+    console.log('ds component: rpnpers = ' + JSON.stringify(rpnpers));
+     this.saveNewRpnpers.emit();
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['rpn']);
+     this.router.navigate(['rpn']);
   }
 
   private loadPersonnes() {
@@ -68,7 +73,8 @@ export class CreateRpnComponent implements OnInit {
     );
   }
 
-  cancel() {   
+
+  cancel() {
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['rpn']);
   }

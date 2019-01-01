@@ -17,8 +17,8 @@ import { AlertService, AutresService, TontService } from '../_services/index';
 		 `
 })
 export class TontComponent implements OnInit {
-  tontpers: ITontpers[]
-  public currentUser: IUser
+  tontpers: ITontpers[];
+  public currentUser: IUser;
   currentPers: IPers;
 
   items = [];
@@ -37,15 +37,15 @@ export class TontComponent implements OnInit {
       this.currentPers = pers;
       // console.log(" Ds subscribe this.currentPers.Nom = " + this.currentPers.nom)   
       this.loadTontpers();
-    })
+    });
   }
 
   private loadTontpers() {
-    this.tontService.getAllTontPers(this.currentPers.id).subscribe(
+    this.tontService.getAllTontPers(this.currentPers[0].id).subscribe(
       tontpers => {
-        //console.log(" tontpers =   "+ JSON.stringify(tontpers))
+        // console.log(" tontpers =   "+ JSON.stringify(tontpers))
         this.tontpers = tontpers;
-        this.itemCount = tontpers.length
+        this.itemCount = tontpers.length;
       },
       error => { this.alertService.error(error); }
     );

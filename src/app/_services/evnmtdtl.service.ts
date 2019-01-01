@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Http, Response, Headers, RequestOptions } from '@angular/http'
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { IUser, IEvnmt, IEvnmtdtl } from '../Models/index';
 import { AlertService } from '../_services/index';
@@ -30,7 +30,7 @@ export class EvnmtdtlService {
   }
 
   saveEvnmtdtl(evnmtdtl): Observable<IEvnmtdtl> {
-    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.endpointUrl + 'evnmtdtls', JSON.stringify(evnmtdtl),
       options).map((response: Response) => {

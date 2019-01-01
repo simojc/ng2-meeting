@@ -5,11 +5,14 @@ import { RouterModule } from '@angular/router'
 
 import { FormsModule, ReactiveFormsModule } from  '@angular/forms'
 
-import { userRoutes } from  './user.route'
+import { userRoutes } from './user.route';
 
-import { ProfileComponent } from './profile.component'
-import { LoginComponent } from './login.component'
-import { HomeComponent } from './home/index'
+import { ProfileComponent } from './profile.component';
+import { LoginComponent } from './login.component';
+import { HomeComponent } from './home/index';
+import { CreateUserComponent } from './createUser/index';
+import { ChangePwdComponent } from './change-pwd/index';
+
 
 @NgModule({
     imports: [
@@ -22,12 +25,13 @@ import { HomeComponent } from './home/index'
         ProfileComponent,
         LoginComponent,
         HomeComponent,
-  
+        CreateUserComponent,
+        ChangePwdComponent
     ],
     providers: [
-  
+
     ]
   })
-  export class UserModule{
-  
+  export class UserModule {
+
   }

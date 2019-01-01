@@ -1,8 +1,68 @@
+<div>
+    <div>
+      <h1 class="panel-title"> Les adhésions RPN </h1>
+    </div>
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="80%">
+      <thead>
+        <tr>
+          <th> <u> Nom et prénom </u> </th>
+          <th> <u> Matricule RPN </u></th>
+          <th> <u> Date adhésion </u></th>
+          <th> <u> Dépot  </u></th>
+          <th> <u> Mise à jour </u></th>
+          <th> <u> Action</u> </th>
+        </tr>
+      </thead>         
+  
+      <tr *ngFor="let item of pagedItems">
+        <td>{{item.nom_pers}}</td>
+        <td>{{item.mtrle}}</td>
+        <td>{{item.dtadh}}</td>
+        <td>{{item.depot }} </td>
+        <td>{{item.dtmajdpt}} </td>
+    
+        <td>
+            <div  *ngIf="this.currentUser?.admin" >
+            <a [routerLink]="" (click)="Edit(item.id)"  ><span class="glyphicon glyphicon-edit"></span></a>
+        </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  
+    <!-- pager -->
+    <div align="right">
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">premier</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)"> Dernier </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div  *ngIf="this.currentUser?.admin" align="left">
+      <button type="button" class="btn btn-primary"
+              (click)="add()">
+        Ajouter
+      </button>
+    </div>
+
+<!-- 
 <body>
   <div style="padding: 25px">
-    <!--<div style="display: inline-block; text-align: right; width: 100%">
-        <a routerLink="/rpn/new">  Ajouter </a>
-    </div>-->
+ 
     <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
       <data-table id="rpnpers-grid"
                   headerTitle="Adhésion RPN"
@@ -18,11 +78,6 @@
                            [sortable]="true"
                            [resizable]="true">
         </data-table-column>
-        <!-- <data-table-column [property]="'id'"
-                         [header]="'id'"
-                         [sortable]="true"
-                         [resizable]="true">
-      </data-table-column> -->
 
         <data-table-column [property]="'mtrle'"
                            [header]="'Matricule RPN'"
@@ -65,7 +120,7 @@
           </ng-template>
           <ng-template #dataTableCell let-item="item">
             <button (click)="Edit(item.id)" class="btn btn-sm btn-default">Modifier</button>
-            <!-- <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a> -->
+           
           </ng-template>
         </data-table-column>
 
@@ -80,3 +135,4 @@
 
   </div>
 </body>
+ -->

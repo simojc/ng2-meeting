@@ -1,10 +1,10 @@
 
-import { Component, OnInit } from '@angular/core'
-import { EvnmtService } from '../../shared/evnmt.service'
-import { ActivatedRoute, Params } from '@angular/router'
-import { AuthService } from '../../../user/auth.service'
+import { Component, OnInit } from '@angular/core';
+import { EvnmtService } from '../../shared/evnmt.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { AuthService } from '../../../user/auth.service';
 
-import { IEvnmt, IEvnmtdtl, IUser } from '../../../Models/index'
+import { IEvnmt, IEvnmtdtl, IUser } from '../../../Models/index';
 import { AlertService, EvnmtdtlService } from '../../../_services/index';
 
 @Component({
@@ -18,13 +18,13 @@ import { AlertService, EvnmtdtlService } from '../../../_services/index';
 
 export class EvnmtDetailsComponent implements OnInit {
 
-  evnmt: IEvnmt
-  addMode: boolean
+  evnmt: IEvnmt;
+  addMode: boolean;
  // filterBy: string = 'all'
-  sortBy: string = 'ordre'
-  event_id: number
-  itemCount: number
-  currentUser:IUser
+  sortBy: string = 'ordre';
+  event_id: number;
+  itemCount: number;
+  currentUser: IUser;
 
   constructor(private evnmtService: EvnmtService, private route: ActivatedRoute,
     private evnmtdtlService: EvnmtdtlService,

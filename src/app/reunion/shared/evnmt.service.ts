@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 
 import { IEvnmt, IEvnmtdtl } from '../../Models/index';
-
+import { AuthService } from '../../user/auth.service';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -14,7 +14,16 @@ export class EvnmtService {
   // private endpointUrl = environment.API_URL;
   private endpointUrl = environment.API_URL_NODEJS;
 
-  constructor(private http: Http) { }
+  constructor( private http: Http, private auth: AuthService) {
+}
+
+  token = this.auth.getToken();
+  httpOptions = {
+     headers: new Headers({
+         'Content-Type': 'application/json',
+         'Authorization': 'Bearer ' + JSON.parse(this.token)
+     })
+ };
 
   getEvnmts(): Observable<IEvnmt[]> {
     return this.http.get(this.endpointUrl + 'evnmts')
@@ -24,17 +33,15 @@ export class EvnmtService {
   }
 
   getEvnmt(id: number): Observable<IEvnmt> {
-    return this.http.get(this.endpointUrl + 'evnmt/' + id).map((response: Response) => {
+    return this.http.get(this.endpointUrl + 'evnmts/' + id).map((response: Response) => {
       return <IEvnmt>response.json();
     }).catch(this.handleError);
   }
 
   saveEvnmt(evnmt): Observable<IEvnmt> {
     console.log(this.endpointUrl + 'evnmts,' + JSON.stringify(evnmt));
-    const headers = new Headers({ 'Content-Type': 'application/json' })
-    const options = new RequestOptions({ headers: headers });
     return this.http.post(this.endpointUrl + 'evnmts', JSON.stringify(evnmt),
-      options).map((response: Response) => {
+    this.httpOptions).map((response: Response) => {
         return response.json();
       }).catch(this.handleError);
   }

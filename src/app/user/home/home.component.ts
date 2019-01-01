@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IUser } from '../../Models/index'
+import { IUser } from '../../Models/index';
 import { UserService } from '../user.service';
-import { AlertService } from '../../_services/index';
+import { AlertService, PagerService } from '../../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -11,24 +11,41 @@ import { AlertService } from '../../_services/index';
 export class HomeComponent implements OnInit {
     currentUser: IUser;
     users: IUser[] = [];
-    constructor(private userService: UserService, private alertService: AlertService) {
+    // array of all items to be paged
+    private allItems: any[] = [];
+    // pager object
+    pager: any = {};
+    // paged items
+    pagedItems: any[];
+
+    constructor(private userService: UserService,
+        private alertService: AlertService, private pagerService: PagerService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-       // console.log(this.currentUser)
+        // console.log(this.currentUser)
     }
     ngOnInit() {
         this.loadAllUsers();
     }
+
     deleteUser(_id: string) {
         this.userService.delete(_id).subscribe(() => { this.loadAllUsers(); });
     }
     private loadAllUsers() {
-        // console.log("this.currentUser.email =   "+this.currentUser.email)
-        this.userService.getAll().subscribe(
-        users => { this.users = users; },
-         error => { this.alertService.error(error); }
-    );
+        this.userService.getUsers().subscribe(
+            users => {
+                this.users = users; this.allItems = users;
+                this.setPage(1);
+            },
+            error => { this.alertService.error(error); }
+        );
+    }
 
-
+    // Nouveau  code pour pagination
+    setPage(page: number) {
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.allItems.length, page);
+        // get current page of items
+        this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 
 }

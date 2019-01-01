@@ -1,65 +1,58 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import {Observable} from 'rxjs/Rx';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 import { IUser, IGroupe,  IPers} from '../Models/index';
-//import { AlertService } from '../_services/index';
-//import { AuthService } from '/../auth.service'
+// import { AlertService } from '../_services/index';
+ import { AuthService } from '../user/auth.service';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AutresService {
-    currentUser: IUser
-    
-    constructor(private http: HttpClient) { 
+    currentUser: IUser;
+
+    token = this.auth.getToken();
+    httpOptions = {
+       headers: new Headers({
+           'Content-Type': 'application/json',
+           'Authorization': 'Bearer ' + JSON.parse(this.token)
+       })
+   };
+
+    constructor(private http: Http, private httpClient: HttpClient, private auth: AuthService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    
-    //private endpointUrl = api/locations;
-    private endpointUrl = environment.API_URL;
-    
-    //getLocations() {
-    //    console.log(this.endpointUrl + 'locations')
-    //    return this.http.get<ILocation[]>(this.endpointUrl + 'locations');
-    //}
+
+     // private endpointUrl = environment.API_URL;
+       private endpointUrl = environment.API_URL_NODEJS;
 
     getGroupes() {
-        return this.http.get<IGroupe[]>(this.endpointUrl + 'groupes');
+        // return this.httpClient.get<IGroupe[]>(this.endpointUrl + 'groupes');
+        return this.http.get(this.endpointUrl + 'groupes', this.httpOptions)
+        .map((response: Response) => <IGroupe[]>response.json())
+        .catch(this.handleError);
     }
 
     private handleError(error: Response) {
-        return Observable.throw(error)
+        return Observable.throw(error);
       }
 
-    getLocationById(_id: number) {
-        return this.http.get(this.endpointUrl + 'locations/' + _id);
-    }
-
-    getGroupeById(_id: number) {
-        return this.http.get(this.endpointUrl + 'groupes/' + _id);
-    }
-
-    // getPersCurrentPers() {
-    //    // console.log("  this.endpointUrl + 'pers?email = ' + this.currentUser.email  = "+this.endpointUrl + 'pers?email=' + this.currentUser.email)
-    //   return this.http.get<IPers>(this.endpointUrl + 'pers?email=' + this.currentUser.email)
-    //   .map((response: Response) => <IPers>response.json())
-    //   //.do(data => console.log('Event: ' + JSON.stringify(data)))
-    //   .catch(this.handleError)
+    // getLocationById(_id: number) {
+    //     return this.http.get(this.endpointUrl + 'locations/' + _id);
     // }
 
-    getPersCurrentPers(): Observable<IPers> {
-        return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email)
-        .map((response: Response) =>  {
-          //  console.log('Pers: ' + JSON.stringify(response));
-           return response
-        })  
-      //  .do(data => console.log('Pers: ' + JSON.stringify(data)))
-        .catch(this.handleError)
+    getGroupeById(_id: number) {
+       // return this.httpClient.get(this.endpointUrl + 'groupes/' + _id);
+        return this.http.get(this.endpointUrl + 'groupes/' + _id, this.httpOptions)
+        .map((response: Response) => <IGroupe>response.json())
+        .catch(this.handleError);
+    }
+
+    getPersCurrentPers() {
+        // console.log('getPersCurrentPers this.currentUser.email =' + this.currentUser.email);
+        return this.http.get(this.endpointUrl + 'pers?email=' + this.currentUser.email, this.httpOptions)
+        .map((response: Response) => <IPers>response.json())
+        .catch(this.handleError);
       }
 
-
-    //  getPersCurrentPers2() {
-    //    return this.http.get<IPers>(this.endpointUrl + 'pers?email=' + this.currentUser.email);
-    //}
- 
 }

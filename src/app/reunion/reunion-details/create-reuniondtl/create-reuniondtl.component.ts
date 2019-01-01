@@ -1,10 +1,10 @@
 
-import { Component, Input, Output , EventEmitter} from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, Input, Output , EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
 
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { IEvnmtdtl} from '../../../Models/index'
+import { IEvnmtdtl} from '../../../Models/index';
 
 import { restrictedWords } from '../../../_directives/index';
 import { AutresService, AlertService, EvnmtdtlService } from '../../../_services/index';
@@ -16,20 +16,20 @@ import { AutresService, AlertService, EvnmtdtlService } from '../../../_services
   styles: [`
   em {float:right; color: #E05C65; padding-left: 10px;}
       .error input, .error select, .error textarea {background-color: #E05C65;}
-      .error :: -webkik-input-placeholder {color: #999;} 
-      .error :: -moz-placeholder {color: #999;} 
-      .error : -moz-placeholder {color: #999;} 
-      .error : ms-input-placeholder {color: #999;} 			
+      .error :: -webkik-input-placeholder {color: #999;}
+      .error :: -moz-placeholder {color: #999;}
+      .error : -moz-placeholder {color: #999;}
+      .error : ms-input-placeholder {color: #999;}
 `]
 })
 export class CreateReuniondtlComponent  {
-  isDirty: boolean = true
-  @Output() saveNewReunionItem = new EventEmitter()
-  @Output() cancelAddReunionItem = new EventEmitter()
+  isDirty: boolean = true;
+  @Output() saveNewReunionItem = new EventEmitter();
+  @Output() cancelAddReunionItem = new EventEmitter();
 
-  @Input() eventdtlId: number
+  @Input() eventdtlId: number;
 
-  //locations: ILocation[];
+  // locations: ILocation[];
   constructor(private router: Router, private evnmtdtlService: EvnmtdtlService,
     private autresService: AutresService,
     private alertService: AlertService) {
@@ -37,16 +37,16 @@ export class CreateReuniondtlComponent  {
   }
 
   saveEvnmtdtl(formValues) {
-    //console.log("formValues1 = "+  JSON.stringify(formValues)) ;
+    // console.log("formValues1 = "+  JSON.stringify(formValues)) ;
     this.evnmtdtlService.saveEvnmtdtl(formValues).subscribe(evnmt => {
-      console.log(formValues)
-      this.isDirty = false
-      //this.router.navigate(['/evnmtdtls'])
-    })
-    this.saveNewReunionItem.emit()
+      console.log(formValues);
+      this.isDirty = false;
+      // this.router.navigate(['/evnmtdtls'])
+    });
+    this.saveNewReunionItem.emit();
   }
 
   cancel() {
-    this.cancelAddReunionItem.emit()
+    this.cancelAddReunionItem.emit();
   }
 }

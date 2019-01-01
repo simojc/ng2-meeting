@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { IUser, IRpnpers, IPers } from '../Models/index'
-//import { UserService } from '../user.service';
-import { AlertService, RpnpersService, AutresService } from '../_services/index';
+import { IUser, IRpnpers, IPers } from '../Models/index';
+// import { UserService } from '../user.service';
+import { AlertService, RpnpersService, AutresService, PagerService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +16,7 @@ import { AlertService, RpnpersService, AutresService } from '../_services/index'
      margin-bottom:0;
      margin-width:0;
      margin-height:0;
-     background-color:#A3A6BA; 
+     background-color:#A3A6BA;
     }
    .text {
    font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -35,8 +34,15 @@ export class RpnpersComponent implements OnInit {
     items = [];
     itemCount = 0;
 
+      // array of all items to be paged
+      private allItems: any[] = [];
+      // pager object
+      pager: any = {};
+      // paged items
+      pagedItems: any[];
+
     constructor(private alertService: AlertService, private rpnpersService: RpnpersService,
-        private autresService: AutresService, private router: Router) {
+        private autresService: AutresService, private router: Router, private pagerService: PagerService) {
     }
 
     ngOnInit() {
@@ -48,27 +54,39 @@ export class RpnpersComponent implements OnInit {
         });
     }
     getMessageStyle(): any {
-        return { color: '#ff0000', 'font-weight': 'bold' }
+        return { color: '#ff0000', 'font-weight': 'bold' };
         // On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
     }
 
     private loadRpnPers() {
+
+     // console.log(' JSON.stringify(this.currentPers) =   ' + JSON.stringify(this.currentPers))
         if (!!this.currentPers) {
-            this.rpnpersService.getAll(this.currentPers.id).subscribe(
+            this.rpnpersService.getAll(this.currentPers[0].id).subscribe(
                 rpnpers => {
-                    // console.log(" JSON.stringify(rpnpers) =   "+ JSON.stringify(rpnpers))
+                   // console.log(' JSON.stringify(this.currentPers) =   ' + JSON.stringify(this.currentPers))
                     this.items = rpnpers;
                     this.itemCount = rpnpers.length;
+
+                    this.allItems = rpnpers;
+                    this.setPage(1);
                 },
                 error => { this.alertService.error(error); }
             );
         }
     }
 
+    // Nouveau  code pour pagination
+    setPage(page: number) {
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.allItems.length, page);
+        // get current page of items
+        this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
+
     Edit(id) {
         this.router.navigate(['/rpn/edit', id]);
     }
-
 
     add() {
         this.router.navigate(['/rpn/new']);

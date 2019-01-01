@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventsThumbnailComponent } from './events-thumbnail.component';
+// import { EventsThumbnailComponent } from './events-thumbnail.component';
 
 describe('EventsThumbnailComponent', () => {
   let component: EventsThumbnailComponent;

@@ -1,70 +1,61 @@
-
-<body>
-  <div style="padding: 25px">
-
-    <div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
-      <!--<button type="button" class="btn btn-default btn-sm "
-            (click)="addPers()">
-      <span class="glyphicon glyphicon-plus"></span>
-    </button>-->
-
-      <data-table id="pers-grid"
-                  headerTitle="Les membres"
-                  [items]="items"
-                  [itemCount]="itemCount"
-                  (reload)="loadMembers()"
-                  (rowClick)="rowClick($event)"
-                  (rowDoubleClick)="rowDoubleClick($event)"
-                  [rowTooltip]="rowTooltip">
-        <data-table-column [property]="'nom_pers'"
-                           [header]="'Nom et prénom'"
-                           [sortable]="true"
-                           [resizable]="true">
-        </data-table-column>
-        <data-table-column [property]="'sexe'"
-                           [header]="'Mme / M.'"
-                           [sortable]="true"
-                           width="100px">
-
-        </data-table-column>
-        <data-table-column [property]="'email'"
-                           [header]="'Courriel'">
-        </data-table-column>
-
-        <data-table-column [property]="'telcel'"
-                           [header]="'Tél. cellulaire'">
-        </data-table-column>
-
-        <data-table-column [property]="'telres'"
-                           [header]="'Tél. résidentiel'">
-        </data-table-column>
-
-        <data-table-column [property]="'location'"
-                           [header]="'Adresse'"
-                           width="250px">
-        </data-table-column>
-
-        <data-table-column header="Actions">
-          <ng-template #dataTableHeader let-item="item">
-            Actions
-          </ng-template>
-          <ng-template #dataTableCell let-item="item">
-            <!-- <button (click)="EditPers(item.id)" class="btn btn-sm btn-default">Modifier</button> -->
-            <button (click)="EditPers(item.id)" class="btn btn-link">
-              <span class="glyphicon glyphicon-edit"></span>
-            </button>
-            <!-- <a routerLink="/membres/edit/{{item.id}}">  <h4> Modif link </h4> </a> -->
-          </ng-template>
-        </data-table-column>
-      </data-table>
-    </div>
-
-    <div *ngIf="this.currentUser?.admin" align="left">
-      <button type="button" class="btn btn-primary"
-              (click)="addPers()">
-        Nouveau membre
-      </button>
-    </div>
-
+<div>
+  <div>
+    <h1 class="panel-title"> Les membres </h1>
   </div>
-</body>
+  <table class="table table-striped table-bordered table-sm" cellspacing="0" width="80%">
+    <thead>
+      <tr>
+        <th> <u> Nom et prénom </u> </th>
+        <th> <u> Email </u></th>
+        <th> <u> Tél. cellulaire </u></th>
+        <th> <u> Tél. résidentiel </u></th>
+        <th> <u> Adresse </u></th>
+        <th> <u> Status </u></th>
+        <th> <u> Action</u> </th>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let item of pagedItems">
+      <td>{{item.nom_pers}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.telcel}}</td>
+      <td>{{item.telres}} </td>
+      <td>{{item.location}} </td>
+      <td>{{item.type}} </td>
+      <td>
+        <div *ngIf="this.currentUser?.admin"  align = "left">
+          <a  [routerLink]="" (click)="EditPers(item.id)"  ><span class="glyphicon glyphicon-edit"></span></a>
+        </div>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- pager -->
+  <div align = "right">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(1)">premier</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(pager.currentPage - 1)">Précédent</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.currentPage + 1)">Suivant</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.totalPages)"> Dernier </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="this.currentUser?.admin" align = "left">
+  <button type="button" class="btn btn-primary" (click)=addPers()>
+    Ajouter
+  </button>
+</div>

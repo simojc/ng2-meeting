@@ -11,10 +11,10 @@ import { IPers, TypePers,  IUser} from '../../Models/index';
 })
 export class CreatePersComponent implements OnInit {
 
-  title = 'Ajouter personne';
-  @Output() saveNewPersonne = new EventEmitter()
-  @Output() cancelAddPersonne = new EventEmitter()
-  typePers = TypePers
+  title = "Création d'une personne";
+  @Output() saveNewPersonne = new EventEmitter();
+  @Output() cancelAddPersonne = new EventEmitter();
+  typePers = TypePers;
   currentUser: IUser;
 
   angForm: FormGroup;
@@ -26,18 +26,17 @@ export class CreatePersComponent implements OnInit {
   ngOnInit() {
    // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log("this.currentUser= " +JSON.stringify(this.currentUser))
+    // console.log('this.currentUser= ' + JSON.stringify(this.currentUser));
   }
 
   createForm() {
     this.angForm = this.fb.group({
-      //id: '',
      // user_id: ['', Validators.required], Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
       type: ['', Validators.required],
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       sexe: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.required, Validators.email ],
       telcel: '',
       telres: '',
       emploi: '',
@@ -50,14 +49,13 @@ export class CreatePersComponent implements OnInit {
   }
 
   addPersonne(formValues) {
-    let personne: IPers = {
+    const personne: IPers = {
       id: undefined,
-      //user_id: formValues.user_id,  Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
+      // user_id: formValues.user_id,  Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
      // location_id: formValues.location_id,
       address: formValues.address,
-      city: formValues.city,  
+      city: formValues.city,
       country: formValues.country,
-
       type: formValues.type,
       nom: formValues.nom,
       prenom: formValues.prenom,
@@ -69,8 +67,8 @@ export class CreatePersComponent implements OnInit {
       dom_activ: formValues.dom_activ,
       titre_adh: formValues.titre_adh,
       groupe_id: this.currentUser.groupe_id
-    }
-    console.log("personne = "+ JSON.stringify(personne))
+    };
+    console.log('personne = ' + JSON.stringify(personne));
     this.persService.addPersonne(personne);
     this.saveNewPersonne.emit();
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
@@ -78,7 +76,7 @@ export class CreatePersComponent implements OnInit {
   }
 
   cancel() {
-    this.cancelAddPersonne.emit()
+    this.cancelAddPersonne.emit();
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['membres']);
   }

@@ -1,46 +1,73 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import {Observable} from 'rxjs/Rx';
-import { IUser, ITont, ITontpers } from '../Models/index'
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { IUser, ITont, ITontpers } from '../Models/index';
 import { AlertService } from '../_services/index';
-//import { AuthService } from './auth.service'
+import { AuthService } from '../user/auth.service';
+import { AutresService } from './autres.service';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TontService {
     currentUser: IUser;
-    constructor(private http: HttpClient, private http2:Http) { 
+    constructor(private http: Http, private httpClient: HttpClient,
+        private auth: AuthService, private autresService: AutresService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
-    private endpointUrl = environment.API_URL;
-    
+    token = this.auth.getToken();
+    httpOptions = {
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(this.token)
+        })
+    };
+
+    // private endpointUrl = environment.API_URL;
+    private endpointUrl = environment.API_URL_NODEJS;
+
     getAll() {
-      return this.http.get<ITont[]>(this.endpointUrl + 'tontpers');
+        // return this.httpClient.get<ITont[]>(this.endpointUrl + 'tontpers');
+        return this.http.get(this.endpointUrl + 'tontpers', this.httpOptions)
+            .map((response: Response) => <ITont[]>response.json())
+            .catch(this.handleError);
     }
 
     private handleError(error: Response) {
-        return Observable.throw(error)
-      }
+        return Observable.throw(error);
+    }
 
     getById(_id: number) {
-      return this.http.get<ITont>(this.endpointUrl + 'tontpers/' + _id);
+        // return this.httpClient.get<ITont>(this.endpointUrl + 'tontpers/' + _id);
+        return this.http.get(this.endpointUrl + 'tontpers/' + _id, this.httpOptions)
+            .map((response: Response) => <ITont>response.json())
+            .catch(this.handleError);
     }
 
     getAllTontPers(pers_id: number) {
-      return this.http.get<ITontpers[]>(this.endpointUrl + 'tontpers/' + pers_id);
+        // return this.httpClient.get<ITontpers[]>(this.endpointUrl + 'tontpers/' + pers_id);
+        return this.http.get(this.endpointUrl + 'tontpers/' + pers_id, this.httpOptions)
+            .map((response: Response) => <ITont>response.json())
+            .catch(this.handleError);
     }
- 
-    create(user: IUser) {
-        return this.http.post(this.endpointUrl + 'signup', user);
+
+    create(tontpers: ITontpers) {
+        return this.http.post(this.endpointUrl + 'tontpers/', tontpers, this.httpOptions)
+            // return this.http.get(this.endpointUrl + 'tontpers/' + pers_id, this.httpOptions)
+            .map((response: Response) => <ITont>response.json())
+            .catch(this.handleError);
     }
- 
-    update(user: IUser) {
-        return this.http.put(this.endpointUrl + '/users/' + user.id, user);
+
+    update(tontpers: ITontpers) {
+        return this.http.put(this.endpointUrl + 'tontpers/' + tontpers.id, tontpers, this.httpOptions)
+            .map((response: Response) => <ITont>response.json())
+            .catch(this.handleError);
     }
- 
+
     delete(_id: string) {
-        return this.http.delete(this.endpointUrl + '/users/' + _id);
+        return this.http.delete(this.endpointUrl + 'tontpers/' + _id, this.httpOptions)
+            .map((response: Response) => <ITont>response.json())
+            .catch(this.handleError);
     }
 }

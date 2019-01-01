@@ -11,6 +11,7 @@ import { IPers, TypePers } from '../../Models/index';
 })
 export class EditPersComponent implements OnInit {
  // locations: ILocation[];
+
   personne: any;
   typePers = TypePers;
   angForm: FormGroup;
@@ -24,10 +25,12 @@ export class EditPersComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      //console.log("params['id'] = "+ params['id']);
-      this.persService.editPersonne(params['id']).subscribe(res => {
-       // console.log("res = "+  JSON.stringify(res)) 
-        this.personne = res;
+      // console.log("params['id'] = "+ params['id']);
+      // this.persService.editPersonne(params['id']).subscribe(res => {
+        this.persService.getById(params['id']).subscribe(res => {
+         console.log(" dans ngOnInit; res = "+  JSON.stringify(res));
+        this.personne = res[0];
+        console.log(" dans ngOnInit; this.personne = "+  JSON.stringify(this.personne));
       });
     });
   }
@@ -51,17 +54,10 @@ export class EditPersComponent implements OnInit {
     });
   }
 
-  //updatePersonne(formValues) {
-  //  this.route.params.subscribe(params => {
-  //    this.persService.updatePersonne(name, price, params['id']);
-  //  this.router.navigate(['index']);
-  //});
-  //}
-
   updatePersonne(formValues) {
     this.route.params.subscribe(params => {
-    let personne = {
-      //id: params['id'],
+    const personne = {
+      // id: params['id'],
      // user_id: this.personne.user_id,   Pas besoin du user_id, car le lien entre la personne et le user se fait par le courriel
       type: formValues.type,
       nom: formValues.nom,
@@ -76,31 +72,24 @@ export class EditPersComponent implements OnInit {
       address: formValues.address,
       city: formValues.city,
       country: formValues.country,
-      
+
     };
-    console.log("personne = "+  JSON.stringify(personne)) ;
+    console.log('personne = ' +  JSON.stringify(personne)) ;
 
     this.persService.updatePersonne(personne, params['id']);
     // this.saveNewPersonne.emit();
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
      this.router.navigate(['membres']);
-    })
- 
+    });
+
   }
 
   cancel() {
-    //this.cancelAddPersonne.emit()
+    // this.cancelAddPersonne.emit()
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['membres']);
   }
 
-  //private loadLocations() {
-  //  this.autresService.getLocations().subscribe(
-  //    locations => { 
-  //                  this.locations = locations; },
-  //    error => { this.alertService.error(error); }
-  //  );
-  //}
 
 
 

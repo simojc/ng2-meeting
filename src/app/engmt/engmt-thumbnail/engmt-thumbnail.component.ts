@@ -10,7 +10,7 @@ import { IEngmtpers } from '../../Models/index'
   styles: [`
 		.thumbnail {min-height: 201px;}
 		.pad-left {margin-left: 10px;}
-		.well div {color: #bbb;}		
+		.well div {color: #bbb;}
 	`]
 })
 
@@ -27,14 +27,13 @@ export class EngmtThumbnailComponent {
     var dt_ech = new Date(this.engmt.dt_ech);
     if (this.engmt && dt_ech < today )			
 			return {color: '#003300', 'font-weight': 'bold'}
-		return {}
-		
-		// On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
+    return {};
+    /// On peut assi utiliser des classe de style pour faire la même chose et utiliser dans le template ngClass à la place de ngStyle.
 	}
 
     goDetail(id: number) {
-      this.router.navigate(['/events', id]);
-      //this.router.navigate(['events', { id: id }]);
+      this.router.navigate(['/', id]);
+      //t his.router.navigate(['events', { id: id }]);
     }
 
 }

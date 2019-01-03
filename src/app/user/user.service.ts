@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
@@ -68,13 +67,16 @@ export class UserService {
     } */
 
     update(user, id) {
-        console.log(' dans user; rpnpers = ' + JSON.stringify(user));
+        // console.log("user = " + JSON.stringify(user));
+        return new Promise((resolve, reject) => {
         const uri = this.endpointUrl + 'users/' + id;
-        this
-          .http
-          .put(uri, user, this.httpOptions)
-          .subscribe(res => console.log('Done'));
-      }
+        this.http.put(uri, user, this.httpOptions)
+        .catch((err: Response) => {
+            return Observable.throw(err);
+          })
+          .subscribe(res => { resolve(res); });
+      });
+    }
 
     delete(_id: string) {
         return this.http.delete(this.endpointUrl + '/users/' + _id);

@@ -1,5 +1,7 @@
 <div class="row">
-  <h3>Création d'une réunion </h3>
+    <div class="panel-heading">
+        {{ title }}
+      </div>
   <hr>
   <div class="col-md-6">
     <form #newEvnmtForm="ngForm" (ngSubmit)="saveEvnmt(newEvnmtForm.value)" autocomplete="off" novalidate>
@@ -78,20 +80,7 @@
           </th>
           <th> </th>
         </tr>
-        <tr>
-          <th colspan="3">
-            <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.contenu?.invalid && newEvnmtForm.controls.contenu?.touched}">
-              <label for="evnmtContenu"> Ordre du jour</label>
-              <em *ngIf="newEvnmtForm.controls.contenu?.invalid && (newEvnmtForm.controls.contenu?.touched)">Required</em>
-              <!--  <input (ngModel)="contenu" name="contenu" required id="evnmtContenu" type="textarea" class="form-control"
-                    placeholder="Contenu..." /> -->
-              <textarea (ngModel)="contenu" name="contenu" required class="form-control rounded-0" placeholder="Contenu..."
-                id="evnmtContenu" rows="3"></textarea>
-            </div>
-          </th>
-          <th>
-          </th>
-        </tr>
+   
       </table>
       <fieldset>
         <legend>Adresse </legend>
@@ -123,6 +112,16 @@
       <button type="submit" [disabled]="newEvnmtForm.invalid" class="btn btn-primary">Save</button>
       <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
     </form>
+  </div>
+
+  <div class="col-md-6">
+      <div class="form-group" [ngClass]="{'error': newEvnmtForm.controls.contenu?.invalid && newEvnmtForm.controls.contenu?.touched}">
+          <label for="evnmtContenu"> Ordre du jour</label>
+          <em *ngIf="newEvnmtForm.controls.contenu?.invalid && (newEvnmtForm.controls.contenu?.touched)">Required</em>
+          <textarea (ngModel)="contenu" name="contenu" required class="form-control rounded-0" placeholder="Contenu..."
+            id="evnmtContenu" rows="12"></textarea>
+        </div>
+
   </div>
 </div>
 

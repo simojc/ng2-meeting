@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 // import { CommonModule } from '@angular/common';
 import { AgGridModule } from 'ag-grid-angular/main';
-import { DataTableModule } from './data-table';
+// import { DataTableModule } from './data-table';
 import { AppComponent } from './app.component';
 import { NavBarComponent  } from './nav/navbar.component';
 import { appRoutes } from './app.routes';
@@ -126,7 +126,7 @@ registerLocaleData(localeFr, 'fr');
     // AgGridModule.withComponents([...Liste des component qui seront utilisé dans le grid....]),
     AgGridModule.withComponents([]),
     FormsModule,
-    DataTableModule,
+    // DataTableModule,
     HttpModule,
     HttpClientModule,
     ReactiveFormsModule,

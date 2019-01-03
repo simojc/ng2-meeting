@@ -1,4 +1,3 @@
-
 import { Component, Input } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AlertService } from '../_services/index';
@@ -13,11 +12,9 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
-
   private loading: boolean;
   constructor(private authService: AuthService, private router: Router,
     private alertService: AlertService) {
-
   }
 
   login(formValues) {
@@ -26,7 +23,7 @@ export class LoginComponent {
       .then(
       res => {
         this.router.navigate(['/user/profile']);
-         this.alertService.success(' login successful', true);
+         this.alertService.success(' login complété avec sussès', true);
         this.loading = false;
       },
       err => {

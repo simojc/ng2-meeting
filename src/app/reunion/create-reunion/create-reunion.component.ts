@@ -23,6 +23,7 @@ import { IGroupe, IUser } from '../../Models/index';
 export class CreateReunionComponent {
   isDirty: boolean = true;
   currentUser: IUser;
+  title = "Création d'une réunion";
   // locations: ILocation[];
   constructor(private router: Router, private evnmtService: EvnmtService,
     private alertService: AlertService) {

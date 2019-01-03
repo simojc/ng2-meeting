@@ -12,6 +12,7 @@ import { LoginComponent } from './login.component';
 import { HomeComponent } from './home/index';
 import { CreateUserComponent } from './createUser/index';
 import { ChangePwdComponent } from './change-pwd/index';
+import { EditUserComponent } from './edit-user/index';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ChangePwdComponent } from './change-pwd/index';
         LoginComponent,
         HomeComponent,
         CreateUserComponent,
-        ChangePwdComponent
+        ChangePwdComponent,
+        EditUserComponent
     ],
     providers: [
 

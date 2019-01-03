@@ -7,19 +7,16 @@ import { IRpnpers, IPers, IUser } from '../../Models/index';
 @Component({
   selector: 'rpn-create',
   templateUrl: './create-rpn.component.html',
-  styleUrls: ['./create-rpn.component.css']
+  styleUrls: []
 })
 export class CreateRpnComponent implements OnInit {
-
   title = 'Nouvelle adhésion RPN';
   rpnpers: any;
   personnes: IPers[];
   angForm: FormGroup;
   currentUser: IUser;
-
   @Output() saveNewRpnpers = new EventEmitter();
   @Output() cancelAddRpnpers = new EventEmitter();
-
   constructor(private route: ActivatedRoute, private router: Router,
     private rpnpersService: RpnpersService, private fb: FormBuilder,
     private autresService: AutresService,
@@ -29,11 +26,9 @@ export class CreateRpnComponent implements OnInit {
   }
 
   ngOnInit() {
-   // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-     this.loadPersonnes();
+    this.loadPersonnes();
   }
-
 
   createForm() {
     this.angForm = this.fb.group({
@@ -60,10 +55,10 @@ export class CreateRpnComponent implements OnInit {
       dtmajdpt: formValues.dtmajdpt
     };
     this.rpnpersService.addRpnpers(rpnpers);
-    console.log('ds component: rpnpers = ' + JSON.stringify(rpnpers));
-     this.saveNewRpnpers.emit();
-     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-     this.router.navigate(['rpn']);
+    // console.log('ds component: rpnpers = ' + JSON.stringify(rpnpers));
+    this.saveNewRpnpers.emit();
+    // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
+    this.router.navigate(['rpn']);
   }
 
   private loadPersonnes() {
@@ -72,7 +67,6 @@ export class CreateRpnComponent implements OnInit {
       error => { this.alertService.error(error); }
     );
   }
-
 
   cancel() {
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2

@@ -7,7 +7,7 @@ import { IPers, TypePers,  IUser} from '../../Models/index';
 @Component({
   selector: 'pers-create',
   templateUrl: './create-pers.component.html',
-  styleUrls: ['./create-pers.component.css']
+  styleUrls: []
 })
 export class CreatePersComponent implements OnInit {
 

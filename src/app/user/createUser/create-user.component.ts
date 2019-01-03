@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
   moduleId: module.id,
   templateUrl: 'create-user.component.html'
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent {
 
   title = 'Inscription';
   @Output() saveNewUser = new EventEmitter();
@@ -21,12 +21,6 @@ export class CreateUserComponent implements OnInit {
   constructor( private fb: FormBuilder, private router: Router, private autresService: AutresService,
     private alertService: AlertService, private authService: AuthService) {
     this.createForm();
-  }
-
-  ngOnInit() {
-   // this.loadLocations();
-    // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // console.log('this.currentUser= ' + JSON.stringify(this.currentUser));
   }
 
   createForm() {

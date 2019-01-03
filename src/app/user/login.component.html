@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="email">Courriel:</label>
         <em *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || mouseoverLogin)">Required</em>
-        <input (ngModel)="email" name="email" required id="email" type="text" class="form-control" placeholder="Courriel..." />
+        <input (ngModel)="email" name="email" required id="email" type="text" class="form-control" placeholder="Courriel..." pattern="[^ @]*@[^ @]*" />
       </div>
       <div class="form-group">
         <label for="password">Password:</label>

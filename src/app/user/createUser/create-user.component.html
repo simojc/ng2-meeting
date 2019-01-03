@@ -10,7 +10,7 @@
 
         <div class="form-group">
           <label class="col-md-4">Courriel</label>
-          <input type="text" class="form-control" formControlName="email" #email />
+          <input type="text" class="form-control" formControlName="email" #email  pattern="[^ @]*@[^ @]*"/>
         </div>
         <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
           <div *ngIf="angForm.controls['email'].errors.required">
@@ -34,8 +34,6 @@
         </div>
         <p *ngIf=" angForm.controls['confirmPassword']?.errors?.notEquivalent"  > Les mots de passe sont différents </p>
         <p *ngIf="angForm.controls['confirmPassword']?.errors?.required"> La confirmation du mot de passe est obligatoire</p>
-
-     
 
         <div class="form-group">
             <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">

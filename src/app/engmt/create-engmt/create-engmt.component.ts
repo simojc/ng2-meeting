@@ -7,7 +7,7 @@ import { IEngmt, IPers, IUser } from '../../Models/index';
 @Component({
   selector: 'engmt-create',
   templateUrl: './create-engmt.component.html',
-  styleUrls: ['./create-engmt.component.css']
+  styleUrls: []
 })
 export class CreateEngmtComponent implements OnInit {
 
@@ -28,7 +28,7 @@ export class CreateEngmtComponent implements OnInit {
   ngOnInit() {
    // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.loadPersonnes;
+    this.loadPersonnes();
   }
 
   createForm() {
@@ -44,7 +44,7 @@ export class CreateEngmtComponent implements OnInit {
   }
 
   addRpnpers(formValues) {
-    let rpnpers = {
+    const rpnpers = {
       id: undefined,
       groupe_id: this.currentUser.groupe_id,
       pers_id: formValues.pers_id,
@@ -54,9 +54,9 @@ export class CreateEngmtComponent implements OnInit {
       mtrle: formValues.mtrle,
       depot: formValues.depot,
       dtmajdpt: formValues.dtmajdpt
-    }
+    };
     this.rpnpersService.addRpnpers(rpnpers);
-    //this.saveNewPersonne.emit();
+    // this.saveNewPersonne.emit();
      // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['/']);
   }
@@ -68,7 +68,7 @@ export class CreateEngmtComponent implements OnInit {
     );
   }
 
-  cancel() {   
+  cancel() {
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['/']);
   }

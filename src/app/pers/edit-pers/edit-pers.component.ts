@@ -7,7 +7,7 @@ import { IPers, TypePers } from '../../Models/index';
 @Component({
   selector: 'pers-edit',
   templateUrl: './edit-pers.component.html',
-  styleUrls: ['./edit-pers.component.css']
+  styleUrls: []
 })
 export class EditPersComponent implements OnInit {
  // locations: ILocation[];
@@ -25,12 +25,9 @@ export class EditPersComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      // console.log("params['id'] = "+ params['id']);
-      // this.persService.editPersonne(params['id']).subscribe(res => {
         this.persService.getById(params['id']).subscribe(res => {
-         console.log(" dans ngOnInit; res = "+  JSON.stringify(res));
         this.personne = res[0];
-        console.log(" dans ngOnInit; this.personne = "+  JSON.stringify(this.personne));
+       // console.log(" dans ngOnInit; this.personne = "+  JSON.stringify(this.personne));
       });
     });
   }

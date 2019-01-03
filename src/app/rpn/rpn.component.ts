@@ -7,39 +7,18 @@ import { AlertService, RpnpersService, AutresService, PagerService } from '../_s
 @Component({
     moduleId: module.id,
     templateUrl: 'rpn.component.html',
-    styles: [`
-    body{
-     color:#000000;
-     margin-left:0;
-     margin-right:0;
-     margin-top:0;
-     margin-bottom:0;
-     margin-width:0;
-     margin-height:0;
-     background-color:#A3A6BA;
-    }
-   .text {
-   font-family:Verdana, Arial, Helvetica, sans-serif;
-   font-size:10px;
-   color:541460;
-   padding:5px;
-   }
-   `]
+    styles: []
 })
 
 export class RpnpersComponent implements OnInit {
     currentUser: IUser;
     currentPers: IPers;
-
-    items = [];
-    itemCount = 0;
-
-      // array of all items to be paged
-      private allItems: any[] = [];
-      // pager object
-      pager: any = {};
-      // paged items
-      pagedItems: any[];
+    // array of all items to be paged
+    private allItems: any[] = [];
+    // pager object
+    pager: any = {};
+    // paged items
+    pagedItems: any[];
 
     constructor(private alertService: AlertService, private rpnpersService: RpnpersService,
         private autresService: AutresService, private router: Router, private pagerService: PagerService) {
@@ -60,14 +39,10 @@ export class RpnpersComponent implements OnInit {
 
     private loadRpnPers() {
 
-     // console.log(' JSON.stringify(this.currentPers) =   ' + JSON.stringify(this.currentPers))
+        // console.log(' JSON.stringify(this.currentPers) =   ' + JSON.stringify(this.currentPers))
         if (!!this.currentPers) {
             this.rpnpersService.getAll(this.currentPers[0].id).subscribe(
                 rpnpers => {
-                   // console.log(' JSON.stringify(this.currentPers) =   ' + JSON.stringify(this.currentPers))
-                    this.items = rpnpers;
-                    this.itemCount = rpnpers.length;
-
                     this.allItems = rpnpers;
                     this.setPage(1);
                 },

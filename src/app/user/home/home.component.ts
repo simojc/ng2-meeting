@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IUser } from '../../Models/index';
 import { UserService } from '../user.service';
 import { AlertService, PagerService } from '../../_services/index';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
     // paged items
     pagedItems: any[];
 
-    constructor(private userService: UserService,
+    constructor(private userService: UserService, private router: Router,
         private alertService: AlertService, private pagerService: PagerService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         // console.log(this.currentUser)
@@ -33,12 +34,17 @@ export class HomeComponent implements OnInit {
     private loadAllUsers() {
         this.userService.getUsers().subscribe(
             users => {
-                this.users = users; this.allItems = users;
+                this.users = users;
+                this.allItems = users;
                 this.setPage(1);
             },
             error => { this.alertService.error(error); }
         );
     }
+
+    Edituser(id) {
+        this.router.navigate(['/user/edituser/', id]);
+      }
 
     // Nouveau  code pour pagination
     setPage(page: number) {

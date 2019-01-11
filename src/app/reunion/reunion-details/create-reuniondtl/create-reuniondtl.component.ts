@@ -27,7 +27,9 @@ export class CreateReuniondtlComponent  {
   @Output() saveNewReunionItem = new EventEmitter();
   @Output() cancelAddReunionItem = new EventEmitter();
 
-  @Input() eventdtlId: number;
+  @Input() evnmtId: number;
+
+  evnmtdtl: IEvnmtdtl;
 
   // locations: ILocation[];
   constructor(private router: Router, private evnmtdtlService: EvnmtdtlService,
@@ -37,9 +39,8 @@ export class CreateReuniondtlComponent  {
   }
 
   saveEvnmtdtl(formValues) {
-    // console.log("formValues1 = "+  JSON.stringify(formValues)) ;
-    this.evnmtdtlService.saveEvnmtdtl(formValues).subscribe(evnmt => {
-      console.log(formValues);
+     this.evnmtdtlService.saveEvnmtdtl(formValues).subscribe(evnmt => {
+      // console.log(formValues);
       this.isDirty = false;
       // this.router.navigate(['/evnmtdtls'])
     });

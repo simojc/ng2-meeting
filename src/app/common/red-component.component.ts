@@ -7,7 +7,7 @@ import { Component } from "@angular/core";
         `
 })
 export class RedComponentComponent {
-  private params: any;
+  public params: any;
 
   agInit(params: any): void {
     this.params = params;

@@ -6,6 +6,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { IUser } from '../Models/index';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
@@ -72,9 +73,18 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  isAuthenticated() {
+/*   isAuthenticated() {
     return !!this.currentUser;
     ///  returne True si current User est rensigné (c-d-d si la propriété n'est pas vide)
+  } */
+
+  public isAuthenticated(): boolean {
+    const helper = new JwtHelperService();
+    // const jwtHelper: JwtHelper = new JwtHelper();
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !helper.isTokenExpired(token);
   }
 
   checkAuthenticationStatus() {

@@ -11,7 +11,7 @@ export class EvnmtResolver implements Resolve<any> {
       }
 
       resolve(route: ActivatedRouteSnapshot) {
-        // console.log("Dans  EventResolver  route.params['id'] =  " + route.params['id'])
+       //  console.log("Dans  EventResolver  route.params['id'] =  " + route.params['id']);
         return this.evnmtService.getEvnmt(route.params['id']);
       }
 

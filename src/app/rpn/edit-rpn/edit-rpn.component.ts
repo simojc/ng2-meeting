@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService, RpnpersService, AutresService, PersService} from '../../_services/index';
 import { IRpnpers, IPers, IUser } from '../../Models/index';
-import {  DateFormatPipe  } from '../../reunion/index';
 import { DatePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 import { Local } from 'protractor/built/driverProviders';
@@ -87,16 +86,6 @@ export class EditRpnComponent implements OnInit {
       error => { this.alertService.error(error); }
     );
   }
-
-/*   fromJsonDate(jDate): string {
-    const bDate: Date = new Date(jDate);
-    return bDate.toISOString().substring(0, 10);  // Ignore time
-  }
-
-  toApiDate(bDate) {
-    const apiDate: string = new Date(bDate).toUTCString().slice(0, 10);
-    return apiDate;
-  } */
 
   cancel() {
     this.router.navigate(['rpn']);

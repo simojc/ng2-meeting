@@ -50,4 +50,8 @@ export class EvnmtService {
     return Observable.throw(error.statusText);
   }
 
+  delete(_id: string) {
+    return this.http.delete(this.endpointUrl + '/evnmts/' + _id);
+}
+
 }

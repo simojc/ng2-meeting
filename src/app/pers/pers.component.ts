@@ -18,8 +18,11 @@ export class PersComponent implements OnInit {
   // paged items
   pagedItems: any[];
 
+  public searchString: string;
+
   constructor(private alertService: AlertService, private persService: PersService,
-    private router: Router, private pagerService: PagerService) { }
+    private router: Router, private pagerService: PagerService) {
+    }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

@@ -73,7 +73,7 @@
               <label class="center-block">
                 Type personne
                 <select class="form-control" formControlName="type" #type [(ngModel)]="personne.type">
-                  <option *ngFor="let type of typePers" [value]="type.code">{{type.libelle}}</option>
+                  <option *ngFor="let type of typePers" [value]="type.libelle">{{type.libelle}}</option>
                 </select>
               </label>
             </div>

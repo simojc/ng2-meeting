@@ -23,7 +23,6 @@ export class EngmtService  {
         })
     };
 
-
     // private endpointUrl = environment.API_URL;
     private endpointUrl = environment.API_URL_NODEJS;
 
@@ -45,14 +44,31 @@ export class EngmtService  {
       .catch(this.handleError);
     }
 
+    addEngmtpers(engmtpers) {
+
+        const uri = this.endpointUrl + 'engmtpers';
+        console.log('addEngmtpers uri =' + uri);
+        console.log('addEngmtpers engmtpers =' + JSON.stringify(engmtpers));
+        this.http.post(uri, engmtpers, this.httpOptions).subscribe(
+          res => console.log('Creation reussi engmtpers' ));
+      }
+
     getAllEngmtPers(pers_id: number) {
       // return this.httpClient.get<IEngmtpers[]>(this.endpointUrl + 'engmtpers/' + pers_id);
-      console.log('getAllEngmtPers pers_id =' + pers_id);
-      return this.http.get(this.endpointUrl + 'engmtpers/' + pers_id, this.httpOptions)
+      console.log('URL = ' + this.endpointUrl + 'engmtpers/' + pers_id + '?groupe=' + this.currentUser.groupe_id);
+      return this.http.get(this.endpointUrl + 'engmtpers/' + pers_id + '?groupe=' + this.currentUser.groupe_id, this.httpOptions)
       .map((response: Response) => <IEngmt[]>response.json())
       .catch(this.handleError);
     }
 
+    getAllEngmt() {
+        // return this.httpClient.get<IEngmtpers[]>(this.endpointUrl + 'engmtpers/' + pers_id);
+        console.log('URL = ' + this.endpointUrl + 'engmtpers?groupe=' + this.currentUser.groupe_id );
+        // this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id
+        return this.http.get(this.endpointUrl + 'engmtpers?groupe=' + this.currentUser.groupe_id, this.httpOptions)
+        .map((response: Response) => <IEngmtpers[]>response.json())
+        .catch(this.handleError);
+      }
     create(engmt: IEngmt) {
         return this.http.post(this.endpointUrl + 'engmtpers/', engmt);
     }

@@ -11,10 +11,10 @@ import { EditUserComponent } from './edit-user/index';
 
 
 export const userRoutes = [
-    { path: 'profile', component: ProfileComponent},
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'createuser', component: CreateUserComponent},
     { path: 'changepwd/:id', component: ChangePwdComponent},
-    { path: 'edituser/:id', component: EditUserComponent},
+    { path: 'edituser/:id', component: EditUserComponent, canActivate: [AuthGuard] },
 ];

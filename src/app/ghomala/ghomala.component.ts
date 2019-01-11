@@ -17,7 +17,7 @@ import { Component, OnInit } from '@angular/core';
                 margin-bottom:0;
                 margin-width:0;
                 margin-height:0;
-                background-color:#A3A6BA; 
+                background-color:#A3A6BA;
             }
             .text {
             font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -74,7 +74,7 @@ import { Component, OnInit } from '@angular/core';
 export class GhomalaComponent implements OnInit {
   //currentUser: IUser;
   //users: IUser[] = [];
-menu: number;
+menu: any;
 
   ngOnInit() {
     // this.loadAllUsers();

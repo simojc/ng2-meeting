@@ -28,14 +28,15 @@ export class EvnmtDetailsComponent implements OnInit {
 
   constructor(private evnmtService: EvnmtService, private route: ActivatedRoute,
     private evnmtdtlService: EvnmtdtlService,
-    private alertService: AlertService,  private auth: AuthService) {
+    private alertService: AlertService,  public auth: AuthService) {
    // console.log("Dans EventDetailsComponent constructor --- params =   ");
     this.route.params.subscribe(params => console.log( params.id));
   }
 
   ngOnInit() {
     this.route.data.forEach((data) => {
-      this.evnmt = this.route.snapshot.data['evnmt'];
+      this.evnmt = this.route.snapshot.data['evnmt'][0];
+     // console.log('this.evnmt = ' + JSON.stringify(this.evnmt));
       this.addMode = false;
      //  this.getLocation();
       this.loadEvnmtdtls();

@@ -11,12 +11,7 @@ import { AgGridModule } from 'ag-grid-angular/main';
 import { AppComponent } from './app.component';
 import { NavBarComponent  } from './nav/navbar.component';
 import { appRoutes } from './app.routes';
-// import { EventsListComponent } from './events/events-list/events-list.component';
-// import { EventsThumbnailComponent } from './events/events-thumbnail/events-thumbnail.component';
-// import { CreateEventComponent } from './events/create-event/create-event.component';
-// import { LocationValidator } from './events/location-validator.directive';
-// import { CreateSessionComponent } from './events/event-details/create-session/create-session.component';
-// import { EventDetailsComponent } from './events/event-details/event-details/event-details.component';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import {
   RpnpersService,
@@ -27,9 +22,7 @@ import {
   AlertService,
   AutresService,
   PagerService
-
 } from './_services/index';
-
 
   import {
         CreateReunionComponent,
@@ -45,10 +38,10 @@ import {
         AuthGuard,
         AlertComponent,
         FooterComponent,
-        LocationValidator,
-        DurationPipe ,
+        ReunionGridComponent
     } from './reunion/index';
 
+    import { FilterPipe, SortGridPipe, DateRangePipe } from './_directives/search-by-filter.pipe';
 
 import {
   ToastrService,
@@ -58,15 +51,24 @@ import {
 } from './common/index';
 
 import { GhomalaComponent } from './ghomala/index';
-// import { RpnpersComponent } from './rpn/index';
+// import { RpnpersComponentrpn/index';
 import {
   RpnpersComponent,
   CreateRpnComponent,
   EditRpnComponent
 } from './rpn/index';
-import { TontComponent, TontThumbnailComponent } from './tont/index';
+
+import { TontComponent,
+  TontThumbnailComponent,
+  CreateTontPersComponent,
+  TontGridComponent
+} from './tont/index';
+
 import { PersComponent, CreatePersComponent, EditPersComponent } from './pers/index';
-import { EngmtComponent, EngmtThumbnailComponent } from './engmt/index';
+import { EngmtComponent,
+   EngmtThumbnailComponent,
+    CreateEngmtPersComponent, EngmtGridComponent
+   } from './engmt/index';
 
 // import { MyGridApplicationComponent } from './my-grid/my-grid.component'
 
@@ -87,20 +89,15 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     NavBarComponent,
-   //  EventsListComponent,
-   //  EventsThumbnailComponent,
-   //  CreateEventComponent,
-    LocationValidator,
-   //  CreateSessionComponent,
-   //  EventDetailsComponent,
-  //   UpvoteComponent,
-   //  SessionListComponent,
-    DurationPipe,
+    FilterPipe,
+    SortGridPipe,
+    DateRangePipe,
     Error404Component,
     CollapsibleWellComponent,
     AlertComponent,
     FooterComponent,
     CreateReunionComponent,
+    ReunionGridComponent,
     ReunionsListComponent,
     ReunionsThumbnailComponent,
     EvnmtDetailsComponent,
@@ -109,8 +106,7 @@ registerLocaleData(localeFr, 'fr');
    // MyGridApplicationComponent,
     RedComponentComponent,
     GroupeComponent,
-    // DataTableDemo1, DataTableDemo2, DataTableDemo3,
-    // DatatableDemoComponent,
+
     GhomalaComponent,
     RpnpersComponent,
     CreateRpnComponent,
@@ -119,7 +115,11 @@ registerLocaleData(localeFr, 'fr');
     TontComponent,
     PersComponent, CreatePersComponent, EditPersComponent,
     TontThumbnailComponent,
-    EngmtThumbnailComponent
+    EngmtThumbnailComponent,
+    CreateTontPersComponent,
+    TontGridComponent,
+    CreateEngmtPersComponent,
+    EngmtGridComponent
   ],
   imports: [
     BrowserModule,
@@ -130,7 +130,8 @@ registerLocaleData(localeFr, 'fr');
     HttpModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    CurrencyMaskModule
   ],
   providers: [
     ToastrService,

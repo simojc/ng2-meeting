@@ -46,13 +46,11 @@ export class PersService {
       }
 
       getPersByType(): Observable<IPers[]> {
-
      /*    return this.http.get(this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id)
         .map((response: Response) =>  {
            return response;
         })
         .catch(this.handleError); */
-
         return this.http.get(this.endpointUrl + 'pers?type=M&groupe=' + this.currentUser.groupe_id, this.httpOptions)
         .map((response: Response) => <IPers[]>response.json())
         .catch(this.handleError);
@@ -60,7 +58,6 @@ export class PersService {
 
     getPersByRepdt(repdt_id: number) {
      // return this.httpClient.get<IPers>(this.endpointUrl + 'pers/' + repdt_id);
-
       return this.http.get(this.endpointUrl + 'pers/' + repdt_id, this.httpOptions)
       .map((response: Response) => <IPers[]>response.json())
       .catch(this.handleError);
@@ -72,12 +69,11 @@ export class PersService {
 
     getById(_id: number) {
       // return this.httpClient.get<IPers>(this.endpointUrl + 'pers/' + _id);
-
       return this.http.get(this.endpointUrl + 'pers/' + _id, this.httpOptions)
       .map((response: Response) => <IPers>response.json())
       .catch(this.handleError);
     }
- 
+
     addPersonne(personne: IPers) {
       const uri = this.endpointUrl + 'pers';
       this.http.post(uri, personne, this.httpOptions).subscribe(

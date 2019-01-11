@@ -13,7 +13,7 @@
       <!-- <div><strong>Price:</strong> ${{evnmt?.price | currency:'USD':"symbol"}}</div> -->
       <div><strong>Statut:</strong> {{evnmt.statut}}</div>
 
-      <div><strong>Description:</strong> {{evnmt.Description}}</div>
+      <div><strong>Description:</strong> {{evnmt.descr}}</div>
     </div>
     <div class="col-md-6">
       <address>
@@ -41,7 +41,8 @@
     </div>
       
   </div>
-  <create-reuniondtl *ngIf="addMode"  (saveNewReunionItem)="saveNewReunionItem()" (cancelAddReunionItem)="cancelAddReunionItem()" [eventdtlId]="evnmt?.id"  ></create-reuniondtl>
+  <create-reuniondtl *ngIf="addMode"  (saveNewReunionItem)="saveNewReunionItem()" 
+  (cancelAddReunionItem)="cancelAddReunionItem()" [evnmtId]="evnmt?.id"  ></create-reuniondtl>
   <reuniondtl-list [evnmtId]="evnmt?.id" [sortBy]="sortBy" *ngIf="!addMode" [evnmtdtls]="evnmt?.evnmtdtls"> </reuniondtl-list>
  
 </div>

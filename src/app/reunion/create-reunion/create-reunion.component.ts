@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { EvnmtService } from '../shared/index';
 
 import {  AlertService } from '../../_services/index';
-import { IGroupe, IUser } from '../../Models/index';
+import { IGroupe, IUser, IEvnmt } from '../../Models/index';
 
 @Component({
 
@@ -24,6 +24,7 @@ export class CreateReunionComponent {
   isDirty: boolean = true;
   currentUser: IUser;
   title = "Création d'une réunion";
+  evnmt: IEvnmt;
   // locations: ILocation[];
   constructor(private router: Router, private evnmtService: EvnmtService,
     private alertService: AlertService) {

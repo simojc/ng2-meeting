@@ -14,9 +14,10 @@ export class CreateUserComponent {
   title = 'Inscription';
   @Output() saveNewUser = new EventEmitter();
   @Output() cancelAddUser = new EventEmitter();
+  public loginInvalid: boolean;
 
   // currentUser: IUser;
-
+  public mouseoverLogin: boolean;
   angForm: FormGroup;
   constructor( private fb: FormBuilder, private router: Router, private autresService: AutresService,
     private alertService: AlertService, private authService: AuthService) {

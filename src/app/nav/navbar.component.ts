@@ -22,7 +22,7 @@ export class NavBarComponent implements OnInit {
   foundSessions: ISession[];
   public currentUser: IUser;
 
-  constructor(private auth: AuthService, private router: Router)  {
+  constructor(public auth: AuthService, private router: Router)  {
   }
 
   ngOnInit() {

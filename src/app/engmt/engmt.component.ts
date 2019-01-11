@@ -27,7 +27,6 @@ export class EngmtComponent implements OnInit {
   public currentUser: IUser;
   currentPers: IPers;
 
-
   items = [];
   itemCount = 0;
 

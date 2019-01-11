@@ -6,12 +6,12 @@ import { ITont, ITontpers, IPers, IUser } from '../../Models/index';
 
 @Component({
   selector: 'tont-create',
-  templateUrl: './create-tont.component.html',
-  styleUrls: ['./create-tont.component.css']
+  templateUrl: './create-tontpers.component.html',
+  styleUrls: []
 })
-export class CreateTontComponent implements OnInit {
+export class CreateTontPersComponent implements OnInit {
 
-  title = 'Nouvelle ';
+  title = 'Enregistrer un membre à une tontine ';
   tontpers: any;
   personnes: IPers[];
   angForm: FormGroup;
@@ -21,43 +21,48 @@ export class CreateTontComponent implements OnInit {
     private tontService: TontService, private fb: FormBuilder,
     private autresService: AutresService,
     private alertService: AlertService,
-    private persService: PersService) {
+    private persService: PersService ) {
     this.createForm();
   }
 
   ngOnInit() {
-   // this.loadLocations();
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.loadPersonnes;
+    this.loadPersonnes();
+    this.loadTonts();
   }
 
   createForm() {
     this.angForm = this.fb.group({
       pers_id: ['', Validators.required],
-      repdt1_id: ['', Validators.required],
-      repdt2_id: '',
-      dtadh: ['', Validators.required],
-      mtrle: ['', Validators.required],
-      depot: '',
-      dtmajdpt: '',
+      tont_id: ['', Validators.required],
+      position: '',
+      alias: ['', Validators.required],
+      statut: ['', Validators.required],
+      comment: '',
+      dt_statut: '',
+      moisgain: '',
     });
   }
 
-  addRpnpers(formValues) {
-    let rpnpers = {
+  addTontpers(formValues) {
+    const tontpers: ITontpers = {
       id: undefined,
       groupe_id: this.currentUser.groupe_id,
       pers_id: formValues.pers_id,
-      repdt1_id: formValues.repdt1_id,
-      repdt2_id: formValues.repdt2_id,
-      dtadh: formValues.dtadh,
-      mtrle: formValues.mtrle,
-      depot: formValues.depot,
-      dtmajdpt: formValues.dtmajdpt
-    }
-    //this.rpnpersService.addRpnpers(rpnpers);
-     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
-    this.router.navigate(['rpn']);
+      tont_id: formValues.tont_id,
+      position: formValues.position,
+      alias: formValues.alias,
+      statut: formValues.statut,
+      dt_statut: formValues.dt_statut,
+      moisgain: formValues.moisgain,
+      comment: formValues.moisgain,
+      dtdeb: undefined,
+      dtfin: undefined,
+      cot_dern: undefined,
+      descr: undefined,
+    };
+    this.tontService.create(tontpers);
+    // this.router.navigate(['/']);
   }
 
   private loadPersonnes() {
@@ -67,7 +72,14 @@ export class CreateTontComponent implements OnInit {
     );
   }
 
-  cancel() {   
+  private loadTonts() {
+    this.tontService.getAllTonts().subscribe(
+      res => { this.tontpers = res; },
+      error => { this.alertService.error(error); }
+    );
+  }
+
+  cancel() {
     // Exécuter l'un ou l'autre de ces 2 instructions, pas les 2
     this.router.navigate(['rpn']);
   }

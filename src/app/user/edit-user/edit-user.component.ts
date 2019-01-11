@@ -85,10 +85,10 @@ export class EditUserComponent implements OnInit {
     // password_ctrl.enabled ? password_ctrl.disable() : password_ctrl.enable();
     if (evt.target.checked) {
       password_ctrl.enable();
-      //console.log("Checked");
+      // console.log("Checked");
     } else {
       password_ctrl.disable()
-      //console.log("UNChecked");
+      // console.log("UNChecked");
     }
   }
 

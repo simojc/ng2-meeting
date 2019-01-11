@@ -1,8 +1,8 @@
 
-import { Component, Input, OnInit } from '@angular/core'
-import { Router, ActivatedRoute } from '@angular/router'
+import { Component, Input, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { IEvnmt } from '../../Models/index'
+import { IEvnmt } from '../../Models/index';
 // import { EvnmtService } from '../shared/evnmt.service'
 // import { AlertService } from '../../_services/index';
 

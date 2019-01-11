@@ -13,6 +13,12 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
   private loading: boolean;
+  email: any;
+  password: any;
+  public mouseoverLogin: boolean;
+  public loginInvalid: boolean;
+  // public formValue: Class;
+
   constructor(private authService: AuthService, private router: Router,
     private alertService: AlertService) {
   }
@@ -22,8 +28,11 @@ export class LoginComponent {
     this.authService.loginUser(formValues.email, formValues.password)
       .then(
       res => {
+        location.reload();
         this.router.navigate(['/user/profile']);
+
          this.alertService.success(' login complété avec sussès', true);
+
         this.loading = false;
       },
       err => {

@@ -1,28 +1,28 @@
 
 export interface IEvnmt {
-  id: number
-  groupe_id: number
-  //location_id: number
+  id: number;
+  groupe_id: number;
+  // location_id: number
 
-  address: string
-  city: string  
-  country: string
+  address: string;
+  city: string;
+  country: string;
 
-  nom: string
-  date: Date
-  hrdeb: string
-  hrfin: string
-  statut: string
-  descr: string
-  contenu: string
-  rapport: string
-  famaccueil:string
-  resp1: string
-  resp2: string
-  affich: boolean
-  groupe: IGroupe
-  //location: ILocation
-  evnmtdtls: IEvnmtdtl[]
+  nom: string;
+  date: Date;
+  hrdeb: string;
+  hrfin: string;
+  statut: string;
+  descr: string;
+  contenu: string;
+  rapport: string;
+  famaccueil: string;
+  resp1: string;
+  resp2: string;
+  affich: boolean;
+  groupe: IGroupe;
+  // location: ILocation
+  evnmtdtls: IEvnmtdtl[];
 }
 export interface IEvnmtdtl {
         id: number

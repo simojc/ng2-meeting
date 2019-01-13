@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   API_URL: 'http://localhost/phpapi/public/api/',
-  API_URL_NODEJS: 'http://localhost:3003/'
+  API_URL_NODEJS: 'http://localhost:3003/api/'
 };
